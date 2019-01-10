@@ -9,6 +9,7 @@
         <wb-resource deploy-path="/WEB-INF/lib" source-path="/webapp/WEB-INF/lib/MyBatis"/>
         <wb-resource deploy-path="/WEB-INF/lib" source-path="/webapp/WEB-INF/lib/Spring"/>
         <wb-resource deploy-path="/WEB-INF/lib" source-path="/webapp/WEB-INF/lib/ojdbc"/>
+        <wb-resource deploy-path="/WEB-INf" source-path="/config/dwr"/>
         <property name="context-root" value="BillingSystem"/>
         <property name="java-output-path" value="/BillingSystem/webapp/WEB-INF/classes"/>
     </wb-module>

@@ -68,6 +68,10 @@
 	  <param-value>/WEB-INF/faces-config-sys.xml</param-value>
 	</context-param>
 	<context-param>
+	     <param-name>javax.faces.DISABLE_FACELET_JSF_VIEWHANDLER</param-name>
+	     <param-value>true</param-value>
+    </context-param>
+	<context-param>
         <param-name>javax.faces.DEFAULT_SUFFIX</param-name>
         <param-value>.jsp</param-value>
     </context-param>
@@ -75,4 +79,30 @@
         <welcome-file>index.jsp</welcome-file> 
     </welcome-file-list> 
     
+    <!-- 配置dwr -->
+    <servlet>
+        <servlet-name>dwr</servlet-name>
+        <servlet-class>org.directwebremoting.servlet.DwrServlet</servlet-class>
+	        <init-param>
+	            <param-name>debug</param-name>
+	            <param-value>true</param-value>
+	        </init-param>
+	        <init-param>
+	            <param-name>crossDomainSessionSecurity</param-name>
+	           <param-value>false</param-value>
+	        </init-param>
+	        <init-param>
+	           <param-name>allowScriptTagRemoting</param-name>
+	           <param-value>true</param-value>
+	        </init-param>
+	        <init-param>
+	            <param-name>config-test</param-name>
+	            <param-value>/WEB-INF/dwr.xml</param-value>
+	        </init-param>
+	        <load-on-startup>2</load-on-startup>
+	</servlet>
+    <servlet-mapping>
+        <servlet-name>dwr</servlet-name>
+        <url-pattern>/dwr/*</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -21,4 +21,11 @@ public class MapperTest {
     	System.out.println(employeemapper);
     	System.out.println(employeemapper.insertSelective(new Employee(null, "vincent", "ÄÐ", null)));
     }
+    
+    @Test
+    public void aa(){
+    	int a = -5;
+    	int b = a>>2;
+    	System.out.println(b);
+    }
 }
