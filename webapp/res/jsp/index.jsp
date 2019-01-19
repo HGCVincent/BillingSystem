@@ -7,9 +7,9 @@
 <title>第一个JSF程序</title>
     <link rel="stylesheet" href="../Bootstrap/bootstrap.min.css"/>
  
-    <script type='text/javascript' src='${pageContext.request.contextPath}/dwr/interface/dwrController.js'></script>
-    <script type='text/javascript' src='${pageContext.request.contextPath}/dwr/engine.js'></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/dwr/util.js"></script>
+    <script type='text/javascript' src='/BillingSystem/dwr/interface/dwrController.js'></script>
+    <script type='text/javascript' src='/BillingSystem/dwr/engine.js'></script>
+    <script type="text/javascript" src="/BillingSystem/dwr/util.js"></script>
     <script type="text/javascript">
         function f(){
             dwrController.aa(function(data){
