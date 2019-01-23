@@ -6,7 +6,7 @@
   <head>
       <title>Sign in</title>
 	  <link rel="stylesheet" href="../Bootstrap/bootstrap.min.css"/>
-	  <link rel="stylesheet" href="../css/navbar.css"/>
+	  <link rel="stylesheet" href="../css/common.css"/>
 	  <script type="text/javascript" src='../js/jquery/jquery-3.3.1.min.js'></script>
 	  <script type="text/javascript" src='../Bootstrap/bootstrap.min.js'></script>
   </head>
@@ -27,12 +27,12 @@
 							客户信息管理
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="#">客户基本信息</a>
+							<a class="dropdown-item" href="./custProfile.faces">客户基本信息</a>
 							<a class="dropdown-item" href="#">客户银行账号信息</a>
 						</div>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">开票单位管理</a>
+						<a class="nav-link" href="./issuingParty.jsp">开票单位管理</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#">发票信息管理</a>

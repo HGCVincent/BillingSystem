@@ -1,0 +1,39 @@
+.navbar-nav li:hover{
+	background: #B9BBBE;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+nav{
+	height: 40px;
+}
+
+.table tbody > tr >td {
+	border-top: none;
+    padding: 5px;
+}
+
+.table thead > tr > td{
+	border-color: black;
+	background-color: #0062CC;
+	color: white;
+	padding: 8px;
+}
+
+.searchCriteria{
+	padding: 5px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 35px;
+	border: 1px solid #B9BBBE;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.container-fluid>div{
+	margin: 5px;
+}

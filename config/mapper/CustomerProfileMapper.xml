@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.billing.invoice.dao.CustomerProfileMapper">
+  <resultMap id="BaseResultMap" type="com.billing.invoice.po.CustomerProfile">
+    <result column="CUST_ID" jdbcType="VARCHAR" property="custId" />
+    <result column="CUST_NAME" jdbcType="VARCHAR" property="custName" />
+    <result column="LANG_TYPE" jdbcType="VARCHAR" property="langType" />
+    <result column="COUNTRY" jdbcType="VARCHAR" property="country" />
+    <result column="COUNTY" jdbcType="VARCHAR" property="county" />
+    <result column="CITY" jdbcType="VARCHAR" property="city" />
+    <result column="ADMIN_NAME" jdbcType="VARCHAR" property="adminName" />
+    <result column="ADMIN_TEL" jdbcType="VARCHAR" property="adminTel" />
+    <result column="ADMIN_EMAIL" jdbcType="VARCHAR" property="adminEmail" />
+    <result column="ACCT_BD_OWNER" jdbcType="VARCHAR" property="acctBdOwner" />
+    <result column="ACCT_BD_OWNER_TEL" jdbcType="VARCHAR" property="acctBdOwnerTel" />
+    <result column="ACCT_BD_OWNER_EMAIL" jdbcType="VARCHAR" property="acctBdOwnerEmail" />
+    <result column="ADDR1" jdbcType="VARCHAR" property="addr1" />
+    <result column="ADDR2" jdbcType="VARCHAR" property="addr2" />
+    <result column="ADDR3" jdbcType="VARCHAR" property="addr3" />
+    <result column="ADDR4" jdbcType="VARCHAR" property="addr4" />
+    <result column="INVOICE_TEMPLATE_CODE" jdbcType="VARCHAR" property="invoiceTemplateCode" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    CUST_ID, CUST_NAME, LANG_TYPE, COUNTRY, COUNTY, CITY, ADMIN_NAME, ADMIN_TEL, ADMIN_EMAIL, 
+    ACCT_BD_OWNER, ACCT_BD_OWNER_TEL, ACCT_BD_OWNER_EMAIL, ADDR1, ADDR2, ADDR3, ADDR4, 
+    INVOICE_TEMPLATE_CODE
+  </sql>
+  <select id="selectByExample" parameterType="com.billing.invoice.po.CustomerProfileExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from CUST_PROFILE
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.billing.invoice.po.CustomerProfileExample">
+    delete from CUST_PROFILE
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.billing.invoice.po.CustomerProfile">
+    insert into CUST_PROFILE (CUST_ID, CUST_NAME, LANG_TYPE, 
+      COUNTRY, COUNTY, CITY, 
+      ADMIN_NAME, ADMIN_TEL, ADMIN_EMAIL, 
+      ACCT_BD_OWNER, ACCT_BD_OWNER_TEL, ACCT_BD_OWNER_EMAIL, 
+      ADDR1, ADDR2, ADDR3, 
+      ADDR4, INVOICE_TEMPLATE_CODE)
+    values (#{custId,jdbcType=VARCHAR}, #{custName,jdbcType=VARCHAR}, #{langType,jdbcType=VARCHAR}, 
+      #{country,jdbcType=VARCHAR}, #{county,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{adminName,jdbcType=VARCHAR}, #{adminTel,jdbcType=VARCHAR}, #{adminEmail,jdbcType=VARCHAR}, 
+      #{acctBdOwner,jdbcType=VARCHAR}, #{acctBdOwnerTel,jdbcType=VARCHAR}, #{acctBdOwnerEmail,jdbcType=VARCHAR}, 
+      #{addr1,jdbcType=VARCHAR}, #{addr2,jdbcType=VARCHAR}, #{addr3,jdbcType=VARCHAR}, 
+      #{addr4,jdbcType=VARCHAR}, #{invoiceTemplateCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.billing.invoice.po.CustomerProfile">
+    insert into CUST_PROFILE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="custId != null">
+        CUST_ID,
+      </if>
+      <if test="custName != null">
+        CUST_NAME,
+      </if>
+      <if test="langType != null">
+        LANG_TYPE,
+      </if>
+      <if test="country != null">
+        COUNTRY,
+      </if>
+      <if test="county != null">
+        COUNTY,
+      </if>
+      <if test="city != null">
+        CITY,
+      </if>
+      <if test="adminName != null">
+        ADMIN_NAME,
+      </if>
+      <if test="adminTel != null">
+        ADMIN_TEL,
+      </if>
+      <if test="adminEmail != null">
+        ADMIN_EMAIL,
+      </if>
+      <if test="acctBdOwner != null">
+        ACCT_BD_OWNER,
+      </if>
+      <if test="acctBdOwnerTel != null">
+        ACCT_BD_OWNER_TEL,
+      </if>
+      <if test="acctBdOwnerEmail != null">
+        ACCT_BD_OWNER_EMAIL,
+      </if>
+      <if test="addr1 != null">
+        ADDR1,
+      </if>
+      <if test="addr2 != null">
+        ADDR2,
+      </if>
+      <if test="addr3 != null">
+        ADDR3,
+      </if>
+      <if test="addr4 != null">
+        ADDR4,
+      </if>
+      <if test="invoiceTemplateCode != null">
+        INVOICE_TEMPLATE_CODE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="custId != null">
+        #{custId,jdbcType=VARCHAR},
+      </if>
+      <if test="custName != null">
+        #{custName,jdbcType=VARCHAR},
+      </if>
+      <if test="langType != null">
+        #{langType,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null">
+        #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="adminName != null">
+        #{adminName,jdbcType=VARCHAR},
+      </if>
+      <if test="adminTel != null">
+        #{adminTel,jdbcType=VARCHAR},
+      </if>
+      <if test="adminEmail != null">
+        #{adminEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="acctBdOwner != null">
+        #{acctBdOwner,jdbcType=VARCHAR},
+      </if>
+      <if test="acctBdOwnerTel != null">
+        #{acctBdOwnerTel,jdbcType=VARCHAR},
+      </if>
+      <if test="acctBdOwnerEmail != null">
+        #{acctBdOwnerEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="addr1 != null">
+        #{addr1,jdbcType=VARCHAR},
+      </if>
+      <if test="addr2 != null">
+        #{addr2,jdbcType=VARCHAR},
+      </if>
+      <if test="addr3 != null">
+        #{addr3,jdbcType=VARCHAR},
+      </if>
+      <if test="addr4 != null">
+        #{addr4,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceTemplateCode != null">
+        #{invoiceTemplateCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.billing.invoice.po.CustomerProfileExample" resultType="java.lang.Long">
+    select count(*) from CUST_PROFILE
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update CUST_PROFILE
+    <set>
+      <if test="record.custId != null">
+        CUST_ID = #{record.custId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.custName != null">
+        CUST_NAME = #{record.custName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.langType != null">
+        LANG_TYPE = #{record.langType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.country != null">
+        COUNTRY = #{record.country,jdbcType=VARCHAR},
+      </if>
+      <if test="record.county != null">
+        COUNTY = #{record.county,jdbcType=VARCHAR},
+      </if>
+      <if test="record.city != null">
+        CITY = #{record.city,jdbcType=VARCHAR},
+      </if>
+      <if test="record.adminName != null">
+        ADMIN_NAME = #{record.adminName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.adminTel != null">
+        ADMIN_TEL = #{record.adminTel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.adminEmail != null">
+        ADMIN_EMAIL = #{record.adminEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.acctBdOwner != null">
+        ACCT_BD_OWNER = #{record.acctBdOwner,jdbcType=VARCHAR},
+      </if>
+      <if test="record.acctBdOwnerTel != null">
+        ACCT_BD_OWNER_TEL = #{record.acctBdOwnerTel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.acctBdOwnerEmail != null">
+        ACCT_BD_OWNER_EMAIL = #{record.acctBdOwnerEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addr1 != null">
+        ADDR1 = #{record.addr1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addr2 != null">
+        ADDR2 = #{record.addr2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addr3 != null">
+        ADDR3 = #{record.addr3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addr4 != null">
+        ADDR4 = #{record.addr4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.invoiceTemplateCode != null">
+        INVOICE_TEMPLATE_CODE = #{record.invoiceTemplateCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update CUST_PROFILE
+    set CUST_ID = #{record.custId,jdbcType=VARCHAR},
+      CUST_NAME = #{record.custName,jdbcType=VARCHAR},
+      LANG_TYPE = #{record.langType,jdbcType=VARCHAR},
+      COUNTRY = #{record.country,jdbcType=VARCHAR},
+      COUNTY = #{record.county,jdbcType=VARCHAR},
+      CITY = #{record.city,jdbcType=VARCHAR},
+      ADMIN_NAME = #{record.adminName,jdbcType=VARCHAR},
+      ADMIN_TEL = #{record.adminTel,jdbcType=VARCHAR},
+      ADMIN_EMAIL = #{record.adminEmail,jdbcType=VARCHAR},
+      ACCT_BD_OWNER = #{record.acctBdOwner,jdbcType=VARCHAR},
+      ACCT_BD_OWNER_TEL = #{record.acctBdOwnerTel,jdbcType=VARCHAR},
+      ACCT_BD_OWNER_EMAIL = #{record.acctBdOwnerEmail,jdbcType=VARCHAR},
+      ADDR1 = #{record.addr1,jdbcType=VARCHAR},
+      ADDR2 = #{record.addr2,jdbcType=VARCHAR},
+      ADDR3 = #{record.addr3,jdbcType=VARCHAR},
+      ADDR4 = #{record.addr4,jdbcType=VARCHAR},
+      INVOICE_TEMPLATE_CODE = #{record.invoiceTemplateCode,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

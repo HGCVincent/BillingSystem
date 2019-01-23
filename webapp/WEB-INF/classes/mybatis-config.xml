@@ -10,4 +10,8 @@
 	<typeAliases>
 		<package name="com.billing.invoice.po"/>
 	</typeAliases>
+	
+	<plugins>
+	    <plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+	</plugins>
 </configuration>
