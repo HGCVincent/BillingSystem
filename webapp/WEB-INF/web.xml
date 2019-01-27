@@ -65,7 +65,9 @@
 	</context-param>
     <context-param>
 	  <param-name>javax.faces.CONFIG_FILES</param-name>
-	  <param-value>/WEB-INF/faces-config-sys.xml</param-value>
+	  <param-value>/WEB-INF/faces-config-sys.xml,
+	               /WEB-INF/faces-config-issuingParty.xml,              
+	  </param-value>
 	</context-param>
 	<context-param>
 	     <param-name>javax.faces.DISABLE_FACELET_JSF_VIEWHANDLER</param-name>

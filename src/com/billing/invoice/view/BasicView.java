@@ -1,21 +1,67 @@
 package com.billing.invoice.view;
 
+import static org.hamcrest.CoreMatchers.nullValue;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.billing.invoice.po.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
-public abstract class BasicView {
-    List<Object> records = new ArrayList<Object>(); 
-    int currentPage;
-    
-    public void doSearch(){
-    	Search();
-    	PageHelper.startPage(1, 30);
-        PageInfo page =new PageInfo(records);
+public abstract class BasicView<T> implements Serializable {
+    public List<T> records = new ArrayList<T>();
+    public Page page;
+    public String pageNum;            //前台要打开的页码
+    public boolean searched;
+ 
+
+	public void doSearch(){
+    	searched = Search();
+        PageInfo<T> pageInfo =new PageInfo<T>(records,5);
+        page = new Page(pageInfo);
     }
     
-    public void Search(){
+    public boolean Search(){
+    	return false;
     }
+
+	public List<T> getRecords() {
+		return records;
+	}
+
+	public void setRecords(List<T> records) {
+		this.records = records;
+	}
+    
+	public Page getPage() {
+		return page;
+	}
+
+	public void setPage(Page page) {
+		this.page = page;
+	}
+
+	public String getPageNum() {
+		if (pageNum != null) {
+			return pageNum;
+		}
+		return null;
+	}
+
+	public void setPageNum(String pageNum) {
+		this.pageNum = pageNum;
+	}
+
+	public boolean getSearched() {
+		return searched;
+	}
+
+	public void setSearched(boolean searched) {
+		this.searched = searched;
+	}
+	
+	
+	
 }

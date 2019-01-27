@@ -13,7 +13,7 @@ public class IssuingPartyServiceImpl implements IssuingPartyService {
 
 	@Override
 	public List<IssuingParty> getAllIssuingParty() {
-		return null;
+		return issuingPartyMapper.selectByExample(null);
 	}
 
 	@Override

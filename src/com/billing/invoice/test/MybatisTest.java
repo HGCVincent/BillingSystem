@@ -1,5 +1,7 @@
 package com.billing.invoice.test;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +20,22 @@ public class MybatisTest {
 	@Autowired
 	IssuingPartyService issuingPartyService;
 	
-    @Test
+//    public IssuingPartyService getIssuingPartyService() {
+//		return issuingPartyService;
+//	}
+//
+//	public void setIssuingPartyService(IssuingPartyService issuingPartyService) {
+//		this.issuingPartyService = issuingPartyService;
+//	}
+
+
+
+	@Test
     public void testone(){
-    	System.out.println(issuingPartyMapper);
-    	IssuingParty issuingParty = new IssuingParty("开票单位1", "地址1", "电话1", "USD", "1231", "银行1", "123");
+//    	System.out.println(issuingPartyMapper);
+    	IssuingParty issuingParty = new IssuingParty("开票单位3", "地址3", "电话3", "USD", "1231", "银行3", "123");
     	issuingPartyService.insertIssuingParty(issuingParty);
+//		List<IssuingParty> issuingParties = issuingPartyService.getAllIssuingParty();
+//		System.out.println(issuingParties.get(0).getAddress());
 }
 }

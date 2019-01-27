@@ -50,7 +50,11 @@
 			</div>
 		</nav>
 		<div id="content">
-             <ui:insert name="content">Content</ui:insert>
+		    <f:view>
+	            <h:form id="form">
+	                <ui:insert name="content">Content</ui:insert>
+	            </h:form>
+            </f:view>
         </div>
   </body>
 </html>

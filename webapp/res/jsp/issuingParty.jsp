@@ -3,11 +3,14 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:c="http://java.sun.com/jsp/jstl/core"> 
+	xmlns:c="http://java.sun.com/jstl/core"> 
    
-<ui:composition template="./navbar.jsp">
+<ui:composition template="./common/navbar.jsp">
     <ui:define name="content">
        <link rel="stylesheet" href="../css/open-iconic-bootstrap.css"/>
+       <script type="text/javascript" src='../js/common.js'></script>
+       <script type="text/javascript" src='../js/invoice/issuingParty.js'></script>
+       
        <div class="container-fluid">
 		   <div class="row">
 			   <div class="col-md-12">
@@ -54,10 +57,10 @@
 					<button type="button" class="btn btn-primary btn-sm">
 						<span class="oi oi-reload" title="icon name" aria-hidden="true">重置</span>
 					</button>
-					<button type="button" class="btn btn-primary btn-sm">
+					<button type="button" class="btn btn-primary btn-sm" onclick="search()">
 						<span class="oi oi-magnifying-glass" title="icon name" aria-hidden="true"></span>搜索
 					</button>
-					<input jsfc="h:commandButton" value="Search" class="highlightBtn"
+					<input style="display:none" jsfc="h:commandButton" value="Search"
 						   id="searchButton" onclick="showLoadingPage()"
 						   action="#{issuingPartyView.doSearch}" />
 					<button type="button" class="btn btn-primary btn-sm">
@@ -65,66 +68,48 @@
 					</button>
 				</div>
 			</div>
-			<div class="row" style="border: 1px solid #B9BBBE;">
-				<div class="col-md-12" style="background-color: #D3D9DF;font-style: italic;">
-					<strong>Details</strong>
+			<c:if test="#{issuingPartyView.searched}">
+				<div id="details" class="row" style="border: 1px solid #B9BBBE;">
+					<div class="col-md-12" style="background-color: #D3D9DF;font-style: italic;">
+						<strong>Details</strong>
+					</div>
+					<div class="col-md-12" style="margin-top: 2px;">
+						<table class="table table-hover table-bordered table-condensed">
+							<thead>
+								<tr>
+									<td>单位名称</td>
+									<td>地址</td>
+									<td>电话</td>
+									<td>银行名字</td>
+									<td>银行账号</td>
+									<td>货币</td>
+									<td>操作</td>
+								</tr>
+							</thead>
+							<c:forEach items = "#{issuingPartyView.records}" 
+							           var="issuingParty" varStatus="status">
+								<tr>
+									<td align="center" id="partyName_#{status.index}">#{issuingParty.partyName}</td>
+									<td align="center" id="partyAddr_#{status.index+1}">#{issuingParty.address}</td>
+									<td align="center" id="partyTel_#{status.index+1}">#{issuingParty.partyTel}</td>
+									<td align="center" id="partyBankName_#{status.index+1}">#{issuingParty.bankName}</td>
+									<td align="center" id="partyBankAccount_#{status.index+1}">#{issuingParty.bankAccount}</td>
+									<td align="center" id="partyBankCurrency_#{status.index+1}">#{issuingParty.currency}</td>
+									<td align="center">操作</td>
+								</tr>
+							</c:forEach>
+						</table>
+					</div>
+					
+					<ui:include src="./common/common_page.jsp">
+					    <ui:param name="Page" value="#{issuingPartyView.page}"/>
+					</ui:include>
+					
+					<h:inputHidden id="pageNum" value="#{issuingPartyView.pageNum}"></h:inputHidden>
+	                <input type="hidden" id="currentPageNum" value="#{issuingPartyView.page.currentPage}" />
+	                <input type="hidden" id="totalPages" value="#{issuingPartyView.page.totalPages}" />
 				</div>
-				<div class="col-md-12" style="margin-top: 2px;">
-					<table class="table table-hover table-bordered table-condensed">
-						<thead>
-							<tr>
-								<td>单位名称</td>
-								<td>地址</td>
-								<td>电话</td>
-								<td>银行名字</td>
-								<td>银行账号</td>
-								<td>货币</td>
-								<td>操作</td>
-							</tr>
-						</thead>
-						<tr>
-							<td>单位名称</td>
-							<td>地址</td>
-							<td>电话</td>
-							<td>银行名字</td>
-							<td>银行账号</td>
-							<td>货币</td>
-							<td>操作</td>
-						</tr>
-						<tr>
-							<td>单位名称</td>
-							<td>地址</td>
-							<td>电话</td>
-							<td>银行名字</td>
-							<td>银行账号</td>
-							<td>货币</td>
-							<td>操作</td>
-						</tr>
-					</table>
-				</div>
-				<div class="col-md-4 offset-md-8">
-					<nav aria-label="Page navigation example">
-					  <ul class="pagination pagination-sm">
-						<li class="page-item"><a class="page-link" href="#">
-						    <span style="font-size: smaller;">首页</span>
-						</a></li>
-						<li class="page-item"><a class="page-link" href="#">&#60;&#60;</a></li>
-						<li class="page-item"><a class="page-link" href="#">1</a></li>
-						<li class="page-item"><a class="page-link" href="#">2</a></li>
-						<li class="page-item"><a class="page-link" href="#">3</a></li>
-						<li class="page-item"><a class="page-link" href="#">4</a></li>
-						<li class="page-item"><a class="page-link" href="#">5</a></li>
-						<li class="page-item"><a class="page-link" href="#">&#62;&#62;</a></li>
-						<li class="page-item"><a class="page-link" href="#">
-						    <span style="font-size: smaller;">末页</span>
-						</a></li>
-					  </ul>
-					</nav>
-				</div>
-				<div class="col-md-12" style="background-color: #D3D9DF;">
-					<span style="font-size: smaller;">当前第 页,有　条记录,共有 页,总计　条记录</span>
-				</div>
-			</div>
+			</c:if>
 		</div>
     </ui:define>
 </ui:composition> 
