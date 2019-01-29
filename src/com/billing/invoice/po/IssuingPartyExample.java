@@ -1,6 +1,5 @@
 package com.billing.invoice.po;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -535,52 +534,52 @@ public class IssuingPartyExample {
             return (Criteria) this;
         }
 
-        public Criteria andPartyIdEqualTo(BigDecimal value) {
+        public Criteria andPartyIdEqualTo(Integer value) {
             addCriterion("PARTY_ID =", value, "partyId");
             return (Criteria) this;
         }
 
-        public Criteria andPartyIdNotEqualTo(BigDecimal value) {
+        public Criteria andPartyIdNotEqualTo(Integer value) {
             addCriterion("PARTY_ID <>", value, "partyId");
             return (Criteria) this;
         }
 
-        public Criteria andPartyIdGreaterThan(BigDecimal value) {
+        public Criteria andPartyIdGreaterThan(Integer value) {
             addCriterion("PARTY_ID >", value, "partyId");
             return (Criteria) this;
         }
 
-        public Criteria andPartyIdGreaterThanOrEqualTo(BigDecimal value) {
+        public Criteria andPartyIdGreaterThanOrEqualTo(Integer value) {
             addCriterion("PARTY_ID >=", value, "partyId");
             return (Criteria) this;
         }
 
-        public Criteria andPartyIdLessThan(BigDecimal value) {
+        public Criteria andPartyIdLessThan(Integer value) {
             addCriterion("PARTY_ID <", value, "partyId");
             return (Criteria) this;
         }
 
-        public Criteria andPartyIdLessThanOrEqualTo(BigDecimal value) {
+        public Criteria andPartyIdLessThanOrEqualTo(Integer value) {
             addCriterion("PARTY_ID <=", value, "partyId");
             return (Criteria) this;
         }
 
-        public Criteria andPartyIdIn(List<BigDecimal> values) {
+        public Criteria andPartyIdIn(List<Integer> values) {
             addCriterion("PARTY_ID in", values, "partyId");
             return (Criteria) this;
         }
 
-        public Criteria andPartyIdNotIn(List<BigDecimal> values) {
+        public Criteria andPartyIdNotIn(List<Integer> values) {
             addCriterion("PARTY_ID not in", values, "partyId");
             return (Criteria) this;
         }
 
-        public Criteria andPartyIdBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andPartyIdBetween(Integer value1, Integer value2) {
             addCriterion("PARTY_ID between", value1, value2, "partyId");
             return (Criteria) this;
         }
 
-        public Criteria andPartyIdNotBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andPartyIdNotBetween(Integer value1, Integer value2) {
             addCriterion("PARTY_ID not between", value1, value2, "partyId");
             return (Criteria) this;
         }

@@ -1,13 +1,10 @@
 package com.billing.invoice.view;
 
-import static org.hamcrest.CoreMatchers.nullValue;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.billing.invoice.po.Page;
-import com.github.pagehelper.PageHelper;
+import com.billing.common.Page;
 import com.github.pagehelper.PageInfo;
 
 public abstract class BasicView<T> implements Serializable {

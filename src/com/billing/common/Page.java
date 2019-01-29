@@ -1,4 +1,4 @@
-package com.billing.invoice.po;
+package com.billing.common;
 
 import com.github.pagehelper.PageInfo;
 

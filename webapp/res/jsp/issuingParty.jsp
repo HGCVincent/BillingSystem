@@ -10,6 +10,9 @@
        <link rel="stylesheet" href="../css/open-iconic-bootstrap.css"/>
        <script type="text/javascript" src='../js/common.js'></script>
        <script type="text/javascript" src='../js/invoice/issuingParty.js'></script>
+       <script type='text/javascript' src='/BillingSystem/dwr/interface/IssuingPartyView.js'></script>
+	   <script type='text/javascript' src='/BillingSystem/dwr/engine.js'></script>
+	   <script type="text/javascript" src="/BillingSystem/dwr/util.js"></script>
        
        <div class="container-fluid">
 		   <div class="row">
@@ -26,35 +29,36 @@
 						<tr>
 							<td>单位名称:</td>
 							<td>	
-								<input jsfc="h:inputText" value=""
+								<input jsfc="h:inputText" value="#{issuingPartyView.issuingPartyCriteria.partyName}"
 									   id="partyName" size="20"></input>
 							</td>
 							<td width="100">&#160;</td>
 							
 							<td>地址:</td>
 							<td>
-								<input jsfc="h:inputText" value=""
+								<input jsfc="h:inputText" value="#{issuingPartyView.issuingPartyCriteria.address}"
 									   id="partyAddress" size="20"></input>
 							</td>
 						</tr>
 						<tr>
 							<td>账号:</td>
 							<td>
-								<input jsfc="h:inputText" value=""
+								<input jsfc="h:inputText" value="#{issuingPartyView.issuingPartyCriteria.bankAccount}"
 									   id="Account" size="20"></input>
 							</td>
 							<td width="100">&#160;</td>
 							
 							<td>银行名称:</td>
 							<td>
-							    <input jsfc="h:inputText" value=""
+							    <input jsfc="h:inputText" value="#{issuingPartyView.issuingPartyCriteria.bankName}"
 								       id="bankName" size="20"></input>
 							</td>
 						</tr>
 					</table>
 				</div>
 				<div class="col-md-3 offset-9" align="right">
-					<button type="button" class="btn btn-primary btn-sm">
+					<button id="reset" type="button" class="btn btn-primary btn-sm"
+					        onclick="resetCriteria()">
 						<span class="oi oi-reload" title="icon name" aria-hidden="true">重置</span>
 					</button>
 					<button type="button" class="btn btn-primary btn-sm" onclick="search()">
@@ -63,7 +67,7 @@
 					<input style="display:none" jsfc="h:commandButton" value="Search"
 						   id="searchButton" onclick="showLoadingPage()"
 						   action="#{issuingPartyView.doSearch}" />
-					<button type="button" class="btn btn-primary btn-sm">
+					<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#issuingParty_pop_up">
 						<span class="oi oi-plus" title="add" aria-hidden="true"/>添加
 					</button>
 				</div>
@@ -89,13 +93,22 @@
 							<c:forEach items = "#{issuingPartyView.records}" 
 							           var="issuingParty" varStatus="status">
 								<tr>
-									<td align="center" id="partyName_#{status.index}">#{issuingParty.partyName}</td>
+								    <td style="display:none;" align="center" id="partyId_#{status.index+1}">#{issuingParty.partyId}</td>
+									<td align="center" id="partyName_#{status.index+1}">#{issuingParty.partyName}</td>
 									<td align="center" id="partyAddr_#{status.index+1}">#{issuingParty.address}</td>
 									<td align="center" id="partyTel_#{status.index+1}">#{issuingParty.partyTel}</td>
 									<td align="center" id="partyBankName_#{status.index+1}">#{issuingParty.bankName}</td>
 									<td align="center" id="partyBankAccount_#{status.index+1}">#{issuingParty.bankAccount}</td>
 									<td align="center" id="partyBankCurrency_#{status.index+1}">#{issuingParty.currency}</td>
-									<td align="center">操作</td>
+									<td align="center">
+									    <button id="delete_#{status.index+1}" type="button" class="btn btn-primary btn-sm" title="删除"
+									            onclick="deleteIssuingParty(this)">
+											<span class="oi oi-trash" title="icon name" aria-hidden="true" />
+										</button>
+										<button id="modify_#{status.index+1}" type="button" class="btn btn-primary btn-sm" title="编辑">
+											<span class="oi oi-pencil" title="icon name" aria-hidden="true" />
+										</button>
+                                    </td>
 								</tr>
 							</c:forEach>
 						</table>
@@ -108,9 +121,11 @@
 					<h:inputHidden id="pageNum" value="#{issuingPartyView.pageNum}"></h:inputHidden>
 	                <input type="hidden" id="currentPageNum" value="#{issuingPartyView.page.currentPage}" />
 	                <input type="hidden" id="totalPages" value="#{issuingPartyView.page.totalPages}" />
+	               
 				</div>
 			</c:if>
 		</div>
+		<ui:include src="./issuingParty_pop_up.jsp"></ui:include>
     </ui:define>
 </ui:composition> 
 

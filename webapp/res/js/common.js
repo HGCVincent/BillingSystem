@@ -26,3 +26,7 @@ function openPage(t){
 function showLoadingPage(){
 	
 }
+
+function selectOption(a) {
+    $('.buttonText').text(a)
+}

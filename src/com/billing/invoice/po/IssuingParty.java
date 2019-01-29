@@ -1,26 +1,7 @@
 package com.billing.invoice.po;
 
-import java.math.BigDecimal;
-
 public class IssuingParty {
-	
-    public IssuingParty() {
-		super();
-	}
-
-	public IssuingParty(String partyName, String address, String partyTel, String currency, String bankAccount,
-			String bankName, String partyId) {
-		super();
-		this.partyName = partyName;
-		this.address = address;
-		this.partyTel = partyTel;
-		this.currency = currency;
-		this.bankAccount = bankAccount;
-		this.bankName = bankName;
-		this.partyId = partyId;
-	}
-
-	private String partyName;
+    private String partyName;
 
     private String address;
 
@@ -32,7 +13,7 @@ public class IssuingParty {
 
     private String bankName;
 
-    private String partyId;
+    private Integer partyId;
 
     public String getPartyName() {
         return partyName;
@@ -82,11 +63,29 @@ public class IssuingParty {
         this.bankName = bankName == null ? null : bankName.trim();
     }
 
-    public String getPartyId() {
+    public Integer getPartyId() {
         return partyId;
     }
 
-    public void setPartyId(String partyId) {
+    public void setPartyId(Integer partyId) {
         this.partyId = partyId;
     }
+
+	public IssuingParty() {
+		super();
+	}
+
+	public IssuingParty(String partyName, String address, String partyTel, String currency, String bankAccount,
+			String bankName, Integer partyId) {
+		super();
+		this.partyName = partyName;
+		this.address = address;
+		this.partyTel = partyTel;
+		this.currency = currency;
+		this.bankAccount = bankAccount;
+		this.bankName = bankName;
+		this.partyId = partyId;
+	}
+	
+	
 }

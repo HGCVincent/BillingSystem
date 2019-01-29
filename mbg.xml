@@ -37,7 +37,9 @@
     </javaClientGenerator>
 
 
-    <table tableName="ISSUING_PARTY" domainObjectName="IssuingParty" ></table>
+    <table tableName="ISSUING_PARTY" domainObjectName="IssuingParty" >
+        <columnOverride column="PARTY_ID" javaType="java.lang.Integer"></columnOverride>
+    </table>
     <table tableName="CUST_PROFILE" domainObjectName="CustomerProfile"></table>
     <table tableName="ACCOUNT_INFO" domainObjectName="AccountInfo"></table>
     <table tableName="SYSTEM_INVOICE" domainObjectName="SystemInvoice"></table>
