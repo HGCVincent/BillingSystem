@@ -50,6 +50,15 @@ public class IssuingPartyServiceImpl implements IssuingPartyService {
 		criteria.andPartyIdEqualTo(deleteParty.getPartyId());
 		issuingPartyMapper.deleteByExample(issuingPartyExample);
 	}
+
+	@Override
+	public void updateIssuingParty(IssuingParty issuingParty) {
+		IssuingPartyExample issuingPartyExample = new IssuingPartyExample();
+		Criteria criteria = issuingPartyExample.createCriteria();
+		criteria.andPartyIdEqualTo(issuingParty.getPartyId());
+		issuingPartyMapper.updateByExampleSelective(issuingParty, issuingPartyExample);
+		
+	}
 	
 	
 }

@@ -67,7 +67,8 @@
 					<input style="display:none" jsfc="h:commandButton" value="Search"
 						   id="searchButton" onclick="showLoadingPage()"
 						   action="#{issuingPartyView.doSearch}" />
-					<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#issuingParty_pop_up">
+					<button id="buttonOfAdd" type="button" class="btn btn-primary btn-sm" title="添加"
+					        data-toggle="modal" data-target="#issuingParty_pop_up" onclick="changeTitleForPopUp(this)">
 						<span class="oi oi-plus" title="add" aria-hidden="true"/>添加
 					</button>
 				</div>
@@ -105,7 +106,8 @@
 									            onclick="deleteIssuingParty(this)">
 											<span class="oi oi-trash" title="icon name" aria-hidden="true" />
 										</button>
-										<button id="modify_#{status.index+1}" type="button" class="btn btn-primary btn-sm" title="编辑">
+										<button id="modify_#{status.index+1}" type="button" class="btn btn-primary btn-sm" title="编辑"
+										        data-toggle="modal" data-target="#issuingParty_pop_up" onclick="changeTitleForPopUp(this)">
 											<span class="oi oi-pencil" title="icon name" aria-hidden="true" />
 										</button>
                                     </td>

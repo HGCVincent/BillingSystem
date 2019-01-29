@@ -12,4 +12,6 @@ public interface IssuingPartyService {
 	public List<IssuingParty> getIssuingPartiesByCriteria(IssuingParty issuingPartyCriteria);
 	
 	public void deleteIssuingParty(IssuingParty deleteParty);
+	
+	public void updateIssuingParty(IssuingParty issuingParty);
 }

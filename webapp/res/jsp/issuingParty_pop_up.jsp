@@ -19,6 +19,10 @@
               <div class="row">
                   <div class="col-md-12">
                       <table>
+                          <tr style="display:none;">
+                              <td>ID：</td>
+                              <td><input jsfc="h:inputText" size="20" maxlength="100" id="pty_id"/></td>
+                          </tr>
                           <tr>
                               <td>单位名称：</td>
                               <td><input jsfc="h:inputText" size="20" maxlength="100" id="pty_name"/></td>
@@ -55,7 +59,7 @@
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-	        <button type="button" class="btn btn-primary" onclick="saveIssuingPtyInfo()">保存</button>
+	        <button type="button" class="btn btn-primary" onclick="popUpConfirm()">保存</button>
 	      </div>
 	    </div>
 	  </div>
