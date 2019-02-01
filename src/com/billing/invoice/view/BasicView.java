@@ -16,7 +16,7 @@ public abstract class BasicView<T> implements Serializable {
 
 	public void doSearch(){
     	searched = Search();
-        PageInfo<T> pageInfo =new PageInfo<T>(records,5);
+        PageInfo<T> pageInfo =new PageInfo<T>(records);
         page = new Page(pageInfo);
     }
     

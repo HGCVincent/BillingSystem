@@ -65,7 +65,6 @@
 	  </div>
 	</div>
 	
-	
 	<div class="modal" id="delete_pop_up" tabindex="-1" role="dialog">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
@@ -85,5 +84,4 @@
 	  </div>
 	</div>
 </ui:component>
-	
 </html>

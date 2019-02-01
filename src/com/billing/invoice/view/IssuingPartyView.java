@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.billing.common.JsonConvertor;
+import com.billing.common.Page;
 import com.billing.invoice.po.IssuingParty;
 import com.billing.invoice.po.IssuingPartyExample;
 import com.billing.invoice.po.IssuingPartyExample.Criteria;
@@ -24,9 +25,10 @@ public class IssuingPartyView extends BasicView<IssuingParty> {
 		if (this.getPageNum() == null || this.getPageNum().equals("")) {
 			pageNum = "1";
 		}
-		PageHelper.startPage(Integer.valueOf(pageNum), 1);
+		PageHelper.startPage(Integer.valueOf(pageNum), 3);
     	records = this.getIssuingPartyService().getIssuingPartiesByCriteria(issuingPartyCriteria);
-//		records = this.getIssuingPartyService().getAllIssuingParty();
+    	PageInfo<IssuingParty> pageInfo =new PageInfo<IssuingParty>(records,5);
+        page = new Page(pageInfo);
     	return true;
     }
 

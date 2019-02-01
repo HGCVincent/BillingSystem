@@ -115,7 +115,6 @@
 							</c:forEach>
 						</table>
 					</div>
-					
 					<ui:include src="./common/common_page.jsp">
 					    <ui:param name="Page" value="#{issuingPartyView.page}"/>
 					</ui:include>

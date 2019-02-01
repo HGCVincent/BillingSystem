@@ -33,7 +33,7 @@
 				<div class="col-md-12" style="background-color: #D3D9DF;">
 					<span style="font-size: smaller;">
 					当前第#{Page.currentPage}页,
-					有#{Page.startRow - Page.endRow + 1}条记录,
+					有#{Page.endRow - Page.startRow + 1}条记录,
 					共有#{Page.totalPages}页,
 					总计#{Page.totalRecords}条记录</span>
 				</div>

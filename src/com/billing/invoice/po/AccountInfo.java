@@ -1,19 +1,23 @@
 package com.billing.invoice.po;
 
-import java.math.BigDecimal;
-
 public class AccountInfo {
-    private BigDecimal accountId;
+    private Long accountId;
 
     private String custName;
 
     private String taxInvName;
 
-    public BigDecimal getAccountId() {
+    private String bankAccount;
+
+    private String isdefault;
+
+    private String currency;
+
+    public Long getAccountId() {
         return accountId;
     }
 
-    public void setAccountId(BigDecimal accountId) {
+    public void setAccountId(Long accountId) {
         this.accountId = accountId;
     }
 
@@ -31,5 +35,29 @@ public class AccountInfo {
 
     public void setTaxInvName(String taxInvName) {
         this.taxInvName = taxInvName == null ? null : taxInvName.trim();
+    }
+
+    public String getBankAccount() {
+        return bankAccount;
+    }
+
+    public void setBankAccount(String bankAccount) {
+        this.bankAccount = bankAccount == null ? null : bankAccount.trim();
+    }
+
+    public String getIsdefault() {
+        return isdefault;
+    }
+
+    public void setIsdefault(String isdefault) {
+        this.isdefault = isdefault == null ? null : isdefault.trim();
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency == null ? null : currency.trim();
     }
 }

@@ -1,5 +1,7 @@
 eclipse.preferences.version=1
 encoding//src/com/billing/invoice/test/MybatisTest.java=UTF-8
+encoding//webapp/res/jsp/accountInfo.jsp=UTF-8
+encoding//webapp/res/jsp/accountInfo_pop_up.jsp=UTF-8
 encoding//webapp/res/jsp/common/common_page.jsp=UTF-8
 encoding//webapp/res/jsp/common/navbar.jsp=UTF-8
 encoding//webapp/res/jsp/index.jsp=UTF-8

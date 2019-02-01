@@ -25,5 +25,17 @@
 			<include method="updateOrAddInvoiceItem"/>
 			<include method="deleteIssuingParty"/>
         </create>
+        
+        <create javascript="AccountInfoView" creator="jsf" scope="request">
+            <param name="class" value="com.billing.invoice.view.AccountInfoView"></param>
+            <param name="managedBeanName" value="accountInfoView" />
+            <include method="findBankInfo"/>
+            <include method="deleteAccount"/>
+            <include method="addAccountInfo"/>
+        </create>
+        
+        <convert converter="bean" match="com.billing.invoice.po.AccountInfo">
+		    <param name="include" value="taxInvName,bankAccount,isdefault,currency" />
+		</convert>
     </allow>
 </dwr>

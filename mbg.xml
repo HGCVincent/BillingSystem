@@ -37,12 +37,14 @@
     </javaClientGenerator>
 
 
-    <table tableName="ISSUING_PARTY" domainObjectName="IssuingParty" >
+    <!-- <table tableName="ISSUING_PARTY" domainObjectName="IssuingParty" >
         <columnOverride column="PARTY_ID" javaType="java.lang.Integer"></columnOverride>
     </table>
-    <table tableName="CUST_PROFILE" domainObjectName="CustomerProfile"></table>
-    <table tableName="ACCOUNT_INFO" domainObjectName="AccountInfo"></table>
-    <table tableName="SYSTEM_INVOICE" domainObjectName="SystemInvoice"></table>
-    <table tableName="INV_ITEM_DESC" domainObjectName="InvoiceItemDesc"></table>
+    <table tableName="CUST_PROFILE" domainObjectName="CustomerProfile"></table> -->
+    <table tableName="ACCOUNT_INFO" domainObjectName="AccountInfo">
+        <columnOverride column="ACCOUNT_ID" javaType="java.lang.Long"></columnOverride>
+    </table>
+    <!-- <table tableName="SYSTEM_INVOICE" domainObjectName="SystemInvoice"></table>
+    <table tableName="INV_ITEM_DESC" domainObjectName="InvoiceItemDesc"></table> -->
   </context>
 </generatorConfiguration>

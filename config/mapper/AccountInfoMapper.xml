@@ -5,6 +5,9 @@
     <result column="ACCOUNT_ID" jdbcType="DECIMAL" property="accountId" />
     <result column="CUST_NAME" jdbcType="VARCHAR" property="custName" />
     <result column="TAX_INV_NAME" jdbcType="VARCHAR" property="taxInvName" />
+    <result column="BANK_ACCOUNT" jdbcType="VARCHAR" property="bankAccount" />
+    <result column="ISDEFAULT" jdbcType="VARCHAR" property="isdefault" />
+    <result column="CURRENCY" jdbcType="VARCHAR" property="currency" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    ACCOUNT_ID, CUST_NAME, TAX_INV_NAME
+    ACCOUNT_ID, CUST_NAME, TAX_INV_NAME, BANK_ACCOUNT, ISDEFAULT, CURRENCY
   </sql>
   <select id="selectByExample" parameterType="com.billing.invoice.po.AccountInfoExample" resultMap="BaseResultMap">
     select
@@ -88,9 +91,11 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.billing.invoice.po.AccountInfo">
-    insert into ACCOUNT_INFO (ACCOUNT_ID, CUST_NAME, TAX_INV_NAME
+    insert into ACCOUNT_INFO (ACCOUNT_ID, CUST_NAME, TAX_INV_NAME, 
+      BANK_ACCOUNT, ISDEFAULT, CURRENCY
       )
-    values (#{accountId,jdbcType=DECIMAL}, #{custName,jdbcType=VARCHAR}, #{taxInvName,jdbcType=VARCHAR}
+    values (#{accountId,jdbcType=DECIMAL}, #{custName,jdbcType=VARCHAR}, #{taxInvName,jdbcType=VARCHAR}, 
+      #{bankAccount,jdbcType=VARCHAR}, #{isdefault,jdbcType=VARCHAR}, #{currency,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.billing.invoice.po.AccountInfo">
@@ -105,6 +110,15 @@
       <if test="taxInvName != null">
         TAX_INV_NAME,
       </if>
+      <if test="bankAccount != null">
+        BANK_ACCOUNT,
+      </if>
+      <if test="isdefault != null">
+        ISDEFAULT,
+      </if>
+      <if test="currency != null">
+        CURRENCY,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="accountId != null">
@@ -115,6 +129,15 @@
       </if>
       <if test="taxInvName != null">
         #{taxInvName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAccount != null">
+        #{bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="isdefault != null">
+        #{isdefault,jdbcType=VARCHAR},
+      </if>
+      <if test="currency != null">
+        #{currency,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -136,6 +159,15 @@
       <if test="record.taxInvName != null">
         TAX_INV_NAME = #{record.taxInvName,jdbcType=VARCHAR},
       </if>
+      <if test="record.bankAccount != null">
+        BANK_ACCOUNT = #{record.bankAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isdefault != null">
+        ISDEFAULT = #{record.isdefault,jdbcType=VARCHAR},
+      </if>
+      <if test="record.currency != null">
+        CURRENCY = #{record.currency,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -145,7 +177,10 @@
     update ACCOUNT_INFO
     set ACCOUNT_ID = #{record.accountId,jdbcType=DECIMAL},
       CUST_NAME = #{record.custName,jdbcType=VARCHAR},
-      TAX_INV_NAME = #{record.taxInvName,jdbcType=VARCHAR}
+      TAX_INV_NAME = #{record.taxInvName,jdbcType=VARCHAR},
+      BANK_ACCOUNT = #{record.bankAccount,jdbcType=VARCHAR},
+      ISDEFAULT = #{record.isdefault,jdbcType=VARCHAR},
+      CURRENCY = #{record.currency,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
