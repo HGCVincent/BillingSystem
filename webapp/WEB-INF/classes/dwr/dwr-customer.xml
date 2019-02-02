@@ -32,6 +32,7 @@
             <include method="findBankInfo"/>
             <include method="deleteAccount"/>
             <include method="addAccountInfo"/>
+            <include method="updateIsDefault"/>
         </create>
         
         <convert converter="bean" match="com.billing.invoice.po.AccountInfo">

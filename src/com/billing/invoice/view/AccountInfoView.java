@@ -47,6 +47,10 @@ public class AccountInfoView extends BasicView<AccountInfoDTO> {
     	return null;
     }
     
+    public void updateIsDefault(Long id,String bankName){
+    	this.getAccountInfoService().updateIsDefaultByIdAndBankName(id, bankName);
+    }
+    
 	public AccountInfoService getAccountInfoService() {
 		return accountInfoService;
 	}

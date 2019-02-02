@@ -69,6 +69,28 @@ public class AccountInfoImpl implements AccountInfoService{
 		accountInfoMapper.insert(accountInfo);
 	}
 
+	@Override
+	public void updateIsDefaultByIdAndBankName(Long id, String bankName) {
+		AccountInfoExample accountInfoExample = new AccountInfoExample();
+		Criteria criteria = accountInfoExample.createCriteria();
+		criteria.andAccountIdEqualTo(id);
+		AccountInfo accountInfo = new AccountInfo();
+		accountInfo.setIsdefault("N");
+		accountInfoMapper.updateByExampleSelective(accountInfo, accountInfoExample);
+		criteria.andTaxInvNameEqualTo(bankName);
+		accountInfo.setIsdefault("Y");
+		accountInfoMapper.updateByExampleSelective(accountInfo, accountInfoExample);	
+	}
+
+	@Override
+	public AccountInfo getAccountInfoByIdAndBankName(Long id, String bankName) {
+		AccountInfoExample accountInfoExample = new AccountInfoExample();
+		Criteria criteria = accountInfoExample.createCriteria();
+		criteria.andAccountIdEqualTo(id);
+		criteria.andTaxInvNameEqualTo(bankName);
+		return (AccountInfo) accountInfoMapper.selectByExample(accountInfoExample);
+	}
+
 	
 
 }

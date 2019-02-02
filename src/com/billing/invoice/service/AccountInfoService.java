@@ -11,7 +11,11 @@ public interface AccountInfoService {
     
     public List<AccountInfo> getAccountInfosById(Long id);
     
+    public AccountInfo getAccountInfoByIdAndBankName(Long id,String bankName);
+    
     public void deleteAccountInfoByIdAndBankName(Long id,String bankName);
     
     public void addAccountInfo(AccountInfo accountInfo);
+    
+    public void updateIsDefaultByIdAndBankName(Long id,String bankName);
 }
