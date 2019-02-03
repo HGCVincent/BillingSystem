@@ -19,6 +19,8 @@
     <result column="ADDR3" jdbcType="VARCHAR" property="addr3" />
     <result column="ADDR4" jdbcType="VARCHAR" property="addr4" />
     <result column="INVOICE_TEMPLATE_CODE" jdbcType="VARCHAR" property="invoiceTemplateCode" />
+    <result column="SHORT_NAME" jdbcType="VARCHAR" property="shortName" />
+    <result column="ACCOUNT_ID" jdbcType="DECIMAL" property="accountId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -81,7 +83,7 @@
   <sql id="Base_Column_List">
     CUST_ID, CUST_NAME, LANG_TYPE, COUNTRY, COUNTY, CITY, ADMIN_NAME, ADMIN_TEL, ADMIN_EMAIL, 
     ACCT_BD_OWNER, ACCT_BD_OWNER_TEL, ACCT_BD_OWNER_EMAIL, ADDR1, ADDR2, ADDR3, ADDR4, 
-    INVOICE_TEMPLATE_CODE
+    INVOICE_TEMPLATE_CODE, SHORT_NAME, ACCOUNT_ID
   </sql>
   <select id="selectByExample" parameterType="com.billing.invoice.po.CustomerProfileExample" resultMap="BaseResultMap">
     select
@@ -109,13 +111,15 @@
       ADMIN_NAME, ADMIN_TEL, ADMIN_EMAIL, 
       ACCT_BD_OWNER, ACCT_BD_OWNER_TEL, ACCT_BD_OWNER_EMAIL, 
       ADDR1, ADDR2, ADDR3, 
-      ADDR4, INVOICE_TEMPLATE_CODE)
+      ADDR4, INVOICE_TEMPLATE_CODE, SHORT_NAME, 
+      ACCOUNT_ID)
     values (#{custId,jdbcType=VARCHAR}, #{custName,jdbcType=VARCHAR}, #{langType,jdbcType=VARCHAR}, 
       #{country,jdbcType=VARCHAR}, #{county,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
       #{adminName,jdbcType=VARCHAR}, #{adminTel,jdbcType=VARCHAR}, #{adminEmail,jdbcType=VARCHAR}, 
       #{acctBdOwner,jdbcType=VARCHAR}, #{acctBdOwnerTel,jdbcType=VARCHAR}, #{acctBdOwnerEmail,jdbcType=VARCHAR}, 
       #{addr1,jdbcType=VARCHAR}, #{addr2,jdbcType=VARCHAR}, #{addr3,jdbcType=VARCHAR}, 
-      #{addr4,jdbcType=VARCHAR}, #{invoiceTemplateCode,jdbcType=VARCHAR})
+      #{addr4,jdbcType=VARCHAR}, #{invoiceTemplateCode,jdbcType=VARCHAR}, #{shortName,jdbcType=VARCHAR}, 
+      #{accountId,jdbcType=DECIMAL})
   </insert>
   <insert id="insertSelective" parameterType="com.billing.invoice.po.CustomerProfile">
     insert into CUST_PROFILE
@@ -171,6 +175,12 @@
       <if test="invoiceTemplateCode != null">
         INVOICE_TEMPLATE_CODE,
       </if>
+      <if test="shortName != null">
+        SHORT_NAME,
+      </if>
+      <if test="accountId != null">
+        ACCOUNT_ID,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="custId != null">
@@ -223,6 +233,12 @@
       </if>
       <if test="invoiceTemplateCode != null">
         #{invoiceTemplateCode,jdbcType=VARCHAR},
+      </if>
+      <if test="shortName != null">
+        #{shortName,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null">
+        #{accountId,jdbcType=DECIMAL},
       </if>
     </trim>
   </insert>
@@ -286,6 +302,12 @@
       <if test="record.invoiceTemplateCode != null">
         INVOICE_TEMPLATE_CODE = #{record.invoiceTemplateCode,jdbcType=VARCHAR},
       </if>
+      <if test="record.shortName != null">
+        SHORT_NAME = #{record.shortName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.accountId != null">
+        ACCOUNT_ID = #{record.accountId,jdbcType=DECIMAL},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -309,7 +331,9 @@
       ADDR2 = #{record.addr2,jdbcType=VARCHAR},
       ADDR3 = #{record.addr3,jdbcType=VARCHAR},
       ADDR4 = #{record.addr4,jdbcType=VARCHAR},
-      INVOICE_TEMPLATE_CODE = #{record.invoiceTemplateCode,jdbcType=VARCHAR}
+      INVOICE_TEMPLATE_CODE = #{record.invoiceTemplateCode,jdbcType=VARCHAR},
+      SHORT_NAME = #{record.shortName,jdbcType=VARCHAR},
+      ACCOUNT_ID = #{record.accountId,jdbcType=DECIMAL}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>

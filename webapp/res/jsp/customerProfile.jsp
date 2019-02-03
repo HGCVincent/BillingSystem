@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core"> 
+   
+<ui:composition template="./common/navbar.jsp">
+    <ui:define name="content">
+       <link rel="stylesheet" href="../css/open-iconic-bootstrap.css"/>
+       <script type="text/javascript" src='../js/common.js'></script>
+       <script type="text/javascript" src='../js/customer/customerProfile.js'></script>
+       <script type='text/javascript' src='/BillingSystem/dwr/interface/CustomerProfileView.js'></script>
+	   <script type='text/javascript' src='/BillingSystem/dwr/engine.js'></script>
+	   <script type="text/javascript" src="/BillingSystem/dwr/util.js"></script>
+       
+       <div class="container-fluid">
+		   <div class="row">
+			   <div class="col-md-12">
+					<h4>客户基本信息</h4>
+			   </div>
+		   </div>
+	       <div class="row" style="border: 1px solid #B9BBBE; padding-bottom: 5px;">
+				<div class="col-md-12" style="background-color: #34CE57;font-style: italic;">
+					<strong>Search by</strong>
+				</div>
+				<div class="col-md-11 searchCriteria">
+					<table style="margin-top: 2px;">
+						<tr>
+							<td>编号:</td>
+							<td>	
+								<input jsfc="h:inputText" value="#{customerProfileView.customerProfileCriteria.custId}"
+									   id="custId" size="20"></input>
+							</td>
+							<td width="100">&#160;</td>
+							
+							<td>客户名称:</td>
+							<td>
+								<input jsfc="h:inputText" value="#{customerProfileView.customerProfileCriteria.custName}"
+									   id="custName" size="20"></input>
+							</td>
+						</tr>
+						<tr>
+							<td>名称缩写:</td>
+							<td>
+								<input jsfc="h:inputText" value="#{customerProfileView.customerProfileCriteria.shortName}"
+									   id="custShortName" size="20"></input>
+							</td>
+							<td width="100">&#160;</td>
+						</tr>
+					</table>
+				</div>
+				<div class="col-md-3 offset-9" align="right">
+					<button id="reset" type="button" class="btn btn-primary btn-sm"
+					        onclick="resetCriteria()">
+						<span class="oi oi-reload" title="icon name" aria-hidden="true">重置</span>
+					</button>
+					<button type="button" class="btn btn-primary btn-sm" onclick="search()">
+						<span class="oi oi-magnifying-glass" title="icon name" aria-hidden="true"></span>搜索
+					</button>
+					<input style="display:none" jsfc="h:commandButton" value="Search"
+						   id="searchButton" onclick="showLoadingPage()"
+						   action="#{customerProfileView.doSearch}" />
+					<button id="buttonOfAdd" type="button" class="btn btn-primary btn-sm" title="添加"
+					        data-toggle="modal" data-target="#create_pop_up" onclick="changeTitleForPopUp(this)">
+						<span class="oi oi-plus" title="add" aria-hidden="true"/>添加
+					</button>
+				</div>
+			</div>
+			<c:if test="#{customerProfileView.searched}">
+				<div id="details" class="row" style="border: 1px solid #B9BBBE;">
+					<div class="col-md-12" style="background-color: #D3D9DF;font-style: italic;">
+						<strong>Details</strong>
+					</div>
+					<div class="col-md-12" style="margin-top: 2px;">
+						<table class="table table-hover table-bordered table-condensed">
+							<thead>
+								<tr>
+									<td>编号</td>
+									<td>客户名称</td>
+									<td>名称缩写</td>
+									<td>语言</td>
+									<td>国家</td>
+									<td>城市</td>
+									<td>县</td>
+									<td>操作</td>
+									
+								</tr>
+							</thead>
+							<c:forEach items = "#{customerProfileView.records}" 
+							           var="customerProfile" varStatus="status">
+								<tr>
+								    <td align="center" id="custId_#{status.index+1}">#{customerProfile.custId}</td>
+									<td align="center" id="custName_#{status.index+1}">#{customerProfile.custName}</td>
+									<td align="center" id="custShortName_#{status.index+1}">#{customerProfile.shortName}</td>
+									<td align="center" id="custLang_#{status.index+1}">#{customerProfile.langType}</td>
+									<td align="center" id="custCountry_#{status.index+1}">#{customerProfile.country}</td>
+									<td align="center" id="custCity_#{status.index+1}">#{customerProfile.city}</td>
+									<td align="center" id="custCounty_#{status.index+1}">#{customerProfile.county}</td>
+									<td align="center">
+									    <button id="more_#{status.index+1}" type="button" class="btn btn-primary btn-sm" title="更多"
+									            onclick="viewMoreInfo(this)">
+											<span class="oi oi-ellipses" title="icon name" aria-hidden="true" />
+										</button>
+									    <button id="delete_#{status.index+1}" type="button" class="btn btn-primary btn-sm" title="删除"
+									            onclick="deleteCustomerProfile(this)">
+											<span class="oi oi-trash" title="icon name" aria-hidden="true" />
+										</button>
+										<button id="modify_#{status.index+1}" type="button" class="btn btn-primary btn-sm" title="编辑"
+										        data-toggle="modal" data-target="#customerProfile_pop_up" onclick="changeTitleForPopUp(this)">
+											<span class="oi oi-pencil" title="icon name" aria-hidden="true" />
+										</button>
+                                    </td>
+								</tr>
+							</c:forEach>
+						</table>
+					</div>
+					<ui:include src="./common/common_page.jsp">
+					    <ui:param name="Page" value="#{customerProfileView.page}"/>
+					</ui:include>
+					
+					<h:inputHidden id="pageNum" value="#{customerProfileView.pageNum}"></h:inputHidden>
+	                <input type="hidden" id="currentPageNum" value="#{customerProfileView.page.currentPage}" />
+	                <input type="hidden" id="totalPages" value="#{customerProfileView.page.totalPages}" />
+	               
+				</div>
+			</c:if>
+		</div>
+		<ui:include src="./customerProfile_pop_up.jsp"></ui:include>
+		<ui:include src="./common/common_alert.jsp">
+		    <ui:param name="message" value = "确定要删除该条记录吗？" />
+		</ui:include>
+    </ui:define>
+</ui:composition> 
+
+</html>

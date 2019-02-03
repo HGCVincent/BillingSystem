@@ -5,4 +5,6 @@
 
 <bean id="accountInfoService" class="com.billing.invoice.service.AccountInfoImpl">
 </bean>
+
+<bean id="customerProfileService" class="com.billing.invoice.service.CustomerProfileServiceImpl"></bean>
 </beans>

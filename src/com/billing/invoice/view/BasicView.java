@@ -5,10 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.billing.common.Page;
+import com.billing.invoice.po.AccountInfo;
 import com.github.pagehelper.PageInfo;
 
 public abstract class BasicView<T> implements Serializable {
-    public List<T> records = new ArrayList<T>();
+	private static final long serialVersionUID = 1L;
+	public List<T> records = new ArrayList<T>();
     public Page page;
     public String pageNum;            //前台要打开的页码
     public boolean searched;

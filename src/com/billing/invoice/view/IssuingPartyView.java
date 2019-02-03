@@ -27,8 +27,6 @@ public class IssuingPartyView extends BasicView<IssuingParty> {
 		}
 		PageHelper.startPage(Integer.valueOf(pageNum), 3);
     	records = this.getIssuingPartyService().getIssuingPartiesByCriteria(issuingPartyCriteria);
-    	PageInfo<IssuingParty> pageInfo =new PageInfo<IssuingParty>(records,5);
-        page = new Page(pageInfo);
     	return true;
     }
 

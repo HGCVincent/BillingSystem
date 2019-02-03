@@ -35,6 +35,10 @@ public class CustomerProfile {
 
     private String invoiceTemplateCode;
 
+    private String shortName;
+
+    private Integer accountId;
+
     public String getCustId() {
         return custId;
     }
@@ -169,5 +173,21 @@ public class CustomerProfile {
 
     public void setInvoiceTemplateCode(String invoiceTemplateCode) {
         this.invoiceTemplateCode = invoiceTemplateCode == null ? null : invoiceTemplateCode.trim();
+    }
+
+    public String getShortName() {
+        return shortName;
+    }
+
+    public void setShortName(String shortName) {
+        this.shortName = shortName == null ? null : shortName.trim();
+    }
+
+    public Integer getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(Integer accountId) {
+        this.accountId = accountId;
     }
 }

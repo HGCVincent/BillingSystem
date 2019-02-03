@@ -12,4 +12,14 @@
 	      <value>#{accountInfoService}</value>
 	    </managed-property> 
 	</managed-bean> 
+	
+	<managed-bean> 
+	    <managed-bean-name>customerProfileView</managed-bean-name> 
+	    <managed-bean-class>com.billing.invoice.view.CustomerProfileView</managed-bean-class> 
+	    <managed-bean-scope>request</managed-bean-scope>
+	    <managed-property>
+	      <property-name>customerProfileService</property-name>
+	      <value>#{customerProfileService}</value>
+	    </managed-property> 
+	</managed-bean>
 </faces-config>

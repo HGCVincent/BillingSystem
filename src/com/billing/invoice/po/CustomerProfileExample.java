@@ -1293,6 +1293,136 @@ public class CustomerProfileExample {
             addCriterion("INVOICE_TEMPLATE_CODE not between", value1, value2, "invoiceTemplateCode");
             return (Criteria) this;
         }
+
+        public Criteria andShortNameIsNull() {
+            addCriterion("SHORT_NAME is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andShortNameIsNotNull() {
+            addCriterion("SHORT_NAME is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andShortNameEqualTo(String value) {
+            addCriterion("SHORT_NAME =", value, "shortName");
+            return (Criteria) this;
+        }
+
+        public Criteria andShortNameNotEqualTo(String value) {
+            addCriterion("SHORT_NAME <>", value, "shortName");
+            return (Criteria) this;
+        }
+
+        public Criteria andShortNameGreaterThan(String value) {
+            addCriterion("SHORT_NAME >", value, "shortName");
+            return (Criteria) this;
+        }
+
+        public Criteria andShortNameGreaterThanOrEqualTo(String value) {
+            addCriterion("SHORT_NAME >=", value, "shortName");
+            return (Criteria) this;
+        }
+
+        public Criteria andShortNameLessThan(String value) {
+            addCriterion("SHORT_NAME <", value, "shortName");
+            return (Criteria) this;
+        }
+
+        public Criteria andShortNameLessThanOrEqualTo(String value) {
+            addCriterion("SHORT_NAME <=", value, "shortName");
+            return (Criteria) this;
+        }
+
+        public Criteria andShortNameLike(String value) {
+            addCriterion("SHORT_NAME like", value, "shortName");
+            return (Criteria) this;
+        }
+
+        public Criteria andShortNameNotLike(String value) {
+            addCriterion("SHORT_NAME not like", value, "shortName");
+            return (Criteria) this;
+        }
+
+        public Criteria andShortNameIn(List<String> values) {
+            addCriterion("SHORT_NAME in", values, "shortName");
+            return (Criteria) this;
+        }
+
+        public Criteria andShortNameNotIn(List<String> values) {
+            addCriterion("SHORT_NAME not in", values, "shortName");
+            return (Criteria) this;
+        }
+
+        public Criteria andShortNameBetween(String value1, String value2) {
+            addCriterion("SHORT_NAME between", value1, value2, "shortName");
+            return (Criteria) this;
+        }
+
+        public Criteria andShortNameNotBetween(String value1, String value2) {
+            addCriterion("SHORT_NAME not between", value1, value2, "shortName");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountIdIsNull() {
+            addCriterion("ACCOUNT_ID is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountIdIsNotNull() {
+            addCriterion("ACCOUNT_ID is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountIdEqualTo(Integer value) {
+            addCriterion("ACCOUNT_ID =", value, "accountId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountIdNotEqualTo(Integer value) {
+            addCriterion("ACCOUNT_ID <>", value, "accountId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountIdGreaterThan(Integer value) {
+            addCriterion("ACCOUNT_ID >", value, "accountId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("ACCOUNT_ID >=", value, "accountId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountIdLessThan(Integer value) {
+            addCriterion("ACCOUNT_ID <", value, "accountId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountIdLessThanOrEqualTo(Integer value) {
+            addCriterion("ACCOUNT_ID <=", value, "accountId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountIdIn(List<Integer> values) {
+            addCriterion("ACCOUNT_ID in", values, "accountId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountIdNotIn(List<Integer> values) {
+            addCriterion("ACCOUNT_ID not in", values, "accountId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountIdBetween(Integer value1, Integer value2) {
+            addCriterion("ACCOUNT_ID between", value1, value2, "accountId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAccountIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("ACCOUNT_ID not between", value1, value2, "accountId");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

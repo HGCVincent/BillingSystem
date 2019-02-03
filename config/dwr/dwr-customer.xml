@@ -35,8 +35,19 @@
             <include method="updateIsDefault"/>
         </create>
         
+        <create javascript="CustomerProfileView" creator="jsf" scope="request">
+            <param name="class" value="com.billing.invoice.view.CustomerProfileView"></param>
+            <param name="managedBeanName" value="customerProfileView" />
+        </create>
+        
         <convert converter="bean" match="com.billing.invoice.po.AccountInfo">
 		    <param name="include" value="taxInvName,bankAccount,isdefault,currency" />
+		</convert>
+		
+		<convert converter="bean" match="com.billing.invoice.po.CustomerProfile">
+		    <param name="include" value="custId,custName,langType,country,county,city,adminName,adminTel,
+		                                 adminEmail,acctBdOwner,acctBdOwnerTel,acctBdOwnerEmail,addr1,
+		                                 addr2,addr3,addr4,invoiceTemplateCode,shortName,accountId"/>
 		</convert>
     </allow>
 </dwr>
