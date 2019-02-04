@@ -62,7 +62,7 @@
 						   id="searchButton" onclick="showLoadingPage()"
 						   action="#{customerProfileView.doSearch}" />
 					<button id="buttonOfAdd" type="button" class="btn btn-primary btn-sm" title="添加"
-					        data-toggle="modal" data-target="#create_pop_up" onclick="changeTitleForPopUp(this)">
+					        onclick="createCustomerProfile(this)">
 						<span class="oi oi-plus" title="add" aria-hidden="true"/>添加
 					</button>
 				</div>

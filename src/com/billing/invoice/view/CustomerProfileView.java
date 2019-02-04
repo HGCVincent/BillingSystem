@@ -2,6 +2,7 @@ package com.billing.invoice.view;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.billing.common.JsonConvertor;
 import com.billing.invoice.po.AccountInfo;
 import com.billing.invoice.po.CustomerProfile;
 import com.billing.invoice.service.CustomerProfileService;
@@ -29,7 +30,19 @@ public class CustomerProfileView extends BasicView<CustomerProfile>{
     	this.getCustomerProfileService().deleteCustomerProfileById(id);
     }
     
+    public String saveCustomerProfile(String jsonCustomerProfileStr,boolean isUpdate){
+    	CustomerProfile convertToObject = JsonConvertor.convertToObject(jsonCustomerProfileStr, CustomerProfile.class);
+    	if(isUpdate){
+    	    this.getCustomerProfileService().updateCustomerProfile(convertToObject);
+    	}
+    	else {
+			this.getCustomerProfileService().insertCustomerProfile(convertToObject);
+		}
+    	return "Y";
+    }
     
+    
+//-------------------------------------------------------------------------------------    
 	public CustomerProfileService getCustomerProfileService() {
 		return customerProfileService;
 	}

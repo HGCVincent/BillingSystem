@@ -38,6 +38,9 @@
         <create javascript="CustomerProfileView" creator="jsf" scope="request">
             <param name="class" value="com.billing.invoice.view.CustomerProfileView"></param>
             <param name="managedBeanName" value="customerProfileView" />
+            <include method="getCustomerProfileById"/>
+            <include method="deleteCustomerProfileById"/>
+            <include method="saveCustomerProfile"/>
         </create>
         
         <convert converter="bean" match="com.billing.invoice.po.AccountInfo">

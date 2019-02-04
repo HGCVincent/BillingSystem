@@ -52,4 +52,18 @@ public class CustomerProfileServiceImpl implements CustomerProfileService{
 	    criteria.andCustIdEqualTo(id);
 	    customerProfileMapper.deleteByExample(customerProfileExample);
 	}
+
+	@Override
+	public void updateCustomerProfile(CustomerProfile convertToObject) {
+		CustomerProfileExample example = this.getCustomerProfileExample();
+		Criteria criteria = example.createCriteria();
+		criteria.andCustIdEqualTo(convertToObject.getCustId());
+        customerProfileMapper.updateByExampleSelective(convertToObject, example);
+	}
+
+	@Override
+	public void insertCustomerProfile(CustomerProfile convertToObject) {
+		customerProfileMapper.insertSelective(convertToObject);
+		
+	}
 }

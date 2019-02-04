@@ -12,4 +12,8 @@ public interface CustomerProfileService {
 
 	void deleteCustomerProfileById(String id);
 
+	void updateCustomerProfile(CustomerProfile convertToObject);
+
+	void insertCustomerProfile(CustomerProfile convertToObject);
+
 }

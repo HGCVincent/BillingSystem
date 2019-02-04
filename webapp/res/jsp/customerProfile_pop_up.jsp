@@ -10,7 +10,7 @@
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h5 class="modal-title" id="myModalLabel">Modal title</h5>
+	        <h5 class="modal-title" id="myModalLabel">添加</h5>
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	            <span aria-hidden="true">&#215;</span>
 	        </button>
@@ -19,7 +19,7 @@
               <div class="row">
                   <div class="col-md-12">
                       <table>
-                          <tr style="display:none;">
+                          <tr>
                               <td>编号：</td>
                               <td><input jsfc="h:inputText" size="20" maxlength="100" id="create_id"/></td>
                           </tr>
@@ -116,9 +116,21 @@
 	        </button>
 	      </div>
 	      <div class="modal-body container-fluid">
+	          <div class="row">
+	              <div class="col-md-12" align="right" height="">
+	                   <button id="save" style="display:none;" type="button" class="btn btn-primary btn-sm" onclick="morePopUpConfirm()">保存</button>
+	                   <button type="button" class="btn btn-primary btn-sm" onclick="ModifyCustmorInfo()">编辑</button>
+	              </div>
+	          </div>
               <div class="row">
                   <div class="col-md-12">
-                      <table>                        
+                      <table>
+                          <tr style="display:none;">
+                              <td>id：</td>
+                              <td><input jsfc="h:inputText" size="20" maxlength="100" id="more_id"
+                                   readonly="true" style="border:none;"/>
+                              </td>
+                          </tr>
                           <tr>
                               <td>公司法人：</td>
                               <td><input jsfc="h:inputText" size="20" maxlength="100" id="more_admin"
@@ -185,7 +197,6 @@
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-	        <button type="button" class="btn btn-primary" onclick="morePopUpConfirm()">保存</button>
 	      </div>
 	    </div>
 	  </div>
