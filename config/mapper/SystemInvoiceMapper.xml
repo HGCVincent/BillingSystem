@@ -2,13 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.billing.invoice.dao.SystemInvoiceMapper">
   <resultMap id="BaseResultMap" type="com.billing.invoice.po.SystemInvoice">
-    <id column="INV_ID" jdbcType="VARCHAR" property="invId" />
-    <id column="CUST_ID" jdbcType="VARCHAR" property="custId" />
-    <id column="CURRENT_MONTH" jdbcType="VARCHAR" property="currentMonth" />
-    <id column="INV_VERSION" jdbcType="DECIMAL" property="invVersion" />
+    <result column="INV_ID" jdbcType="VARCHAR" property="invId" />
     <result column="INV_REF_NO" jdbcType="VARCHAR" property="invRefNo" />
     <result column="BILL_COMP" jdbcType="VARCHAR" property="billComp" />
+    <result column="CUST_ID" jdbcType="VARCHAR" property="custId" />
     <result column="CUST_NAME" jdbcType="VARCHAR" property="custName" />
+    <result column="CURRENT_MONTH" jdbcType="VARCHAR" property="currentMonth" />
+    <result column="INV_VERSION" jdbcType="DECIMAL" property="invVersion" />
     <result column="INV_STATUS" jdbcType="VARCHAR" property="invStatus" />
     <result column="MODIFY_BY" jdbcType="VARCHAR" property="modifyBy" />
     <result column="MODIFY_DT" jdbcType="TIMESTAMP" property="modifyDt" />
@@ -77,7 +77,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    INV_ID, CUST_ID, CURRENT_MONTH, INV_VERSION, INV_REF_NO, BILL_COMP, CUST_NAME, INV_STATUS, 
+    INV_ID, INV_REF_NO, BILL_COMP, CUST_ID, CUST_NAME, CURRENT_MONTH, INV_VERSION, INV_STATUS, 
     MODIFY_BY, MODIFY_DT, SEQ_ID, IS_LATEST_VER, INV_SEND_OUT_DT, INV_DUE_DT, ATTACHMENT_NAME
   </sql>
   <select id="selectByExample" parameterType="com.billing.invoice.po.SystemInvoiceExample" resultMap="BaseResultMap">
@@ -94,22 +94,6 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="com.billing.invoice.po.SystemInvoiceKey" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from SYSTEM_INVOICE
-    where INV_ID = #{invId,jdbcType=VARCHAR}
-      and CUST_ID = #{custId,jdbcType=VARCHAR}
-      and CURRENT_MONTH = #{currentMonth,jdbcType=VARCHAR}
-      and INV_VERSION = #{invVersion,jdbcType=DECIMAL}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="com.billing.invoice.po.SystemInvoiceKey">
-    delete from SYSTEM_INVOICE
-    where INV_ID = #{invId,jdbcType=VARCHAR}
-      and CUST_ID = #{custId,jdbcType=VARCHAR}
-      and CURRENT_MONTH = #{currentMonth,jdbcType=VARCHAR}
-      and INV_VERSION = #{invVersion,jdbcType=DECIMAL}
-  </delete>
   <delete id="deleteByExample" parameterType="com.billing.invoice.po.SystemInvoiceExample">
     delete from SYSTEM_INVOICE
     <if test="_parameter != null">
@@ -117,15 +101,15 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.billing.invoice.po.SystemInvoice">
-    insert into SYSTEM_INVOICE (INV_ID, CUST_ID, CURRENT_MONTH, 
-      INV_VERSION, INV_REF_NO, BILL_COMP, 
-      CUST_NAME, INV_STATUS, MODIFY_BY, 
+    insert into SYSTEM_INVOICE (INV_ID, INV_REF_NO, BILL_COMP, 
+      CUST_ID, CUST_NAME, CURRENT_MONTH, 
+      INV_VERSION, INV_STATUS, MODIFY_BY, 
       MODIFY_DT, SEQ_ID, IS_LATEST_VER, 
       INV_SEND_OUT_DT, INV_DUE_DT, ATTACHMENT_NAME
       )
-    values (#{invId,jdbcType=VARCHAR}, #{custId,jdbcType=VARCHAR}, #{currentMonth,jdbcType=VARCHAR}, 
-      #{invVersion,jdbcType=DECIMAL}, #{invRefNo,jdbcType=VARCHAR}, #{billComp,jdbcType=VARCHAR}, 
-      #{custName,jdbcType=VARCHAR}, #{invStatus,jdbcType=VARCHAR}, #{modifyBy,jdbcType=VARCHAR}, 
+    values (#{invId,jdbcType=VARCHAR}, #{invRefNo,jdbcType=VARCHAR}, #{billComp,jdbcType=VARCHAR}, 
+      #{custId,jdbcType=VARCHAR}, #{custName,jdbcType=VARCHAR}, #{currentMonth,jdbcType=VARCHAR}, 
+      #{invVersion,jdbcType=DECIMAL}, #{invStatus,jdbcType=VARCHAR}, #{modifyBy,jdbcType=VARCHAR}, 
       #{modifyDt,jdbcType=TIMESTAMP}, #{seqId,jdbcType=DECIMAL}, #{isLatestVer,jdbcType=VARCHAR}, 
       #{invSendOutDt,jdbcType=TIMESTAMP}, #{invDueDt,jdbcType=TIMESTAMP}, #{attachmentName,jdbcType=VARCHAR}
       )
@@ -136,23 +120,23 @@
       <if test="invId != null">
         INV_ID,
       </if>
-      <if test="custId != null">
-        CUST_ID,
-      </if>
-      <if test="currentMonth != null">
-        CURRENT_MONTH,
-      </if>
-      <if test="invVersion != null">
-        INV_VERSION,
-      </if>
       <if test="invRefNo != null">
         INV_REF_NO,
       </if>
       <if test="billComp != null">
         BILL_COMP,
       </if>
+      <if test="custId != null">
+        CUST_ID,
+      </if>
       <if test="custName != null">
         CUST_NAME,
+      </if>
+      <if test="currentMonth != null">
+        CURRENT_MONTH,
+      </if>
+      <if test="invVersion != null">
+        INV_VERSION,
       </if>
       <if test="invStatus != null">
         INV_STATUS,
@@ -183,23 +167,23 @@
       <if test="invId != null">
         #{invId,jdbcType=VARCHAR},
       </if>
-      <if test="custId != null">
-        #{custId,jdbcType=VARCHAR},
-      </if>
-      <if test="currentMonth != null">
-        #{currentMonth,jdbcType=VARCHAR},
-      </if>
-      <if test="invVersion != null">
-        #{invVersion,jdbcType=DECIMAL},
-      </if>
       <if test="invRefNo != null">
         #{invRefNo,jdbcType=VARCHAR},
       </if>
       <if test="billComp != null">
         #{billComp,jdbcType=VARCHAR},
       </if>
+      <if test="custId != null">
+        #{custId,jdbcType=VARCHAR},
+      </if>
       <if test="custName != null">
         #{custName,jdbcType=VARCHAR},
+      </if>
+      <if test="currentMonth != null">
+        #{currentMonth,jdbcType=VARCHAR},
+      </if>
+      <if test="invVersion != null">
+        #{invVersion,jdbcType=DECIMAL},
       </if>
       <if test="invStatus != null">
         #{invStatus,jdbcType=VARCHAR},
@@ -239,23 +223,23 @@
       <if test="record.invId != null">
         INV_ID = #{record.invId,jdbcType=VARCHAR},
       </if>
-      <if test="record.custId != null">
-        CUST_ID = #{record.custId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.currentMonth != null">
-        CURRENT_MONTH = #{record.currentMonth,jdbcType=VARCHAR},
-      </if>
-      <if test="record.invVersion != null">
-        INV_VERSION = #{record.invVersion,jdbcType=DECIMAL},
-      </if>
       <if test="record.invRefNo != null">
         INV_REF_NO = #{record.invRefNo,jdbcType=VARCHAR},
       </if>
       <if test="record.billComp != null">
         BILL_COMP = #{record.billComp,jdbcType=VARCHAR},
       </if>
+      <if test="record.custId != null">
+        CUST_ID = #{record.custId,jdbcType=VARCHAR},
+      </if>
       <if test="record.custName != null">
         CUST_NAME = #{record.custName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.currentMonth != null">
+        CURRENT_MONTH = #{record.currentMonth,jdbcType=VARCHAR},
+      </if>
+      <if test="record.invVersion != null">
+        INV_VERSION = #{record.invVersion,jdbcType=DECIMAL},
       </if>
       <if test="record.invStatus != null">
         INV_STATUS = #{record.invStatus,jdbcType=VARCHAR},
@@ -289,12 +273,12 @@
   <update id="updateByExample" parameterType="map">
     update SYSTEM_INVOICE
     set INV_ID = #{record.invId,jdbcType=VARCHAR},
-      CUST_ID = #{record.custId,jdbcType=VARCHAR},
-      CURRENT_MONTH = #{record.currentMonth,jdbcType=VARCHAR},
-      INV_VERSION = #{record.invVersion,jdbcType=DECIMAL},
       INV_REF_NO = #{record.invRefNo,jdbcType=VARCHAR},
       BILL_COMP = #{record.billComp,jdbcType=VARCHAR},
+      CUST_ID = #{record.custId,jdbcType=VARCHAR},
       CUST_NAME = #{record.custName,jdbcType=VARCHAR},
+      CURRENT_MONTH = #{record.currentMonth,jdbcType=VARCHAR},
+      INV_VERSION = #{record.invVersion,jdbcType=DECIMAL},
       INV_STATUS = #{record.invStatus,jdbcType=VARCHAR},
       MODIFY_BY = #{record.modifyBy,jdbcType=VARCHAR},
       MODIFY_DT = #{record.modifyDt,jdbcType=TIMESTAMP},
@@ -306,65 +290,5 @@
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.billing.invoice.po.SystemInvoice">
-    update SYSTEM_INVOICE
-    <set>
-      <if test="invRefNo != null">
-        INV_REF_NO = #{invRefNo,jdbcType=VARCHAR},
-      </if>
-      <if test="billComp != null">
-        BILL_COMP = #{billComp,jdbcType=VARCHAR},
-      </if>
-      <if test="custName != null">
-        CUST_NAME = #{custName,jdbcType=VARCHAR},
-      </if>
-      <if test="invStatus != null">
-        INV_STATUS = #{invStatus,jdbcType=VARCHAR},
-      </if>
-      <if test="modifyBy != null">
-        MODIFY_BY = #{modifyBy,jdbcType=VARCHAR},
-      </if>
-      <if test="modifyDt != null">
-        MODIFY_DT = #{modifyDt,jdbcType=TIMESTAMP},
-      </if>
-      <if test="seqId != null">
-        SEQ_ID = #{seqId,jdbcType=DECIMAL},
-      </if>
-      <if test="isLatestVer != null">
-        IS_LATEST_VER = #{isLatestVer,jdbcType=VARCHAR},
-      </if>
-      <if test="invSendOutDt != null">
-        INV_SEND_OUT_DT = #{invSendOutDt,jdbcType=TIMESTAMP},
-      </if>
-      <if test="invDueDt != null">
-        INV_DUE_DT = #{invDueDt,jdbcType=TIMESTAMP},
-      </if>
-      <if test="attachmentName != null">
-        ATTACHMENT_NAME = #{attachmentName,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where INV_ID = #{invId,jdbcType=VARCHAR}
-      and CUST_ID = #{custId,jdbcType=VARCHAR}
-      and CURRENT_MONTH = #{currentMonth,jdbcType=VARCHAR}
-      and INV_VERSION = #{invVersion,jdbcType=DECIMAL}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.billing.invoice.po.SystemInvoice">
-    update SYSTEM_INVOICE
-    set INV_REF_NO = #{invRefNo,jdbcType=VARCHAR},
-      BILL_COMP = #{billComp,jdbcType=VARCHAR},
-      CUST_NAME = #{custName,jdbcType=VARCHAR},
-      INV_STATUS = #{invStatus,jdbcType=VARCHAR},
-      MODIFY_BY = #{modifyBy,jdbcType=VARCHAR},
-      MODIFY_DT = #{modifyDt,jdbcType=TIMESTAMP},
-      SEQ_ID = #{seqId,jdbcType=DECIMAL},
-      IS_LATEST_VER = #{isLatestVer,jdbcType=VARCHAR},
-      INV_SEND_OUT_DT = #{invSendOutDt,jdbcType=TIMESTAMP},
-      INV_DUE_DT = #{invDueDt,jdbcType=TIMESTAMP},
-      ATTACHMENT_NAME = #{attachmentName,jdbcType=VARCHAR}
-    where INV_ID = #{invId,jdbcType=VARCHAR}
-      and CUST_ID = #{custId,jdbcType=VARCHAR}
-      and CURRENT_MONTH = #{currentMonth,jdbcType=VARCHAR}
-      and INV_VERSION = #{invVersion,jdbcType=DECIMAL}
   </update>
 </mapper>

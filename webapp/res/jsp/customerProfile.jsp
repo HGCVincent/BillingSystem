@@ -128,7 +128,9 @@
 		</div>
 		<ui:include src="./customerProfile_pop_up.jsp"></ui:include>
 		<ui:include src="./common/common_alert.jsp">
+		    <ui:param name="id" value = "alert_pop_up" />
 		    <ui:param name="message" value = "确定要删除该条记录吗？" />
+		    <ui:param name="onclickFunction" value = "deletePopUpConfirm()"/>
 		</ui:include>
     </ui:define>
 </ui:composition> 

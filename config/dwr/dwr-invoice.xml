@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN" "http://getahead.org/dwr/dwr20.dtd">
+<!-- 通用dwr配置 -->
+<dwr>
+    <init>
+       <creator id="jsf" class="org.directwebremoting.faces.JsfCreator" />
+    </init>
+    <allow>
+        <create javascript="InvoiceListView" creator="jsf" scope="request">
+            <param name="class" value="com.billing.invoice.view.InvoiceListView"></param>
+            <param name="managedBeanName" value="invoiceListView" />
+            <include method="makeTheStatusToConfirm"/>
+        </create>
+    </allow>
+</dwr>

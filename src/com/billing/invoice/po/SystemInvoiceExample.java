@@ -1,6 +1,5 @@
 package com.billing.invoice.po;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -176,206 +175,6 @@ public class SystemInvoiceExample {
             return (Criteria) this;
         }
 
-        public Criteria andCustIdIsNull() {
-            addCriterion("CUST_ID is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCustIdIsNotNull() {
-            addCriterion("CUST_ID is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCustIdEqualTo(String value) {
-            addCriterion("CUST_ID =", value, "custId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCustIdNotEqualTo(String value) {
-            addCriterion("CUST_ID <>", value, "custId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCustIdGreaterThan(String value) {
-            addCriterion("CUST_ID >", value, "custId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCustIdGreaterThanOrEqualTo(String value) {
-            addCriterion("CUST_ID >=", value, "custId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCustIdLessThan(String value) {
-            addCriterion("CUST_ID <", value, "custId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCustIdLessThanOrEqualTo(String value) {
-            addCriterion("CUST_ID <=", value, "custId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCustIdLike(String value) {
-            addCriterion("CUST_ID like", value, "custId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCustIdNotLike(String value) {
-            addCriterion("CUST_ID not like", value, "custId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCustIdIn(List<String> values) {
-            addCriterion("CUST_ID in", values, "custId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCustIdNotIn(List<String> values) {
-            addCriterion("CUST_ID not in", values, "custId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCustIdBetween(String value1, String value2) {
-            addCriterion("CUST_ID between", value1, value2, "custId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCustIdNotBetween(String value1, String value2) {
-            addCriterion("CUST_ID not between", value1, value2, "custId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCurrentMonthIsNull() {
-            addCriterion("CURRENT_MONTH is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCurrentMonthIsNotNull() {
-            addCriterion("CURRENT_MONTH is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCurrentMonthEqualTo(String value) {
-            addCriterion("CURRENT_MONTH =", value, "currentMonth");
-            return (Criteria) this;
-        }
-
-        public Criteria andCurrentMonthNotEqualTo(String value) {
-            addCriterion("CURRENT_MONTH <>", value, "currentMonth");
-            return (Criteria) this;
-        }
-
-        public Criteria andCurrentMonthGreaterThan(String value) {
-            addCriterion("CURRENT_MONTH >", value, "currentMonth");
-            return (Criteria) this;
-        }
-
-        public Criteria andCurrentMonthGreaterThanOrEqualTo(String value) {
-            addCriterion("CURRENT_MONTH >=", value, "currentMonth");
-            return (Criteria) this;
-        }
-
-        public Criteria andCurrentMonthLessThan(String value) {
-            addCriterion("CURRENT_MONTH <", value, "currentMonth");
-            return (Criteria) this;
-        }
-
-        public Criteria andCurrentMonthLessThanOrEqualTo(String value) {
-            addCriterion("CURRENT_MONTH <=", value, "currentMonth");
-            return (Criteria) this;
-        }
-
-        public Criteria andCurrentMonthLike(String value) {
-            addCriterion("CURRENT_MONTH like", value, "currentMonth");
-            return (Criteria) this;
-        }
-
-        public Criteria andCurrentMonthNotLike(String value) {
-            addCriterion("CURRENT_MONTH not like", value, "currentMonth");
-            return (Criteria) this;
-        }
-
-        public Criteria andCurrentMonthIn(List<String> values) {
-            addCriterion("CURRENT_MONTH in", values, "currentMonth");
-            return (Criteria) this;
-        }
-
-        public Criteria andCurrentMonthNotIn(List<String> values) {
-            addCriterion("CURRENT_MONTH not in", values, "currentMonth");
-            return (Criteria) this;
-        }
-
-        public Criteria andCurrentMonthBetween(String value1, String value2) {
-            addCriterion("CURRENT_MONTH between", value1, value2, "currentMonth");
-            return (Criteria) this;
-        }
-
-        public Criteria andCurrentMonthNotBetween(String value1, String value2) {
-            addCriterion("CURRENT_MONTH not between", value1, value2, "currentMonth");
-            return (Criteria) this;
-        }
-
-        public Criteria andInvVersionIsNull() {
-            addCriterion("INV_VERSION is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andInvVersionIsNotNull() {
-            addCriterion("INV_VERSION is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andInvVersionEqualTo(Short value) {
-            addCriterion("INV_VERSION =", value, "invVersion");
-            return (Criteria) this;
-        }
-
-        public Criteria andInvVersionNotEqualTo(Short value) {
-            addCriterion("INV_VERSION <>", value, "invVersion");
-            return (Criteria) this;
-        }
-
-        public Criteria andInvVersionGreaterThan(Short value) {
-            addCriterion("INV_VERSION >", value, "invVersion");
-            return (Criteria) this;
-        }
-
-        public Criteria andInvVersionGreaterThanOrEqualTo(Short value) {
-            addCriterion("INV_VERSION >=", value, "invVersion");
-            return (Criteria) this;
-        }
-
-        public Criteria andInvVersionLessThan(Short value) {
-            addCriterion("INV_VERSION <", value, "invVersion");
-            return (Criteria) this;
-        }
-
-        public Criteria andInvVersionLessThanOrEqualTo(Short value) {
-            addCriterion("INV_VERSION <=", value, "invVersion");
-            return (Criteria) this;
-        }
-
-        public Criteria andInvVersionIn(List<Short> values) {
-            addCriterion("INV_VERSION in", values, "invVersion");
-            return (Criteria) this;
-        }
-
-        public Criteria andInvVersionNotIn(List<Short> values) {
-            addCriterion("INV_VERSION not in", values, "invVersion");
-            return (Criteria) this;
-        }
-
-        public Criteria andInvVersionBetween(Short value1, Short value2) {
-            addCriterion("INV_VERSION between", value1, value2, "invVersion");
-            return (Criteria) this;
-        }
-
-        public Criteria andInvVersionNotBetween(Short value1, Short value2) {
-            addCriterion("INV_VERSION not between", value1, value2, "invVersion");
-            return (Criteria) this;
-        }
-
         public Criteria andInvRefNoIsNull() {
             addCriterion("INV_REF_NO is null");
             return (Criteria) this;
@@ -516,6 +315,76 @@ public class SystemInvoiceExample {
             return (Criteria) this;
         }
 
+        public Criteria andCustIdIsNull() {
+            addCriterion("CUST_ID is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustIdIsNotNull() {
+            addCriterion("CUST_ID is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustIdEqualTo(String value) {
+            addCriterion("CUST_ID =", value, "custId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustIdNotEqualTo(String value) {
+            addCriterion("CUST_ID <>", value, "custId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustIdGreaterThan(String value) {
+            addCriterion("CUST_ID >", value, "custId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustIdGreaterThanOrEqualTo(String value) {
+            addCriterion("CUST_ID >=", value, "custId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustIdLessThan(String value) {
+            addCriterion("CUST_ID <", value, "custId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustIdLessThanOrEqualTo(String value) {
+            addCriterion("CUST_ID <=", value, "custId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustIdLike(String value) {
+            addCriterion("CUST_ID like", value, "custId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustIdNotLike(String value) {
+            addCriterion("CUST_ID not like", value, "custId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustIdIn(List<String> values) {
+            addCriterion("CUST_ID in", values, "custId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustIdNotIn(List<String> values) {
+            addCriterion("CUST_ID not in", values, "custId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustIdBetween(String value1, String value2) {
+            addCriterion("CUST_ID between", value1, value2, "custId");
+            return (Criteria) this;
+        }
+
+        public Criteria andCustIdNotBetween(String value1, String value2) {
+            addCriterion("CUST_ID not between", value1, value2, "custId");
+            return (Criteria) this;
+        }
+
         public Criteria andCustNameIsNull() {
             addCriterion("CUST_NAME is null");
             return (Criteria) this;
@@ -583,6 +452,136 @@ public class SystemInvoiceExample {
 
         public Criteria andCustNameNotBetween(String value1, String value2) {
             addCriterion("CUST_NAME not between", value1, value2, "custName");
+            return (Criteria) this;
+        }
+
+        public Criteria andCurrentMonthIsNull() {
+            addCriterion("CURRENT_MONTH is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCurrentMonthIsNotNull() {
+            addCriterion("CURRENT_MONTH is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCurrentMonthEqualTo(String value) {
+            addCriterion("CURRENT_MONTH =", value, "currentMonth");
+            return (Criteria) this;
+        }
+
+        public Criteria andCurrentMonthNotEqualTo(String value) {
+            addCriterion("CURRENT_MONTH <>", value, "currentMonth");
+            return (Criteria) this;
+        }
+
+        public Criteria andCurrentMonthGreaterThan(String value) {
+            addCriterion("CURRENT_MONTH >", value, "currentMonth");
+            return (Criteria) this;
+        }
+
+        public Criteria andCurrentMonthGreaterThanOrEqualTo(String value) {
+            addCriterion("CURRENT_MONTH >=", value, "currentMonth");
+            return (Criteria) this;
+        }
+
+        public Criteria andCurrentMonthLessThan(String value) {
+            addCriterion("CURRENT_MONTH <", value, "currentMonth");
+            return (Criteria) this;
+        }
+
+        public Criteria andCurrentMonthLessThanOrEqualTo(String value) {
+            addCriterion("CURRENT_MONTH <=", value, "currentMonth");
+            return (Criteria) this;
+        }
+
+        public Criteria andCurrentMonthLike(String value) {
+            addCriterion("CURRENT_MONTH like", value, "currentMonth");
+            return (Criteria) this;
+        }
+
+        public Criteria andCurrentMonthNotLike(String value) {
+            addCriterion("CURRENT_MONTH not like", value, "currentMonth");
+            return (Criteria) this;
+        }
+
+        public Criteria andCurrentMonthIn(List<String> values) {
+            addCriterion("CURRENT_MONTH in", values, "currentMonth");
+            return (Criteria) this;
+        }
+
+        public Criteria andCurrentMonthNotIn(List<String> values) {
+            addCriterion("CURRENT_MONTH not in", values, "currentMonth");
+            return (Criteria) this;
+        }
+
+        public Criteria andCurrentMonthBetween(String value1, String value2) {
+            addCriterion("CURRENT_MONTH between", value1, value2, "currentMonth");
+            return (Criteria) this;
+        }
+
+        public Criteria andCurrentMonthNotBetween(String value1, String value2) {
+            addCriterion("CURRENT_MONTH not between", value1, value2, "currentMonth");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvVersionIsNull() {
+            addCriterion("INV_VERSION is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvVersionIsNotNull() {
+            addCriterion("INV_VERSION is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvVersionEqualTo(Integer value) {
+            addCriterion("INV_VERSION =", value, "invVersion");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvVersionNotEqualTo(Integer value) {
+            addCriterion("INV_VERSION <>", value, "invVersion");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvVersionGreaterThan(Integer value) {
+            addCriterion("INV_VERSION >", value, "invVersion");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvVersionGreaterThanOrEqualTo(Integer value) {
+            addCriterion("INV_VERSION >=", value, "invVersion");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvVersionLessThan(Integer value) {
+            addCriterion("INV_VERSION <", value, "invVersion");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvVersionLessThanOrEqualTo(Integer value) {
+            addCriterion("INV_VERSION <=", value, "invVersion");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvVersionIn(List<Integer> values) {
+            addCriterion("INV_VERSION in", values, "invVersion");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvVersionNotIn(List<Integer> values) {
+            addCriterion("INV_VERSION not in", values, "invVersion");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvVersionBetween(Integer value1, Integer value2) {
+            addCriterion("INV_VERSION between", value1, value2, "invVersion");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvVersionNotBetween(Integer value1, Integer value2) {
+            addCriterion("INV_VERSION not between", value1, value2, "invVersion");
             return (Criteria) this;
         }
 
@@ -796,52 +795,52 @@ public class SystemInvoiceExample {
             return (Criteria) this;
         }
 
-        public Criteria andSeqIdEqualTo(BigDecimal value) {
+        public Criteria andSeqIdEqualTo(Integer value) {
             addCriterion("SEQ_ID =", value, "seqId");
             return (Criteria) this;
         }
 
-        public Criteria andSeqIdNotEqualTo(BigDecimal value) {
+        public Criteria andSeqIdNotEqualTo(Integer value) {
             addCriterion("SEQ_ID <>", value, "seqId");
             return (Criteria) this;
         }
 
-        public Criteria andSeqIdGreaterThan(BigDecimal value) {
+        public Criteria andSeqIdGreaterThan(Integer value) {
             addCriterion("SEQ_ID >", value, "seqId");
             return (Criteria) this;
         }
 
-        public Criteria andSeqIdGreaterThanOrEqualTo(BigDecimal value) {
+        public Criteria andSeqIdGreaterThanOrEqualTo(Integer value) {
             addCriterion("SEQ_ID >=", value, "seqId");
             return (Criteria) this;
         }
 
-        public Criteria andSeqIdLessThan(BigDecimal value) {
+        public Criteria andSeqIdLessThan(Integer value) {
             addCriterion("SEQ_ID <", value, "seqId");
             return (Criteria) this;
         }
 
-        public Criteria andSeqIdLessThanOrEqualTo(BigDecimal value) {
+        public Criteria andSeqIdLessThanOrEqualTo(Integer value) {
             addCriterion("SEQ_ID <=", value, "seqId");
             return (Criteria) this;
         }
 
-        public Criteria andSeqIdIn(List<BigDecimal> values) {
+        public Criteria andSeqIdIn(List<Integer> values) {
             addCriterion("SEQ_ID in", values, "seqId");
             return (Criteria) this;
         }
 
-        public Criteria andSeqIdNotIn(List<BigDecimal> values) {
+        public Criteria andSeqIdNotIn(List<Integer> values) {
             addCriterion("SEQ_ID not in", values, "seqId");
             return (Criteria) this;
         }
 
-        public Criteria andSeqIdBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andSeqIdBetween(Integer value1, Integer value2) {
             addCriterion("SEQ_ID between", value1, value2, "seqId");
             return (Criteria) this;
         }
 
-        public Criteria andSeqIdNotBetween(BigDecimal value1, BigDecimal value2) {
+        public Criteria andSeqIdNotBetween(Integer value1, Integer value2) {
             addCriterion("SEQ_ID not between", value1, value2, "seqId");
             return (Criteria) this;
         }

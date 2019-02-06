@@ -71,6 +71,7 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/
 	  <param-value>/WEB-INF/faces-config-sys.xml,
 	               /WEB-INF/faces-config-issuingParty.xml,
 	               /WEB-INF/faces-config-customer.xml,
+	               /WEB-INF/faces-config-invoice.xml,
 	  </param-value>
 	</context-param>
 	<context-param>
@@ -108,6 +109,10 @@ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/
 	        <init-param>
 	            <param-name>config-customer</param-name>
 	            <param-value>/WEB-INF/dwr-customer.xml</param-value>
+	        </init-param>
+	        <init-param>
+	            <param-name>config-invoice</param-name>
+	            <param-value>/WEB-INF/dwr-invoice.xml</param-value>
 	        </init-param>
 	        <load-on-startup>2</load-on-startup>
 	</servlet>

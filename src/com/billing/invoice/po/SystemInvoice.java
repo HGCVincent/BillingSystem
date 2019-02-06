@@ -1,14 +1,21 @@
 package com.billing.invoice.po;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
-public class SystemInvoice extends SystemInvoiceKey {
+public class SystemInvoice {
+    private String invId;
+
     private String invRefNo;
 
     private String billComp;
 
+    private String custId;
+
     private String custName;
+
+    private String currentMonth;
+
+    private Integer invVersion;
 
     private String invStatus;
 
@@ -16,7 +23,7 @@ public class SystemInvoice extends SystemInvoiceKey {
 
     private Date modifyDt;
 
-    private BigDecimal seqId;
+    private Integer seqId;
 
     private String isLatestVer;
 
@@ -25,6 +32,14 @@ public class SystemInvoice extends SystemInvoiceKey {
     private Date invDueDt;
 
     private String attachmentName;
+
+    public String getInvId() {
+        return invId;
+    }
+
+    public void setInvId(String invId) {
+        this.invId = invId == null ? null : invId.trim();
+    }
 
     public String getInvRefNo() {
         return invRefNo;
@@ -42,12 +57,36 @@ public class SystemInvoice extends SystemInvoiceKey {
         this.billComp = billComp == null ? null : billComp.trim();
     }
 
+    public String getCustId() {
+        return custId;
+    }
+
+    public void setCustId(String custId) {
+        this.custId = custId == null ? null : custId.trim();
+    }
+
     public String getCustName() {
         return custName;
     }
 
     public void setCustName(String custName) {
         this.custName = custName == null ? null : custName.trim();
+    }
+
+    public String getCurrentMonth() {
+        return currentMonth;
+    }
+
+    public void setCurrentMonth(String currentMonth) {
+        this.currentMonth = currentMonth == null ? null : currentMonth.trim();
+    }
+
+    public Integer getInvVersion() {
+        return invVersion;
+    }
+
+    public void setInvVersion(Integer invVersion) {
+        this.invVersion = invVersion;
     }
 
     public String getInvStatus() {
@@ -74,11 +113,11 @@ public class SystemInvoice extends SystemInvoiceKey {
         this.modifyDt = modifyDt;
     }
 
-    public BigDecimal getSeqId() {
+    public Integer getSeqId() {
         return seqId;
     }
 
-    public void setSeqId(BigDecimal seqId) {
+    public void setSeqId(Integer seqId) {
         this.seqId = seqId;
     }
 

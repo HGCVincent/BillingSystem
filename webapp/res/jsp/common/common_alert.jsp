@@ -7,7 +7,7 @@
 	
 <ui:composition>
 
-<div class="modal" id="alert_pop_up" tabindex="-1" role="dialog">
+<div class="modal" id="#{id}" tabindex="-1" role="dialog">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
@@ -20,7 +20,7 @@
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-	        <button type="button" class="btn btn-primary" onclick="deletePopUpConfirm()">确定</button>
+	        <button type="button" class="btn btn-primary" onclick="#{onclickFunction}">确定</button>
 	      </div>
 	    </div>
 	  </div>

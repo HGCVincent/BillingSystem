@@ -40,13 +40,16 @@
     <!-- <table tableName="ISSUING_PARTY" domainObjectName="IssuingParty" >
         <columnOverride column="PARTY_ID" javaType="java.lang.Integer"></columnOverride>
     </table> -->
-    <table tableName="CUST_PROFILE" domainObjectName="CustomerProfile">
+    <!-- <table tableName="CUST_PROFILE" domainObjectName="CustomerProfile">
         <columnOverride column="ACCOUNT_ID" javaType="java.lang.Integer"></columnOverride>
-    </table>
+    </table> -->
     <!-- <table tableName="ACCOUNT_INFO" domainObjectName="AccountInfo">
         <columnOverride column="ACCOUNT_ID" javaType="java.lang.Long"></columnOverride>
     </table> -->
-    <!-- <table tableName="SYSTEM_INVOICE" domainObjectName="SystemInvoice"></table>
-    <table tableName="INV_ITEM_DESC" domainObjectName="InvoiceItemDesc"></table> -->
+    <table tableName="SYSTEM_INVOICE" domainObjectName="SystemInvoice">
+        <columnOverride column="INV_VERSION" javaType="java.lang.Integer"></columnOverride>
+        <columnOverride column="SEQ_ID" javaType="java.lang.Integer"></columnOverride>
+    </table>
+    <!-- <table tableName="INV_ITEM_DESC" domainObjectName="InvoiceItemDesc"></table> -->
   </context>
 </generatorConfiguration>
