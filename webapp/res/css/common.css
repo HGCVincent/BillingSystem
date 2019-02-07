@@ -37,3 +37,7 @@ nav{
 .container-fluid>div{
 	margin: 5px;
 }
+
+.input-group > input{
+    height:30px;
+}

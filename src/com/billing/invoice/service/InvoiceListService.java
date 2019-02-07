@@ -8,12 +8,14 @@ import com.billing.invoice.po.SystemInvoice;
 
 public interface InvoiceListService {
 
-	List<InvoiceListDto> getInvoiceListByCriteria(InvoiceListCriteria invoiceListCriteria);
+	List<SystemInvoice> getInvoiceListByCriteria(InvoiceListCriteria invoiceListCriteria);
 
 	SystemInvoice getInvoiceListByPK(String invId, String custId, int version, String currentMonth);
 
 	void Update(SystemInvoice systemInvoice);
 
 	void insert(SystemInvoice systemInvoice);
+
+	int getMaxSeqId();
 
 }

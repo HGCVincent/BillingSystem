@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.billing.invoice.criteria.InvoiceListCriteria;
 import com.billing.invoice.dao.SystemInvoiceMapper;
+import com.billing.invoice.dao.SystemInvoiceMapperCustom;
 import com.billing.invoice.dto.InvoiceListDto;
 import com.billing.invoice.po.SystemInvoice;
 import com.billing.invoice.po.SystemInvoiceExample;
@@ -17,6 +18,8 @@ import com.billing.invoice.view.InvoiceListView;
 public class InvoiceListServiceImpl implements InvoiceListService {
     @Autowired
 	SystemInvoiceMapper systemInvoiceMapper;
+    @Autowired
+    SystemInvoiceMapperCustom systemInvoiceMapperCustom;
 	
     SystemInvoiceExample systemInvoiceExample;
     
@@ -33,7 +36,7 @@ public class InvoiceListServiceImpl implements InvoiceListService {
 
 
 	@Override
-	public List<InvoiceListDto> getInvoiceListByCriteria(InvoiceListCriteria invoiceListCriteria) {
+	public List<SystemInvoice> getInvoiceListByCriteria(InvoiceListCriteria invoiceListCriteria) {
 		SystemInvoiceExample systemInvoiceExample = this.getSystemInvoiceExample();
 		Criteria criteria = systemInvoiceExample.createCriteria();
 		if (StringUtils.isNoneEmpty(invoiceListCriteria.getReferenceNo())) {
@@ -51,12 +54,7 @@ public class InvoiceListServiceImpl implements InvoiceListService {
 			}
 		}
 		criteria.andIsLatestVerEqualTo(InvoiceListView.YES_STRING);
-		List<SystemInvoice> selectByExample = systemInvoiceMapper.selectByExample(systemInvoiceExample);
-		ArrayList<InvoiceListDto> invoiceListDtos = new ArrayList<InvoiceListDto>();
-		for (SystemInvoice systemInvoice : selectByExample) {
-			invoiceListDtos.add(new InvoiceListDto(systemInvoice));
-		}
-		return invoiceListDtos;
+		return systemInvoiceMapper.selectByExample(systemInvoiceExample);
 	}
 
 	@Override
@@ -81,6 +79,11 @@ public class InvoiceListServiceImpl implements InvoiceListService {
 	@Override
 	public void insert(SystemInvoice systemInvoice) {
 		systemInvoiceMapper.insertSelective(systemInvoice);
+	}
+
+	@Override
+	public int getMaxSeqId() {
+		return systemInvoiceMapperCustom.getMaxSeqId();
 	}
 
 }

@@ -68,7 +68,7 @@
 						   id="searchButton" onclick="showLoadingPage()"
 						   action="#{invoiceListView.doSearch}" />
 					<button id="buttonOfAdd" type="button" class="btn btn-primary btn-sm" title="添加"
-					        onclick="changeTitleForPopUp(this)">
+					        onclick="createButton()">
 						<span class="oi oi-plus" title="add" aria-hidden="true"/>添加
 					</button>
 				</div>
@@ -100,7 +100,7 @@
 									<td>操作</td>
 								</tr>
 							</thead>
-							<c:forEach items = "#{invoiceListView.records}" 
+							<c:forEach items = "#{invoiceListView.dtoRecords}" 
 							           var="invoice_list_info" varStatus="status">
 							    <tr>
 									<td align="center" id="Id_#{status.index+1}" style="display: none;">#{invoice_list_info.seqId}</td>
@@ -134,6 +134,12 @@
 												<span class="oi oi-check" title="icon name" aria-hidden="true" />
 											</button>
 									    </c:if>
+									    <c:if test="${invoice_list_info.invStatus == '已确认'}">
+									        <button id="confirm_#{status.index+1}" type="button" class="btn btn-primary btn-sm" title="取消"
+											        onclick="cancelButton(this)">
+												<span class="oi oi-action-undo" title="icon name" aria-hidden="true" />
+											</button>
+									    </c:if>
 									</td>
 								</tr>	
 							</c:forEach>
@@ -151,8 +157,13 @@
 		</div>
 		<ui:include src="./common/common_alert.jsp">
 		    <ui:param name="id" value = "confirm_pop_up" />
-		    <ui:param name="message" value = "确定把改条账单的状态改为'确认'吗？" />
+		    <ui:param name="message" value = "确定把该条账单的状态改为'确认'吗？" />
 		    <ui:param name="onclickFunction" value = "confirmPopUp()"/>
+		</ui:include>
+		<ui:include src="./common/common_alert.jsp">
+		    <ui:param name="id" value = "cancel_pop_up" />
+		    <ui:param name="message" value = "确定取消该条账单吗？" />
+		    <ui:param name="onclickFunction" value = "cancelPopUp()"/>
 		</ui:include>
 		<ui:include src="./invoiceList_pop_up.jsp"></ui:include>
     </ui:define>

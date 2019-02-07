@@ -1,5 +1,6 @@
 package com.billing.invoice.view;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,12 +18,15 @@ public class AccountInfoView extends BasicView<AccountInfoDTO> {
 	public AccountInfoService accountInfoService;
     public AccountInfo accountInfoCriteria = new AccountInfo();
     
+    
     public boolean Search(){
 		if (this.getPageNum() == null || this.getPageNum().equals("")) {
 			pageNum = "1";
 		}
-		PageHelper.startPage(Integer.valueOf(pageNum),30);
-    	records = this.getAccountInfoService().getAccountInfoByCriteria(accountInfoCriteria);
+		List<AccountInfoDTO> re = new ArrayList<AccountInfoDTO>();
+		re = this.getAccountInfoService().getAccountInfoByCriteria(accountInfoCriteria);
+		PageHelper.startPage(Integer.valueOf(pageNum),3);
+		records = this.getAccountInfoService().getAccountInfoByCriteria(accountInfoCriteria);
     	return true;
     }
     

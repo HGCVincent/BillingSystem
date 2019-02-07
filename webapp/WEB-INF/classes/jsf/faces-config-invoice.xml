@@ -10,7 +10,15 @@
 	    <managed-property>
 	      <property-name>invoiceListService</property-name>
 	      <value>#{invoiceListService}</value>
-	    </managed-property> 
+	    </managed-property>
+	    <managed-property>
+	      <property-name>invIssuingPartyService</property-name>
+	      <value>#{issuingPartyService}</value>
+	    </managed-property>
+	    <managed-property>
+	      <property-name>customerProfileService</property-name>
+	      <value>#{customerProfileService}</value>
+	    </managed-property>
 	</managed-bean> 
 	
 </faces-config>
