@@ -46,10 +46,18 @@
     <!-- <table tableName="ACCOUNT_INFO" domainObjectName="AccountInfo">
         <columnOverride column="ACCOUNT_ID" javaType="java.lang.Long"></columnOverride>
     </table> -->
-    <table tableName="SYSTEM_INVOICE" domainObjectName="SystemInvoice">
+    <!-- <table tableName="SYSTEM_INVOICE" domainObjectName="SystemInvoice">
         <columnOverride column="INV_VERSION" javaType="java.lang.Integer"></columnOverride>
         <columnOverride column="SEQ_ID" javaType="java.lang.Integer"></columnOverride>
+    </table> -->
+    <table tableName="INV_ITEM_DESC" domainObjectName="InvoiceItemDesc">
+        <columnOverride column="AMT" javaType="java.lang.Long"></columnOverride>
+        <columnOverride column="AMT_CS" javaType="java.lang.Long"></columnOverride>
+        <columnOverride column="AMT_USD" javaType="java.lang.Long"></columnOverride>
+        <columnOverride column="AMT_VDC" javaType="java.lang.Long"></columnOverride>
+        <columnOverride column="INV_DESC_ID" javaType="java.lang.Long"></columnOverride>
+        <columnOverride column="VERSION" javaType="java.lang.Integer"></columnOverride>
+        <columnOverride column="PRICE" javaType="java.lang.Long"></columnOverride>
     </table>
-    <!-- <table tableName="INV_ITEM_DESC" domainObjectName="InvoiceItemDesc"></table> -->
   </context>
 </generatorConfiguration>

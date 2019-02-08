@@ -17,6 +17,7 @@
     <result column="INV_SEND_OUT_DT" jdbcType="TIMESTAMP" property="invSendOutDt" />
     <result column="INV_DUE_DT" jdbcType="TIMESTAMP" property="invDueDt" />
     <result column="ATTACHMENT_NAME" jdbcType="VARCHAR" property="attachmentName" />
+    <result column="INV_DT" jdbcType="TIMESTAMP" property="invDt" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -78,7 +79,8 @@
   </sql>
   <sql id="Base_Column_List">
     INV_ID, INV_REF_NO, BILL_COMP, CUST_ID, CUST_NAME, CURRENT_MONTH, INV_VERSION, INV_STATUS, 
-    MODIFY_BY, MODIFY_DT, SEQ_ID, IS_LATEST_VER, INV_SEND_OUT_DT, INV_DUE_DT, ATTACHMENT_NAME
+    MODIFY_BY, MODIFY_DT, SEQ_ID, IS_LATEST_VER, INV_SEND_OUT_DT, INV_DUE_DT, ATTACHMENT_NAME, 
+    INV_DT
   </sql>
   <select id="selectByExample" parameterType="com.billing.invoice.po.SystemInvoiceExample" resultMap="BaseResultMap">
     select
@@ -105,14 +107,14 @@
       CUST_ID, CUST_NAME, CURRENT_MONTH, 
       INV_VERSION, INV_STATUS, MODIFY_BY, 
       MODIFY_DT, SEQ_ID, IS_LATEST_VER, 
-      INV_SEND_OUT_DT, INV_DUE_DT, ATTACHMENT_NAME
-      )
+      INV_SEND_OUT_DT, INV_DUE_DT, ATTACHMENT_NAME, 
+      INV_DT)
     values (#{invId,jdbcType=VARCHAR}, #{invRefNo,jdbcType=VARCHAR}, #{billComp,jdbcType=VARCHAR}, 
       #{custId,jdbcType=VARCHAR}, #{custName,jdbcType=VARCHAR}, #{currentMonth,jdbcType=VARCHAR}, 
       #{invVersion,jdbcType=DECIMAL}, #{invStatus,jdbcType=VARCHAR}, #{modifyBy,jdbcType=VARCHAR}, 
       #{modifyDt,jdbcType=TIMESTAMP}, #{seqId,jdbcType=DECIMAL}, #{isLatestVer,jdbcType=VARCHAR}, 
-      #{invSendOutDt,jdbcType=TIMESTAMP}, #{invDueDt,jdbcType=TIMESTAMP}, #{attachmentName,jdbcType=VARCHAR}
-      )
+      #{invSendOutDt,jdbcType=TIMESTAMP}, #{invDueDt,jdbcType=TIMESTAMP}, #{attachmentName,jdbcType=VARCHAR}, 
+      #{invDt,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.billing.invoice.po.SystemInvoice">
     insert into SYSTEM_INVOICE
@@ -162,6 +164,9 @@
       <if test="attachmentName != null">
         ATTACHMENT_NAME,
       </if>
+      <if test="invDt != null">
+        INV_DT,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="invId != null">
@@ -208,6 +213,9 @@
       </if>
       <if test="attachmentName != null">
         #{attachmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="invDt != null">
+        #{invDt,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -265,6 +273,9 @@
       <if test="record.attachmentName != null">
         ATTACHMENT_NAME = #{record.attachmentName,jdbcType=VARCHAR},
       </if>
+      <if test="record.invDt != null">
+        INV_DT = #{record.invDt,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -286,7 +297,8 @@
       IS_LATEST_VER = #{record.isLatestVer,jdbcType=VARCHAR},
       INV_SEND_OUT_DT = #{record.invSendOutDt,jdbcType=TIMESTAMP},
       INV_DUE_DT = #{record.invDueDt,jdbcType=TIMESTAMP},
-      ATTACHMENT_NAME = #{record.attachmentName,jdbcType=VARCHAR}
+      ATTACHMENT_NAME = #{record.attachmentName,jdbcType=VARCHAR},
+      INV_DT = #{record.invDt,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>

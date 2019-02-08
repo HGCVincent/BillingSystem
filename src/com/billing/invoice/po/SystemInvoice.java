@@ -1,6 +1,7 @@
 package com.billing.invoice.po;
 
 import java.util.Date;
+import java.util.List;
 
 public class SystemInvoice {
     private String invId;
@@ -32,6 +33,10 @@ public class SystemInvoice {
     private Date invDueDt;
 
     private String attachmentName;
+
+    private Date invDt;
+    
+    private List<InvoiceItemDesc> invoiceItemDescs;
 
     public String getInvId() {
         return invId;
@@ -152,4 +157,32 @@ public class SystemInvoice {
     public void setAttachmentName(String attachmentName) {
         this.attachmentName = attachmentName == null ? null : attachmentName.trim();
     }
+
+    public Date getInvDt() {
+        return invDt;
+    }
+
+    public void setInvDt(Date invDt) {
+        this.invDt = invDt;
+    }
+
+	public List<InvoiceItemDesc> getInvoiceItemDescs() {
+		return invoiceItemDescs;
+	}
+
+	public void setInvoiceItemDescs(List<InvoiceItemDesc> invoiceItemDescs) {
+		this.invoiceItemDescs = invoiceItemDescs;
+	}
+
+	@Override
+	public String toString() {
+		return "SystemInvoice [invId=" + invId + ", invRefNo=" + invRefNo + ", billComp=" + billComp + ", custId="
+				+ custId + ", custName=" + custName + ", currentMonth=" + currentMonth + ", invVersion=" + invVersion
+				+ ", invStatus=" + invStatus + ", modifyBy=" + modifyBy + ", modifyDt=" + modifyDt + ", seqId=" + seqId
+				+ ", isLatestVer=" + isLatestVer + ", invSendOutDt=" + invSendOutDt + ", invDueDt=" + invDueDt
+				+ ", attachmentName=" + attachmentName + ", invDt=" + invDt + ", invoiceItemDescs=" + invoiceItemDescs
+				+ "]";
+	}
+    
+    
 }

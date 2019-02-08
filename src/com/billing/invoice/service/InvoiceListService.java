@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.billing.invoice.criteria.InvoiceListCriteria;
 import com.billing.invoice.dto.InvoiceListDto;
+import com.billing.invoice.po.InvoiceItemDesc;
 import com.billing.invoice.po.SystemInvoice;
 
 public interface InvoiceListService {
@@ -17,5 +18,7 @@ public interface InvoiceListService {
 	void insert(SystemInvoice systemInvoice);
 
 	int getMaxSeqId();
+
+	void insertInvoieItem(InvoiceItemDesc invoiceItemDesc);
 
 }

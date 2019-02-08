@@ -1104,6 +1104,66 @@ public class SystemInvoiceExample {
             addCriterion("ATTACHMENT_NAME not between", value1, value2, "attachmentName");
             return (Criteria) this;
         }
+
+        public Criteria andInvDtIsNull() {
+            addCriterion("INV_DT is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvDtIsNotNull() {
+            addCriterion("INV_DT is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvDtEqualTo(Date value) {
+            addCriterion("INV_DT =", value, "invDt");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvDtNotEqualTo(Date value) {
+            addCriterion("INV_DT <>", value, "invDt");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvDtGreaterThan(Date value) {
+            addCriterion("INV_DT >", value, "invDt");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvDtGreaterThanOrEqualTo(Date value) {
+            addCriterion("INV_DT >=", value, "invDt");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvDtLessThan(Date value) {
+            addCriterion("INV_DT <", value, "invDt");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvDtLessThanOrEqualTo(Date value) {
+            addCriterion("INV_DT <=", value, "invDt");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvDtIn(List<Date> values) {
+            addCriterion("INV_DT in", values, "invDt");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvDtNotIn(List<Date> values) {
+            addCriterion("INV_DT not in", values, "invDt");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvDtBetween(Date value1, Date value2) {
+            addCriterion("INV_DT between", value1, value2, "invDt");
+            return (Criteria) this;
+        }
+
+        public Criteria andInvDtNotBetween(Date value1, Date value2) {
+            addCriterion("INV_DT not between", value1, value2, "invDt");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

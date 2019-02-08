@@ -8,6 +8,7 @@ import com.billing.common.JsonConvertor;
 import com.billing.invoice.criteria.InvoiceListCriteria;
 import com.billing.invoice.dto.InvoiceListDto;
 import com.billing.invoice.po.CustomerProfile;
+import com.billing.invoice.po.InvoiceItemDesc;
 import com.billing.invoice.po.IssuingParty;
 import com.billing.invoice.po.SystemInvoice;
 import com.billing.invoice.service.CustomerProfileService;
@@ -16,6 +17,10 @@ import com.billing.invoice.service.IssuingPartyService;
 import com.github.pagehelper.PageHelper;
 
 public class InvoiceListView extends BasicView<SystemInvoice> {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public static final String CONFIRM_STRING = "已确认";
 	public static final String CANCEL_STRING = "取消";
 	public static final String YES_STRING = "Y";
@@ -37,6 +42,7 @@ public class InvoiceListView extends BasicView<SystemInvoice> {
 		for (SystemInvoice systemInvoice : records) {
 			this.getDtoRecords().add(new InvoiceListDto(systemInvoice));
 		}
+		this.getRecords();
     	return true;
     }
     
@@ -82,10 +88,22 @@ public class InvoiceListView extends BasicView<SystemInvoice> {
     	return customerProfile;
     }
     
-    public String saveInvoiceList(String jsonInvoiceList){
+    public String saveInvoiceList(String jsonInvoiceList,List<InvoiceItemDesc> invoiceItemDescs){
     	SystemInvoice systemInvoice = JsonConvertor.convertToObject(jsonInvoiceList, SystemInvoice.class);
     	systemInvoice.setInvVersion(1);
     	this.getInvoiceListService().insert(systemInvoice);
+    	saveInvoiceItem(systemInvoice,invoiceItemDescs);
+    	return YES_STRING;
+    }
+    
+    public String saveInvoiceItem(SystemInvoice systemInvoice,List<InvoiceItemDesc> invoiceItemDescs){
+    	for (InvoiceItemDesc invoiceItemDesc : invoiceItemDescs) {
+    		if (invoiceItemDesc !=null) {
+    			invoiceItemDesc.setCustId(systemInvoice.getCustId());
+    			invoiceItemDesc.setInvId(systemInvoice.getInvId());
+    			this.getInvoiceListService().insertInvoieItem(invoiceItemDesc);
+			}
+		}
     	return YES_STRING;
     }
     

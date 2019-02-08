@@ -3,18 +3,18 @@ package com.billing.invoice.po;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class InvoiceItemDesc extends InvoiceItemDescKey {
+public class InvoiceItemDesc {
     private Date actualEndDt;
 
     private Date actualStartDt;
 
-    private Integer amt;
+    private Long amt;
 
-    private Integer amtCs;
+    private Long amtCs;
 
-    private Integer amtUsd;
+    private Long amtUsd;
 
-    private Integer amtVdc;
+    private Long amtVdc;
 
     private String amtVerifyFlag;
 
@@ -26,9 +26,19 @@ public class InvoiceItemDesc extends InvoiceItemDescKey {
 
     private String currentMonth;
 
+    private String custId;
+
+    private Long invDescId;
+
+    private String invId;
+
+    private BigDecimal invVersion;
+
+    private String itemDesc;
+
     private String paymentItemCode;
 
-    private BigDecimal price;
+    private Long price;
 
     public Date getActualEndDt() {
         return actualEndDt;
@@ -46,35 +56,35 @@ public class InvoiceItemDesc extends InvoiceItemDescKey {
         this.actualStartDt = actualStartDt;
     }
 
-    public Integer getAmt() {
+    public Long getAmt() {
         return amt;
     }
 
-    public void setAmt(Integer amt) {
+    public void setAmt(Long amt) {
         this.amt = amt;
     }
 
-    public Integer getAmtCs() {
+    public Long getAmtCs() {
         return amtCs;
     }
 
-    public void setAmtCs(Integer amtCs) {
+    public void setAmtCs(Long amtCs) {
         this.amtCs = amtCs;
     }
 
-    public Integer getAmtUsd() {
+    public Long getAmtUsd() {
         return amtUsd;
     }
 
-    public void setAmtUsd(Integer amtUsd) {
+    public void setAmtUsd(Long amtUsd) {
         this.amtUsd = amtUsd;
     }
 
-    public Integer getAmtVdc() {
+    public Long getAmtVdc() {
         return amtVdc;
     }
 
-    public void setAmtVdc(Integer amtVdc) {
+    public void setAmtVdc(Long amtVdc) {
         this.amtVdc = amtVdc;
     }
 
@@ -118,6 +128,46 @@ public class InvoiceItemDesc extends InvoiceItemDescKey {
         this.currentMonth = currentMonth == null ? null : currentMonth.trim();
     }
 
+    public String getCustId() {
+        return custId;
+    }
+
+    public void setCustId(String custId) {
+        this.custId = custId == null ? null : custId.trim();
+    }
+
+    public Long getInvDescId() {
+        return invDescId;
+    }
+
+    public void setInvDescId(Long invDescId) {
+        this.invDescId = invDescId;
+    }
+
+    public String getInvId() {
+        return invId;
+    }
+
+    public void setInvId(String invId) {
+        this.invId = invId == null ? null : invId.trim();
+    }
+
+    public BigDecimal getInvVersion() {
+        return invVersion;
+    }
+
+    public void setInvVersion(BigDecimal invVersion) {
+        this.invVersion = invVersion;
+    }
+
+    public String getItemDesc() {
+        return itemDesc;
+    }
+
+    public void setItemDesc(String itemDesc) {
+        this.itemDesc = itemDesc == null ? null : itemDesc.trim();
+    }
+
     public String getPaymentItemCode() {
         return paymentItemCode;
     }
@@ -126,11 +176,11 @@ public class InvoiceItemDesc extends InvoiceItemDescKey {
         this.paymentItemCode = paymentItemCode == null ? null : paymentItemCode.trim();
     }
 
-    public BigDecimal getPrice() {
+    public Long getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Long price) {
         this.price = price;
     }
 }

@@ -7,9 +7,11 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.billing.invoice.criteria.InvoiceListCriteria;
+import com.billing.invoice.dao.InvoiceItemDescMapper;
 import com.billing.invoice.dao.SystemInvoiceMapper;
 import com.billing.invoice.dao.SystemInvoiceMapperCustom;
 import com.billing.invoice.dto.InvoiceListDto;
+import com.billing.invoice.po.InvoiceItemDesc;
 import com.billing.invoice.po.SystemInvoice;
 import com.billing.invoice.po.SystemInvoiceExample;
 import com.billing.invoice.po.SystemInvoiceExample.Criteria;
@@ -20,6 +22,8 @@ public class InvoiceListServiceImpl implements InvoiceListService {
 	SystemInvoiceMapper systemInvoiceMapper;
     @Autowired
     SystemInvoiceMapperCustom systemInvoiceMapperCustom;
+    @Autowired
+    InvoiceItemDescMapper invoiceItemDescMapper;
 	
     SystemInvoiceExample systemInvoiceExample;
     
@@ -54,7 +58,7 @@ public class InvoiceListServiceImpl implements InvoiceListService {
 			}
 		}
 		criteria.andIsLatestVerEqualTo(InvoiceListView.YES_STRING);
-		return systemInvoiceMapper.selectByExample(systemInvoiceExample);
+		return systemInvoiceMapperCustom.selectByExamplePlus(systemInvoiceExample);
 	}
 
 	@Override
@@ -84,6 +88,11 @@ public class InvoiceListServiceImpl implements InvoiceListService {
 	@Override
 	public int getMaxSeqId() {
 		return systemInvoiceMapperCustom.getMaxSeqId();
+	}
+
+	@Override
+	public void insertInvoieItem(InvoiceItemDesc invoiceItemDesc) {
+		invoiceItemDescMapper.insert(invoiceItemDesc);
 	}
 
 }

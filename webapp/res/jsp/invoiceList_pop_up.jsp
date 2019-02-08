@@ -62,7 +62,7 @@
                           </tr>
                           <tr>
                               <td>银行账户信息：</td>
-                              <table id="bank_tbale" class="table table-bordered table-condensed">
+                              <table id="item_tbale" class="table table-bordered table-condensed">
                                       <thead>
                                           <tr>
                                               <td>项目描述</td>
@@ -76,40 +76,42 @@
                                       </thead>
                                       <tr>
                                        <td>
-                                           <input type="text" name="item_desc" id="item_desc" size="10" maxlength="100"
+                                           <input type="text" name="item_desc" id="item_desc1" size="10" maxlength="100"
                                                    style="border:none;"/>
                                        </td>
                                        <td>
                                            <ui:include src="./common/common_calendar.jsp">
 		                                      <ui:param name="datetimepicker_Id" value="datetimepickerStarTime"></ui:param>
 		                                      <ui:param name="target" value="#datetimepickerStarTime"></ui:param>
-		                                      <ui:param name="inputID" value="Calendar_starDT"></ui:param>
+		                                      <ui:param name="inputID" value="Calendar_starDT1"></ui:param>
 		                                  </ui:include>
                                        </td> 
                                        <td>
                                            <ui:include src="./common/common_calendar.jsp">
 		                                      <ui:param name="datetimepicker_Id" value="datetimepickerEndTime"></ui:param>
 		                                      <ui:param name="target" value="#datetimepickerEndTime"></ui:param>
-		                                      <ui:param name="inputID" value="Calendar_endDT"></ui:param>
+		                                      <ui:param name="inputID" value="Calendar_endDT1"></ui:param>
 		                                  </ui:include>
                                        </td>
                                        <td>
-                                           <input type="text" name="inv_price" id="inv_price" size="2" maxlength="100"
+                                           <input type="text" name="inv_price" id="inv_price1" size="2" maxlength="100"
                                                   style="border:none;"/>
                                        </td>
                                        <td>
-                                           <input type="text" name="txn_quantity" id="txn_quantity" size="1" maxlength="100"
+                                           <input type="text" name="txn_quantity" id="txn_quantity1" size="1" maxlength="100"
                                                   style="border:none;"/>
                                        </td>
                                        <td>
-                                           <ui:include src="./common/common_select_option.jsp">
-		                                      <ui:param name="OptionList" value="#{invoiceListView.currency}"></ui:param>
-		                                      <ui:param name="option_selected" value="currency_selected"></ui:param>
-		                                      <ui:param name="width" value="80px"></ui:param>
-		                                  </ui:include>
+                                           <select id='selectOption1' onchange='Change()' style='width:80px;'>
+					    		               <option value=''>请选择</option>
+					    		               <option value='USD'>USD</option>
+					    		               <option value='CNY'>CNY</option>
+					    		           </select>
+					    		           <input style='display:none;' size='20' maxlength='100' id='option_selected1'/>
+					    		           <script type='text/javascript'>function Change(){$('#option_selected1').val($('#selectOption1').val());}</script>
                                        </td>
                                        <td>
-                                           <input type="text" name="inv_amt" id="inv_amt" size="5" maxlength="100"
+                                           <input type="text" name="inv_amt1" id="inv_amt" size="5" maxlength="100"
                                                   style="border:none;"/>
                                        </td>
                                    </tr>
