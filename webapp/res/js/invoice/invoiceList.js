@@ -2,6 +2,7 @@ var invId;
 var custId;
 var currentMonth;
 var version;
+var isUpdate;
 
 var invliceListProfileObj = {
 		seqId:null,
@@ -10,16 +11,18 @@ var invliceListProfileObj = {
 		billComp:null,
 		custId:null,
 		custName:null,
-		invDt:null
+		invDt:null,
+		currentMonth:null
 }
 
 var itemObj ={
+		invDescId:0,
 		itemDesc:null,
 		billPeriodFrom:null,
 		billPeriodTo:null,
 		price:null,
-		currency:null,
-		amt:null
+		itemCurrency:null,
+		itemAmt:null
 }
 
 function constructinvliceListProfileObj(prefix){
@@ -29,15 +32,21 @@ function constructinvliceListProfileObj(prefix){
 	invliceListProfileObj.billComp　=　$("#selectOption").val();
 	invliceListProfileObj.custName = $(prefix + "custName").val();
 	invliceListProfileObj.custId = $(prefix + "custId").val();
+	if(isUpdate){
+		currentMonth = $("#currentMonth").val();
+	}
 }
 
 function constructItemObj(i){
+	if($("#item_desc_id"+i).val() != ""){
+		itemObj.invDescId = $("#item_desc_id"+i).val();
+	}
 	itemObj.itemDesc=$("#item_desc"+i).val();
 	itemObj.billPeriodFrom=$("#Calendar_starDT"+i).val();
 	itemObj.billPeriodTo=$("#Calendar_endDT"+i).val();
 	itemObj.price=$("#inv_price"+i).val();
-	itemObj.currency=$("#selectOption"+i).val();
-	itemObj.amt=$("#inv_amt"+i).val();
+	itemObj.itemAmt=$("#inv_amt"+i).val();
+	itemObj.itemCurrency=$("#selectOption"+i).val();
 }
 
 function resetCriteria(){
@@ -110,7 +119,16 @@ function createButton(){
 		},
 		async:false
     });
+	$("#myModalLabel").text("添加");
+	$("#form\\:create_custId").show();
+	$("#form\\:create_custName").show();
+	$("#form\\:modify_custId").hide();
+	$("#form\\:modify_custName").hide();
+	$("#invDt_tr").show();
+	$("#pty_tr").show();
 	$("#index").text('1');
+	drawModifytr("#item_tbale","1");
+	isUpdate = false;
 	$("#create_pop_up").modal('show');
 }
 
@@ -138,7 +156,7 @@ function createPopUpConfirm(){
 		constructItemObj(n+1);
 		itemArr.push(itemObj);
 	}
-	InvoiceListView.saveInvoiceList(JSON.stringify(invliceListProfileObj),itemArr,{
+	InvoiceListView.saveInvoiceList(JSON.stringify(invliceListProfileObj),itemArr,isUpdate,{
 		callback:function(data){
 			if(data){
 				$("#create_pop_up").modal('hide');
@@ -176,11 +194,20 @@ function closeModal(){
 	$("#form\\:create_custName").val("");
 	$("#Calendar_invDT").val("");
 	$("#selectOption").val("");
+	$("#item_tbale").find("tr").not("thead tr").remove();
 }
 
 function addModifytr(){
 	var index = parseInt($("#index").text()) + 1;
+	drawModifytr("#item_tbale",index);
+	$("#index").text(index);
+}
+
+function drawModifytr(tableName,index){
 	var item_tr="<tr>";
+	item_tr += "<td style='display:none;'>" +
+			        "<input type='text' name='item_desc_id' id='item_desc_id"+ index +"' size='10' maxlength='100' style='border:none;'/>" +
+			   "</td>";
 	item_tr += "<td><input type='text' name='item_desc' id='item_desc"+ index +"' size='10' maxlength='100' " +
 			        "style='border:none;'/></td>";                                 
 	item_tr += "<td><div class='input-group date' id='datetimepickerStarDT"+index+"' data-target-input='nearest'>" +
@@ -211,8 +238,63 @@ function addModifytr(){
     		    "</td>";
     item_tr += "<td><input type='text' name='inv_amt' id='inv_amt"+ index +"' size='5' maxlength='100' style='border:none;'/></td>";
     item_tr += "</tr>";
-    $("#item_tbale").append(item_tr);
-    $("#index").text(index);
+    $(tableName).append(item_tr);
+}
+
+function getRowIndex(t){
+	return $(t).attr('id').substring($(t).attr('id').indexOf('_')+1);
+}
+
+function modifyButton(t){
+	rowindex = getRowIndex(t);
+	$("#myModalLabel").text("编辑");
+	$("#form\\:create_invId").val($("#invId_"+rowindex).text());
+	$("#form\\:create_invRefNo").val($("#invRefNum_"+rowindex).text());
+	$("#form\\:create_custId").hide();
+	$("#form\\:create_custName").hide();
+	$("#form\\:modify_custId").show();
+	$("#form\\:modify_custName").show();
+	$("#form\\:modify_custId").val($("#custId_"+rowindex).text());
+	$("#form\\:modify_custName").val($("#custName_"+rowindex).text());
+	$("#Calendar_invDT").val($("#form\\:InvDt_"+rowindex).text());
+	$("#invDt_tr").hide();
+	$("#pty_tr").hide();
+	var currentMonth = $("#currentMonth_"+rowindex).text();
+	drawItemInfoTr(currentMonth);
+	isUpdate = true;
+	$("#create_pop_up").modal('show');
+}
+
+function drawItemInfoTr(currentMonth){
+	$("#index").text('0');
+	var invId = $("#form\\:create_invId").val();
+	var custId = $("#form\\:modify_custId").val();
+	InvoiceListView.findInvoiceItem(invId,custId,currentMonth,{
+		callback:function(data){
+			var i=1;
+			for(var key in data){
+				addModifytr();
+				$("#item_desc_id"+i).val(data[key].invDescId);
+				$("#item_desc"+i).val(data[key].itemDesc);
+				$("#Calendar_starDT"+i).val(data[key].billPeriodFrom);
+				$("#Calendar_endDT"+i).val(data[key].billPeriodTo);
+				$("#inv_price"+i).val(data[key].price);
+				$("#txn_quantity"+i).val("");
+				$("#selectOption1").val(data[key].itemCurrency);
+				$("#option_selected"+i).val(data[key].itemCurrency);
+				$("#inv_amt"+i).val(data[key].itemAmt);
+				i++;
+			}
+		},
+    	errorHandler:function(message){
+			alert("Remote server error, please try again later ");
+                return false;
+		},
+		async:false
+	});
+	
+	
+	
 }
 
 $(document).ready(

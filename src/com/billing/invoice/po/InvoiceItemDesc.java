@@ -1,14 +1,33 @@
 package com.billing.invoice.po;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class InvoiceItemDesc {
+    private Long invDescId;
+
+    private String invoiceId;
+
+    private String customerId;
+
+    private String itemDesc;
+
+    private String itemCurrency;
+
+    private Long price;
+
+    private Long itemAmt;
+
+    private String itemCurrentMonth;
+
+    private String billPeriodFrom;
+
+    private String billPeriodTo;
+
+    private Integer invVersion;
+
     private Date actualEndDt;
 
     private Date actualStartDt;
-
-    private Long amt;
 
     private Long amtCs;
 
@@ -18,27 +37,95 @@ public class InvoiceItemDesc {
 
     private String amtVerifyFlag;
 
-    private String billPeriodFrom;
-
-    private String billPeriodTo;
-
-    private String currency;
-
-    private String currentMonth;
-
-    private String custId;
-
-    private Long invDescId;
-
-    private String invId;
-
-    private BigDecimal invVersion;
-
-    private String itemDesc;
-
     private String paymentItemCode;
 
-    private Long price;
+    public Long getInvDescId() {
+        return invDescId;
+    }
+
+    public void setInvDescId(Long invDescId) {
+        this.invDescId = invDescId;
+    }
+
+    public String getInvoiceId() {
+        return invoiceId;
+    }
+
+    public void setInvoiceId(String invoiceId) {
+        this.invoiceId = invoiceId == null ? null : invoiceId.trim();
+    }
+
+    public String getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId == null ? null : customerId.trim();
+    }
+
+    public String getItemDesc() {
+        return itemDesc;
+    }
+
+    public void setItemDesc(String itemDesc) {
+        this.itemDesc = itemDesc == null ? null : itemDesc.trim();
+    }
+
+    public String getItemCurrency() {
+        return itemCurrency;
+    }
+
+    public void setItemCurrency(String itemCurrency) {
+        this.itemCurrency = itemCurrency == null ? null : itemCurrency.trim();
+    }
+
+    public Long getPrice() {
+        return price;
+    }
+
+    public void setPrice(Long price) {
+        this.price = price;
+    }
+
+    public Long getItemAmt() {
+        return itemAmt;
+    }
+
+    public void setItemAmt(Long itemAmt) {
+        this.itemAmt = itemAmt;
+    }
+
+    public String getItemCurrentMonth() {
+        return itemCurrentMonth;
+    }
+
+    public void setItemCurrentMonth(String itemCurrentMonth) {
+        this.itemCurrentMonth = itemCurrentMonth == null ? null : itemCurrentMonth.trim();
+    }
+
+    public String getBillPeriodFrom() {
+        return billPeriodFrom;
+    }
+
+    public void setBillPeriodFrom(String billPeriodFrom) {
+        this.billPeriodFrom = billPeriodFrom == null ? null : billPeriodFrom.trim();
+    }
+
+    public String getBillPeriodTo() {
+        return billPeriodTo;
+    }
+
+    public void setBillPeriodTo(String billPeriodTo) {
+        this.billPeriodTo = billPeriodTo == null ? null : billPeriodTo.trim();
+    }
+
+    public Integer getInvVersion() {
+        return invVersion;
+    }
+
+    public void setInvVersion(Integer invVersion) {
+        this.invVersion = invVersion;
+    }
 
     public Date getActualEndDt() {
         return actualEndDt;
@@ -54,14 +141,6 @@ public class InvoiceItemDesc {
 
     public void setActualStartDt(Date actualStartDt) {
         this.actualStartDt = actualStartDt;
-    }
-
-    public Long getAmt() {
-        return amt;
-    }
-
-    public void setAmt(Long amt) {
-        this.amt = amt;
     }
 
     public Long getAmtCs() {
@@ -96,91 +175,11 @@ public class InvoiceItemDesc {
         this.amtVerifyFlag = amtVerifyFlag == null ? null : amtVerifyFlag.trim();
     }
 
-    public String getBillPeriodFrom() {
-        return billPeriodFrom;
-    }
-
-    public void setBillPeriodFrom(String billPeriodFrom) {
-        this.billPeriodFrom = billPeriodFrom == null ? null : billPeriodFrom.trim();
-    }
-
-    public String getBillPeriodTo() {
-        return billPeriodTo;
-    }
-
-    public void setBillPeriodTo(String billPeriodTo) {
-        this.billPeriodTo = billPeriodTo == null ? null : billPeriodTo.trim();
-    }
-
-    public String getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(String currency) {
-        this.currency = currency == null ? null : currency.trim();
-    }
-
-    public String getCurrentMonth() {
-        return currentMonth;
-    }
-
-    public void setCurrentMonth(String currentMonth) {
-        this.currentMonth = currentMonth == null ? null : currentMonth.trim();
-    }
-
-    public String getCustId() {
-        return custId;
-    }
-
-    public void setCustId(String custId) {
-        this.custId = custId == null ? null : custId.trim();
-    }
-
-    public Long getInvDescId() {
-        return invDescId;
-    }
-
-    public void setInvDescId(Long invDescId) {
-        this.invDescId = invDescId;
-    }
-
-    public String getInvId() {
-        return invId;
-    }
-
-    public void setInvId(String invId) {
-        this.invId = invId == null ? null : invId.trim();
-    }
-
-    public BigDecimal getInvVersion() {
-        return invVersion;
-    }
-
-    public void setInvVersion(BigDecimal invVersion) {
-        this.invVersion = invVersion;
-    }
-
-    public String getItemDesc() {
-        return itemDesc;
-    }
-
-    public void setItemDesc(String itemDesc) {
-        this.itemDesc = itemDesc == null ? null : itemDesc.trim();
-    }
-
     public String getPaymentItemCode() {
         return paymentItemCode;
     }
 
     public void setPaymentItemCode(String paymentItemCode) {
         this.paymentItemCode = paymentItemCode == null ? null : paymentItemCode.trim();
-    }
-
-    public Long getPrice() {
-        return price;
-    }
-
-    public void setPrice(Long price) {
-        this.price = price;
     }
 }

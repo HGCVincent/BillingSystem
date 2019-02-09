@@ -1,6 +1,10 @@
 package com.billing.invoice.view;
 
+import static org.hamcrest.CoreMatchers.nullValue;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.billing.common.Currency;
@@ -31,6 +35,7 @@ public class InvoiceListView extends BasicView<SystemInvoice> {
     InvoiceListCriteria invoiceListCriteria = new InvoiceListCriteria();
     List<String> currency;
     List<InvoiceListDto> dtoRecords;
+    SimpleDateFormat sdf = new SimpleDateFormat("MM/yyyy");
 
 	public boolean Search(){
 		if (this.getPageNum() == null || this.getPageNum().equals("")) {
@@ -88,23 +93,40 @@ public class InvoiceListView extends BasicView<SystemInvoice> {
     	return customerProfile;
     }
     
-    public String saveInvoiceList(String jsonInvoiceList,List<InvoiceItemDesc> invoiceItemDescs){
-    	SystemInvoice systemInvoice = JsonConvertor.convertToObject(jsonInvoiceList, SystemInvoice.class);
-    	systemInvoice.setInvVersion(1);
-    	this.getInvoiceListService().insert(systemInvoice);
-    	saveInvoiceItem(systemInvoice,invoiceItemDescs);
-    	return YES_STRING;
+    public String saveInvoiceList(String jsonInvoiceList,List<InvoiceItemDesc> invoiceItemDescs,boolean isUpdate){
+	    SystemInvoice systemInvoice = JsonConvertor.convertToObject(jsonInvoiceList, SystemInvoice.class);
+	    if(!isUpdate){
+	    	systemInvoice.setInvVersion(1);
+	    	systemInvoice.setCurrentMonth(sdf.format(systemInvoice.getInvDt()).toString());
+	    	this.getInvoiceListService().insert(systemInvoice);
+	    	saveInvoiceItem(systemInvoice,invoiceItemDescs);
+	    	return YES_STRING;
+    	}
+    	else {
+    		saveInvoiceItem(systemInvoice,invoiceItemDescs);
+			return YES_STRING;
+		}
     }
     
     public String saveInvoiceItem(SystemInvoice systemInvoice,List<InvoiceItemDesc> invoiceItemDescs){
     	for (InvoiceItemDesc invoiceItemDesc : invoiceItemDescs) {
-    		if (invoiceItemDesc !=null) {
-    			invoiceItemDesc.setCustId(systemInvoice.getCustId());
-    			invoiceItemDesc.setInvId(systemInvoice.getInvId());
-    			this.getInvoiceListService().insertInvoieItem(invoiceItemDesc);
+    		if(invoiceItemDesc !=null){
+    			if(invoiceItemDesc.getInvDescId() == 0){
+		    			invoiceItemDesc.setCustomerId(systemInvoice.getCustId());
+		    			invoiceItemDesc.setInvoiceId(systemInvoice.getInvId());
+		    			invoiceItemDesc.setItemCurrentMonth(systemInvoice.getCurrentMonth());
+		    			this.getInvoiceListService().insertInvoieItem(invoiceItemDesc);
+				}
+    			else{
+    			    this.getInvoiceListService().upDateInvoieItem(invoiceItemDesc);
+    			}
 			}
 		}
     	return YES_STRING;
+    }
+    
+    public List<InvoiceItemDesc> findInvoiceItem(String invId,String custId,String currentMonth){
+    	return this.getInvoiceListService().findInvoiceItem(invId,custId,currentMonth);
     }
     
 //--------------------------------------------------------------------------

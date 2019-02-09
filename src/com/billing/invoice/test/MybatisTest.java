@@ -26,7 +26,10 @@ public class MybatisTest {
 	@Autowired
 	IssuingPartyService issuingPartyService;
 	@Autowired
-	SystemInvoiceMapperCustom systemInvoiceMapper;
+	SystemInvoiceMapperCustom systemInvoiceMapperCustom;
+	@Autowired
+	SystemInvoiceMapper systemInvoiceMapper;
+	
 	
 //    public IssuingPartyService getIssuingPartyService() {
 //		return issuingPartyService;
@@ -51,8 +54,8 @@ public class MybatisTest {
 //		System.out.println(issuingParties.get(0).getAddress());
 		SystemInvoiceExample systemInvoiceExample = new SystemInvoiceExample();
 		Criteria criteria = systemInvoiceExample.createCriteria();
-		criteria.andIsLatestVerEqualTo("Y");
-		List<SystemInvoice> systemInvoices = systemInvoiceMapper.selectByExamplePlus(systemInvoiceExample);
+//		criteria.andIsLatestVerEqualTo("Y");
+		List<SystemInvoice> systemInvoices = systemInvoiceMapperCustom.selectByExamplePlus(systemInvoiceExample);
 		for (SystemInvoice systemInvoice : systemInvoices) {
 			System.out.println(systemInvoice);
 		}

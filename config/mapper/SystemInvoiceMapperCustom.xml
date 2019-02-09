@@ -25,18 +25,18 @@
     <collection property="invoiceItemDescs" ofType="com.billing.invoice.po.InvoiceItemDesc">
         <result column="iACTUAL_END_DT" property="actualEndDt" />
 	    <result column="iACTUAL_START_DT" property="actualStartDt" />
-	    <result column="iAMT" property="amt" />
+	    <result column="iAMT" property="itemAmt" />
 	    <result column="iAMT_CS" property="amtCs" />
 	    <result column="iAMT_USD" property="amtUsd" />
 	    <result column="iAMT_VDC" property="amtVdc" />
 	    <result column="iAMT_VERIFY_FLAG" property="amtVerifyFlag" />
 	    <result column="iBILL_PERIOD_FROM" property="billPeriodFrom" />
 	    <result column="iBILL_PERIOD_TO" property="billPeriodTo" />
-	    <result column="iCURRENCY" property="currency" />
-	    <result column="iCURRENT_MONTH" property="currentMonth" />
-	    <result column="iCUST_ID" property="custId" />
+	    <result column="iCURRENCY" property="itemCurrency" />
+	    <result column="iCURRENT_MONTH" property="itemCurrentMonth" />
+	    <result column="iCUST_ID" property="customerId" />
 	    <result column="iINV_DESC_ID" property="invDescId" />
-	    <result column="iINV_ID" property="invId" />
+	    <result column="iINV_ID" property="invoiceId" />
 	    <result column="iINV_VERSION" property="invVersion" />
 	    <result column="iITEM_DESC" property="itemDesc" />
 	    <result column="iPAYMENT_ITEM_CODE" property="paymentItemCode" />
@@ -58,10 +58,10 @@
                   and ${criterion.condition} #{criterion.value}
                 </when>
                 <when test="criterion.betweenValue">
-                  and i.${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
                 <when test="criterion.listValue">
-                  and i.${criterion.condition}
+                  and ${criterion.condition}
                   <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
@@ -80,10 +80,10 @@
     s.INV_STATUS sINV_STATUS, s.MODIFY_BY sMODIFY_BY, s.MODIFY_DT sMODIFY_DT, s.SEQ_ID sSEQ_ID, 
     s.IS_LATEST_VER sIS_LATEST_VER, s.INV_SEND_OUT_DT sINV_SEND_OUT_DT, s.INV_DUE_DT sINV_DUE_DT, 
     s.ATTACHMENT_NAME sATTACHMENT_NAME, s.INV_DT sINV_DT,
-    i.ACTUAL_END_DT iACTUAL_END_DT, i.ACTUAL_START_DT iACTUAL_START_DT, i.AMT, AMT_CS iAMT, AMT_CS, 
+    i.ACTUAL_END_DT iACTUAL_END_DT, i.ACTUAL_START_DT iACTUAL_START_DT, i.ITEM_AMT iAMT,i.AMT_CS iAMT_CS, 
     i.AMT_USD iAMT_USD, i.AMT_VDC iAMT_VDC, i.AMT_VERIFY_FLAG iAMT_VERIFY_FLAG, i.BILL_PERIOD_FROM iBILL_PERIOD_FROM, 
-    i.BILL_PERIOD_TO iBILL_PERIOD_TO, i.CURRENCY iCURRENCY, i.CURRENT_MONTH iCURRENT_MONTH, 
-    i.CUST_ID iCUST_ID, i.INV_DESC_ID iINV_DESC_ID, i.INV_ID iINV_ID, i.INV_VERSION iINV_VERSION, 
+    i.BILL_PERIOD_TO iBILL_PERIOD_TO, i.ITEM_CURRENCY iCURRENCY, i.ITEM_CURRENT_MONTH iCURRENT_MONTH, 
+    i.CUSTOMER_ID iCUST_ID, i.INV_DESC_ID iINV_DESC_ID, i.INVOICE_ID iINV_ID, i.INV_VERSION iINV_VERSION, 
     i.ITEM_DESC iITEM_DESC, i.PAYMENT_ITEM_CODE iPAYMENT_ITEM_CODE, i.PRICE iPRICE
   </sql>
    
@@ -94,7 +94,7 @@
     </if>
     <include refid="Base_Column_List_Plus" />
     from SYSTEM_INVOICE s left join INV_ITEM_DESC i 
-    on s.INV_ID = i.INV_ID and s.CUST_ID = i.CUST_ID
+    on s.INV_ID = i.INVOICE_ID and s.CUST_ID = i.CUSTOMER_ID and s.CURRENT_MONTH=i.ITEM_CURRENT_MONTH
     <if test="_parameter != null">
       <include refid="Example_Where_Clause_Plus" />
     </if>

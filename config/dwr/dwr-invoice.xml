@@ -14,6 +14,7 @@
             <include method="getMaxInvId"/>
             <include method="getCustomerProfileById"/>
             <include method="saveInvoiceList"/>
+            <include method="findInvoiceItem"/>
         </create>
         <convert match="com.billing.invoice.po.InvoiceItemDesc" converter="bean"></convert>
     </allow>

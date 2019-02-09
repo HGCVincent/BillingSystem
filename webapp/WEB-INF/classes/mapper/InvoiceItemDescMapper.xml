@@ -2,24 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.billing.invoice.dao.InvoiceItemDescMapper">
   <resultMap id="BaseResultMap" type="com.billing.invoice.po.InvoiceItemDesc">
+    <result column="INV_DESC_ID" jdbcType="DECIMAL" property="invDescId" />
+    <result column="INVOICE_ID" jdbcType="VARCHAR" property="invoiceId" />
+    <result column="CUSTOMER_ID" jdbcType="VARCHAR" property="customerId" />
+    <result column="ITEM_DESC" jdbcType="VARCHAR" property="itemDesc" />
+    <result column="ITEM_CURRENCY" jdbcType="VARCHAR" property="itemCurrency" />
+    <result column="PRICE" jdbcType="DECIMAL" property="price" />
+    <result column="ITEM_AMT" jdbcType="DECIMAL" property="itemAmt" />
+    <result column="ITEM_CURRENT_MONTH" jdbcType="VARCHAR" property="itemCurrentMonth" />
+    <result column="BILL_PERIOD_FROM" jdbcType="VARCHAR" property="billPeriodFrom" />
+    <result column="BILL_PERIOD_TO" jdbcType="VARCHAR" property="billPeriodTo" />
+    <result column="INV_VERSION" jdbcType="DECIMAL" property="invVersion" />
     <result column="ACTUAL_END_DT" jdbcType="TIMESTAMP" property="actualEndDt" />
     <result column="ACTUAL_START_DT" jdbcType="TIMESTAMP" property="actualStartDt" />
-    <result column="AMT" jdbcType="DECIMAL" property="amt" />
     <result column="AMT_CS" jdbcType="DECIMAL" property="amtCs" />
     <result column="AMT_USD" jdbcType="DECIMAL" property="amtUsd" />
     <result column="AMT_VDC" jdbcType="DECIMAL" property="amtVdc" />
     <result column="AMT_VERIFY_FLAG" jdbcType="VARCHAR" property="amtVerifyFlag" />
-    <result column="BILL_PERIOD_FROM" jdbcType="VARCHAR" property="billPeriodFrom" />
-    <result column="BILL_PERIOD_TO" jdbcType="VARCHAR" property="billPeriodTo" />
-    <result column="CURRENCY" jdbcType="VARCHAR" property="currency" />
-    <result column="CURRENT_MONTH" jdbcType="VARCHAR" property="currentMonth" />
-    <result column="CUST_ID" jdbcType="VARCHAR" property="custId" />
-    <result column="INV_DESC_ID" jdbcType="DECIMAL" property="invDescId" />
-    <result column="INV_ID" jdbcType="VARCHAR" property="invId" />
-    <result column="INV_VERSION" jdbcType="DECIMAL" property="invVersion" />
-    <result column="ITEM_DESC" jdbcType="VARCHAR" property="itemDesc" />
     <result column="PAYMENT_ITEM_CODE" jdbcType="VARCHAR" property="paymentItemCode" />
-    <result column="PRICE" jdbcType="DECIMAL" property="price" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -80,9 +80,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    ACTUAL_END_DT, ACTUAL_START_DT, AMT, AMT_CS, AMT_USD, AMT_VDC, AMT_VERIFY_FLAG, BILL_PERIOD_FROM, 
-    BILL_PERIOD_TO, CURRENCY, CURRENT_MONTH, CUST_ID, INV_DESC_ID, INV_ID, INV_VERSION, 
-    ITEM_DESC, PAYMENT_ITEM_CODE, PRICE
+    INV_DESC_ID, INVOICE_ID, CUSTOMER_ID, ITEM_DESC, ITEM_CURRENCY, PRICE, ITEM_AMT, 
+    ITEM_CURRENT_MONTH, BILL_PERIOD_FROM, BILL_PERIOD_TO, INV_VERSION, ACTUAL_END_DT, 
+    ACTUAL_START_DT, AMT_CS, AMT_USD, AMT_VDC, AMT_VERIFY_FLAG, PAYMENT_ITEM_CODE
   </sql>
   <select id="selectByExample" parameterType="com.billing.invoice.po.InvoiceItemDescExample" resultMap="BaseResultMap">
     select
@@ -105,32 +105,62 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.billing.invoice.po.InvoiceItemDesc">
-    insert into INV_ITEM_DESC (ACTUAL_END_DT, ACTUAL_START_DT, AMT, 
-      AMT_CS, AMT_USD, AMT_VDC, 
-      AMT_VERIFY_FLAG, BILL_PERIOD_FROM, BILL_PERIOD_TO, 
-      CURRENCY, CURRENT_MONTH, CUST_ID, 
-      INV_DESC_ID, INV_ID, INV_VERSION, 
-      ITEM_DESC, PAYMENT_ITEM_CODE, PRICE
+    insert into INV_ITEM_DESC (INV_DESC_ID, INVOICE_ID, CUSTOMER_ID, 
+      ITEM_DESC, ITEM_CURRENCY, PRICE, 
+      ITEM_AMT, ITEM_CURRENT_MONTH, BILL_PERIOD_FROM, 
+      BILL_PERIOD_TO, INV_VERSION, ACTUAL_END_DT, 
+      ACTUAL_START_DT, AMT_CS, AMT_USD, 
+      AMT_VDC, AMT_VERIFY_FLAG, PAYMENT_ITEM_CODE
       )
-    values (#{actualEndDt,jdbcType=TIMESTAMP}, #{actualStartDt,jdbcType=TIMESTAMP}, #{amt,jdbcType=DECIMAL}, 
-      #{amtCs,jdbcType=DECIMAL}, #{amtUsd,jdbcType=DECIMAL}, #{amtVdc,jdbcType=DECIMAL}, 
-      #{amtVerifyFlag,jdbcType=VARCHAR}, #{billPeriodFrom,jdbcType=VARCHAR}, #{billPeriodTo,jdbcType=VARCHAR}, 
-      #{currency,jdbcType=VARCHAR}, #{currentMonth,jdbcType=VARCHAR}, #{custId,jdbcType=VARCHAR}, 
-      #{invDescId,jdbcType=DECIMAL}, #{invId,jdbcType=VARCHAR}, #{invVersion,jdbcType=DECIMAL}, 
-      #{itemDesc,jdbcType=VARCHAR}, #{paymentItemCode,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}
+    values (#{invDescId,jdbcType=DECIMAL}, #{invoiceId,jdbcType=VARCHAR}, #{customerId,jdbcType=VARCHAR}, 
+      #{itemDesc,jdbcType=VARCHAR}, #{itemCurrency,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, 
+      #{itemAmt,jdbcType=DECIMAL}, #{itemCurrentMonth,jdbcType=VARCHAR}, #{billPeriodFrom,jdbcType=VARCHAR}, 
+      #{billPeriodTo,jdbcType=VARCHAR}, #{invVersion,jdbcType=DECIMAL}, #{actualEndDt,jdbcType=TIMESTAMP}, 
+      #{actualStartDt,jdbcType=TIMESTAMP}, #{amtCs,jdbcType=DECIMAL}, #{amtUsd,jdbcType=DECIMAL}, 
+      #{amtVdc,jdbcType=DECIMAL}, #{amtVerifyFlag,jdbcType=VARCHAR}, #{paymentItemCode,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.billing.invoice.po.InvoiceItemDesc">
     insert into INV_ITEM_DESC
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="invDescId != null">
+        INV_DESC_ID,
+      </if>
+      <if test="invoiceId != null">
+        INVOICE_ID,
+      </if>
+      <if test="customerId != null">
+        CUSTOMER_ID,
+      </if>
+      <if test="itemDesc != null">
+        ITEM_DESC,
+      </if>
+      <if test="itemCurrency != null">
+        ITEM_CURRENCY,
+      </if>
+      <if test="price != null">
+        PRICE,
+      </if>
+      <if test="itemAmt != null">
+        ITEM_AMT,
+      </if>
+      <if test="itemCurrentMonth != null">
+        ITEM_CURRENT_MONTH,
+      </if>
+      <if test="billPeriodFrom != null">
+        BILL_PERIOD_FROM,
+      </if>
+      <if test="billPeriodTo != null">
+        BILL_PERIOD_TO,
+      </if>
+      <if test="invVersion != null">
+        INV_VERSION,
+      </if>
       <if test="actualEndDt != null">
         ACTUAL_END_DT,
       </if>
       <if test="actualStartDt != null">
         ACTUAL_START_DT,
-      </if>
-      <if test="amt != null">
-        AMT,
       </if>
       <if test="amtCs != null">
         AMT_CS,
@@ -144,49 +174,49 @@
       <if test="amtVerifyFlag != null">
         AMT_VERIFY_FLAG,
       </if>
-      <if test="billPeriodFrom != null">
-        BILL_PERIOD_FROM,
-      </if>
-      <if test="billPeriodTo != null">
-        BILL_PERIOD_TO,
-      </if>
-      <if test="currency != null">
-        CURRENCY,
-      </if>
-      <if test="currentMonth != null">
-        CURRENT_MONTH,
-      </if>
-      <if test="custId != null">
-        CUST_ID,
-      </if>
-      <if test="invDescId != null">
-        INV_DESC_ID,
-      </if>
-      <if test="invId != null">
-        INV_ID,
-      </if>
-      <if test="invVersion != null">
-        INV_VERSION,
-      </if>
-      <if test="itemDesc != null">
-        ITEM_DESC,
-      </if>
       <if test="paymentItemCode != null">
         PAYMENT_ITEM_CODE,
       </if>
-      <if test="price != null">
-        PRICE,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="invDescId != null">
+        #{invDescId,jdbcType=DECIMAL},
+      </if>
+      <if test="invoiceId != null">
+        #{invoiceId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemDesc != null">
+        #{itemDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="itemCurrency != null">
+        #{itemCurrency,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="itemAmt != null">
+        #{itemAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="itemCurrentMonth != null">
+        #{itemCurrentMonth,jdbcType=VARCHAR},
+      </if>
+      <if test="billPeriodFrom != null">
+        #{billPeriodFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="billPeriodTo != null">
+        #{billPeriodTo,jdbcType=VARCHAR},
+      </if>
+      <if test="invVersion != null">
+        #{invVersion,jdbcType=DECIMAL},
+      </if>
       <if test="actualEndDt != null">
         #{actualEndDt,jdbcType=TIMESTAMP},
       </if>
       <if test="actualStartDt != null">
         #{actualStartDt,jdbcType=TIMESTAMP},
-      </if>
-      <if test="amt != null">
-        #{amt,jdbcType=DECIMAL},
       </if>
       <if test="amtCs != null">
         #{amtCs,jdbcType=DECIMAL},
@@ -200,38 +230,8 @@
       <if test="amtVerifyFlag != null">
         #{amtVerifyFlag,jdbcType=VARCHAR},
       </if>
-      <if test="billPeriodFrom != null">
-        #{billPeriodFrom,jdbcType=VARCHAR},
-      </if>
-      <if test="billPeriodTo != null">
-        #{billPeriodTo,jdbcType=VARCHAR},
-      </if>
-      <if test="currency != null">
-        #{currency,jdbcType=VARCHAR},
-      </if>
-      <if test="currentMonth != null">
-        #{currentMonth,jdbcType=VARCHAR},
-      </if>
-      <if test="custId != null">
-        #{custId,jdbcType=VARCHAR},
-      </if>
-      <if test="invDescId != null">
-        #{invDescId,jdbcType=DECIMAL},
-      </if>
-      <if test="invId != null">
-        #{invId,jdbcType=VARCHAR},
-      </if>
-      <if test="invVersion != null">
-        #{invVersion,jdbcType=DECIMAL},
-      </if>
-      <if test="itemDesc != null">
-        #{itemDesc,jdbcType=VARCHAR},
-      </if>
       <if test="paymentItemCode != null">
         #{paymentItemCode,jdbcType=VARCHAR},
-      </if>
-      <if test="price != null">
-        #{price,jdbcType=DECIMAL},
       </if>
     </trim>
   </insert>
@@ -244,14 +244,44 @@
   <update id="updateByExampleSelective" parameterType="map">
     update INV_ITEM_DESC
     <set>
+      <if test="record.invDescId != null">
+        INV_DESC_ID = #{record.invDescId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.invoiceId != null">
+        INVOICE_ID = #{record.invoiceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customerId != null">
+        CUSTOMER_ID = #{record.customerId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemDesc != null">
+        ITEM_DESC = #{record.itemDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemCurrency != null">
+        ITEM_CURRENCY = #{record.itemCurrency,jdbcType=VARCHAR},
+      </if>
+      <if test="record.price != null">
+        PRICE = #{record.price,jdbcType=DECIMAL},
+      </if>
+      <if test="record.itemAmt != null">
+        ITEM_AMT = #{record.itemAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="record.itemCurrentMonth != null">
+        ITEM_CURRENT_MONTH = #{record.itemCurrentMonth,jdbcType=VARCHAR},
+      </if>
+      <if test="record.billPeriodFrom != null">
+        BILL_PERIOD_FROM = #{record.billPeriodFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="record.billPeriodTo != null">
+        BILL_PERIOD_TO = #{record.billPeriodTo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.invVersion != null">
+        INV_VERSION = #{record.invVersion,jdbcType=DECIMAL},
+      </if>
       <if test="record.actualEndDt != null">
         ACTUAL_END_DT = #{record.actualEndDt,jdbcType=TIMESTAMP},
       </if>
       <if test="record.actualStartDt != null">
         ACTUAL_START_DT = #{record.actualStartDt,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.amt != null">
-        AMT = #{record.amt,jdbcType=DECIMAL},
       </if>
       <if test="record.amtCs != null">
         AMT_CS = #{record.amtCs,jdbcType=DECIMAL},
@@ -265,38 +295,8 @@
       <if test="record.amtVerifyFlag != null">
         AMT_VERIFY_FLAG = #{record.amtVerifyFlag,jdbcType=VARCHAR},
       </if>
-      <if test="record.billPeriodFrom != null">
-        BILL_PERIOD_FROM = #{record.billPeriodFrom,jdbcType=VARCHAR},
-      </if>
-      <if test="record.billPeriodTo != null">
-        BILL_PERIOD_TO = #{record.billPeriodTo,jdbcType=VARCHAR},
-      </if>
-      <if test="record.currency != null">
-        CURRENCY = #{record.currency,jdbcType=VARCHAR},
-      </if>
-      <if test="record.currentMonth != null">
-        CURRENT_MONTH = #{record.currentMonth,jdbcType=VARCHAR},
-      </if>
-      <if test="record.custId != null">
-        CUST_ID = #{record.custId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.invDescId != null">
-        INV_DESC_ID = #{record.invDescId,jdbcType=DECIMAL},
-      </if>
-      <if test="record.invId != null">
-        INV_ID = #{record.invId,jdbcType=VARCHAR},
-      </if>
-      <if test="record.invVersion != null">
-        INV_VERSION = #{record.invVersion,jdbcType=DECIMAL},
-      </if>
-      <if test="record.itemDesc != null">
-        ITEM_DESC = #{record.itemDesc,jdbcType=VARCHAR},
-      </if>
       <if test="record.paymentItemCode != null">
         PAYMENT_ITEM_CODE = #{record.paymentItemCode,jdbcType=VARCHAR},
-      </if>
-      <if test="record.price != null">
-        PRICE = #{record.price,jdbcType=DECIMAL},
       </if>
     </set>
     <if test="_parameter != null">
@@ -305,24 +305,24 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update INV_ITEM_DESC
-    set ACTUAL_END_DT = #{record.actualEndDt,jdbcType=TIMESTAMP},
+    set INV_DESC_ID = #{record.invDescId,jdbcType=DECIMAL},
+      INVOICE_ID = #{record.invoiceId,jdbcType=VARCHAR},
+      CUSTOMER_ID = #{record.customerId,jdbcType=VARCHAR},
+      ITEM_DESC = #{record.itemDesc,jdbcType=VARCHAR},
+      ITEM_CURRENCY = #{record.itemCurrency,jdbcType=VARCHAR},
+      PRICE = #{record.price,jdbcType=DECIMAL},
+      ITEM_AMT = #{record.itemAmt,jdbcType=DECIMAL},
+      ITEM_CURRENT_MONTH = #{record.itemCurrentMonth,jdbcType=VARCHAR},
+      BILL_PERIOD_FROM = #{record.billPeriodFrom,jdbcType=VARCHAR},
+      BILL_PERIOD_TO = #{record.billPeriodTo,jdbcType=VARCHAR},
+      INV_VERSION = #{record.invVersion,jdbcType=DECIMAL},
+      ACTUAL_END_DT = #{record.actualEndDt,jdbcType=TIMESTAMP},
       ACTUAL_START_DT = #{record.actualStartDt,jdbcType=TIMESTAMP},
-      AMT = #{record.amt,jdbcType=DECIMAL},
       AMT_CS = #{record.amtCs,jdbcType=DECIMAL},
       AMT_USD = #{record.amtUsd,jdbcType=DECIMAL},
       AMT_VDC = #{record.amtVdc,jdbcType=DECIMAL},
       AMT_VERIFY_FLAG = #{record.amtVerifyFlag,jdbcType=VARCHAR},
-      BILL_PERIOD_FROM = #{record.billPeriodFrom,jdbcType=VARCHAR},
-      BILL_PERIOD_TO = #{record.billPeriodTo,jdbcType=VARCHAR},
-      CURRENCY = #{record.currency,jdbcType=VARCHAR},
-      CURRENT_MONTH = #{record.currentMonth,jdbcType=VARCHAR},
-      CUST_ID = #{record.custId,jdbcType=VARCHAR},
-      INV_DESC_ID = #{record.invDescId,jdbcType=DECIMAL},
-      INV_ID = #{record.invId,jdbcType=VARCHAR},
-      INV_VERSION = #{record.invVersion,jdbcType=DECIMAL},
-      ITEM_DESC = #{record.itemDesc,jdbcType=VARCHAR},
-      PAYMENT_ITEM_CODE = #{record.paymentItemCode,jdbcType=VARCHAR},
-      PRICE = #{record.price,jdbcType=DECIMAL}
+      PAYMENT_ITEM_CODE = #{record.paymentItemCode,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>

@@ -27,20 +27,27 @@
                           <tr>
                               <td>账单参考编码：</td>
                               <td><input jsfc="h:inputText" size="20" maxlength="100" id="create_invRefNo"
-                                         readonly="true" style="border:none;"/></td>
+                                         readonly="true" style="border:none;"/>
+                              </td>
                           </tr>
                           <tr>
                               <td>客户编号：</td>
                               <td>
                                   <input jsfc="h:inputText" size="20" maxlength="100" id="create_custId"
                                          onblur="getCustomerInfo()"/>
+                                  <input jsfc="h:inputText" size="20" maxlength="100" id="modify_custId"
+                                         readonly="true" style="border:none;"/>
                               </td>
                           </tr>
                           <tr>
                               <td>客户姓名：</td>
-                              <td><input jsfc="h:inputText" size="20" maxlength="100" id="create_custName"/></td>
+                              <td>
+                                  <input jsfc="h:inputText" size="20" maxlength="100" id="create_custName"/>
+                                  <input jsfc="h:inputText" size="20" maxlength="100" id="modify_custName"
+                                         readonly="true" style="border:none;"/>
+                              </td>
                           </tr>
-                          <tr>
+                          <tr id="invDt_tr">
                               <td>账单日期：</td>
                               <td>
                                   <ui:include src="./common/common_calendar.jsp">
@@ -50,7 +57,7 @@
                                   </ui:include>
                               </td>
                           </tr>
-                          <tr>
+                          <tr id="pty_tr">
                               <td>开票单位：</td>
                               <td>
                                   <ui:include src="./common/common_select_option.jsp">
@@ -58,6 +65,11 @@
                                       <ui:param name="option_selected" value="issuing_party_selected"></ui:param>
                                       <ui:param name="width" value="200px"></ui:param>
                                   </ui:include>
+                              </td>
+                          </tr>
+                          <tr style="display:none;">
+                              <td>
+                                  <input type='text' name='currentMonth' id='currentMonth' size='10' maxlength='100' style='border:none;'/>
                               </td>
                           </tr>
                           <tr>
@@ -74,47 +86,7 @@
                                               <td>总数</td>
                                           </tr>
                                       </thead>
-                                      <tr>
-                                       <td>
-                                           <input type="text" name="item_desc" id="item_desc1" size="10" maxlength="100"
-                                                   style="border:none;"/>
-                                       </td>
-                                       <td>
-                                           <ui:include src="./common/common_calendar.jsp">
-		                                      <ui:param name="datetimepicker_Id" value="datetimepickerStarTime"></ui:param>
-		                                      <ui:param name="target" value="#datetimepickerStarTime"></ui:param>
-		                                      <ui:param name="inputID" value="Calendar_starDT1"></ui:param>
-		                                  </ui:include>
-                                       </td> 
-                                       <td>
-                                           <ui:include src="./common/common_calendar.jsp">
-		                                      <ui:param name="datetimepicker_Id" value="datetimepickerEndTime"></ui:param>
-		                                      <ui:param name="target" value="#datetimepickerEndTime"></ui:param>
-		                                      <ui:param name="inputID" value="Calendar_endDT1"></ui:param>
-		                                  </ui:include>
-                                       </td>
-                                       <td>
-                                           <input type="text" name="inv_price" id="inv_price1" size="2" maxlength="100"
-                                                  style="border:none;"/>
-                                       </td>
-                                       <td>
-                                           <input type="text" name="txn_quantity" id="txn_quantity1" size="1" maxlength="100"
-                                                  style="border:none;"/>
-                                       </td>
-                                       <td>
-                                           <select id='selectOption1' onchange='Change()' style='width:80px;'>
-					    		               <option value=''>请选择</option>
-					    		               <option value='USD'>USD</option>
-					    		               <option value='CNY'>CNY</option>
-					    		           </select>
-					    		           <input style='display:none;' size='20' maxlength='100' id='option_selected1'/>
-					    		           <script type='text/javascript'>function Change(){$('#option_selected1').val($('#selectOption1').val());}</script>
-                                       </td>
-                                       <td>
-                                           <input type="text" name="inv_amt1" id="inv_amt" size="5" maxlength="100"
-                                                  style="border:none;"/>
-                                       </td>
-                                   </tr>
+                                      <tr></tr>
                               </table>
                               <input type="text" id="index" style="display:none;"/>
                               <a id="addBank_tr" onclick="addModifytr()" href="javascript:void(0)">添加</a>
@@ -130,6 +102,8 @@
 	    </div>
 	  </div>
 	</div>
+	
+
 
 </ui:component>
 </html>

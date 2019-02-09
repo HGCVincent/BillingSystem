@@ -12,6 +12,7 @@ import com.billing.invoice.dao.SystemInvoiceMapper;
 import com.billing.invoice.dao.SystemInvoiceMapperCustom;
 import com.billing.invoice.dto.InvoiceListDto;
 import com.billing.invoice.po.InvoiceItemDesc;
+import com.billing.invoice.po.InvoiceItemDescExample;
 import com.billing.invoice.po.SystemInvoice;
 import com.billing.invoice.po.SystemInvoiceExample;
 import com.billing.invoice.po.SystemInvoiceExample.Criteria;
@@ -93,6 +94,24 @@ public class InvoiceListServiceImpl implements InvoiceListService {
 	@Override
 	public void insertInvoieItem(InvoiceItemDesc invoiceItemDesc) {
 		invoiceItemDescMapper.insert(invoiceItemDesc);
+	}
+
+	@Override
+	public List<InvoiceItemDesc> findInvoiceItem(String invId, String custId, String currentMonth) {
+		InvoiceItemDescExample invoiceItemDescExample = new InvoiceItemDescExample();
+		com.billing.invoice.po.InvoiceItemDescExample.Criteria criteria = invoiceItemDescExample.createCriteria();
+		criteria.andInvoiceIdEqualTo(invId);
+		criteria.andCustomerIdEqualTo(custId);
+		criteria.andItemCurrentMonthEqualTo(currentMonth);
+		return invoiceItemDescMapper.selectByExample(invoiceItemDescExample);
+	}
+
+	@Override
+	public void upDateInvoieItem(InvoiceItemDesc invoiceItemDesc) {
+		InvoiceItemDescExample invoiceItemDescExample = new InvoiceItemDescExample();
+		com.billing.invoice.po.InvoiceItemDescExample.Criteria criteria = invoiceItemDescExample.createCriteria();
+		criteria.andInvDescIdEqualTo(invoiceItemDesc.getInvDescId());
+		invoiceItemDescMapper.updateByExampleSelective(invoiceItemDesc, invoiceItemDescExample);
 	}
 
 }

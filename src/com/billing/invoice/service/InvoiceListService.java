@@ -21,4 +21,8 @@ public interface InvoiceListService {
 
 	void insertInvoieItem(InvoiceItemDesc invoiceItemDesc);
 
+	List<InvoiceItemDesc> findInvoiceItem(String invId, String custId, String currentMonth);
+
+	void upDateInvoieItem(InvoiceItemDesc invoiceItemDesc);
+
 }

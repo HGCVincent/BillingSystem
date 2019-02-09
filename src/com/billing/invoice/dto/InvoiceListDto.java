@@ -36,6 +36,8 @@ public class InvoiceListDto {
 
     private String attachmentName;
     
+    private Date invDt;
+    
    
 	public InvoiceListDto() {
 		super();
@@ -57,6 +59,7 @@ public class InvoiceListDto {
 		this.setInvSendOutDt(selectByExample.getInvSendOutDt());
 		this.setInvDueDt(selectByExample.getInvDueDt());
 		this.setAttachmentName(selectByExample.getAttachmentName());
+		this.setInvDt(selectByExample.getInvDt());
 	}
 
 	public String getInvId() {
@@ -177,6 +180,14 @@ public class InvoiceListDto {
 
 	public void setAttachmentName(String attachmentName) {
 		this.attachmentName = attachmentName;
+	}
+
+	public Date getInvDt() {
+		return invDt;
+	}
+
+	public void setInvDt(Date invDt) {
+		this.invDt = invDt;
 	}
 
 	

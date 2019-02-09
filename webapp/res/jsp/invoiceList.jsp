@@ -92,7 +92,6 @@
 									<td>货币</td>
 									<td>总金额</td>
 									<td>账单类型</td>
-									<td>取消理由</td>
 									<td>账单状态</td>
 									<td>版本号</td>
 									<td>操作人</td>
@@ -103,6 +102,13 @@
 							<c:forEach items = "#{invoiceListView.dtoRecords}" 
 							           var="invoice_list_info" varStatus="status">
 							    <tr>
+							        <td align="center" style="display:none">
+							            <h:outputText id="InvDt_#{status.index+1}"
+											value="#{invoice_list_info.invDt}">
+											<f:convertDateTime locale="en" type="date" dateStyle="medium"
+												pattern="MM/dd/yyyy" />
+									    </h:outputText>
+							        </td>
 									<td align="center" id="Id_#{status.index+1}" style="display: none;">#{invoice_list_info.seqId}</td>
 									<td align="center" name="breakByInvIdLevel" id="batchOptions_#{status.index+1}"> 
 										<input type="checkbox" name="invListCheckBox"/>
@@ -116,7 +122,6 @@
 									<td align="center" id="currency_#{status.index+1}"></td>
 									<td align="center" id="amt_#{status.index+1}"></td>
 									<td align="center" id="invType_#{status.index+1}"></td>
-									<td align="center" id="adjReason_#{status.index+1}"></td>
 									<td align="center" id="invStatus_#{status.index+1}">#{invoice_list_info.invStatus}</td>
 									<td align="center" name="invVersionValue" id="invVersion_#{status.index+1}">#{invoice_list_info.invVersion}</td>
 									<td align="center" name="breakByInvIdLevel" id="modifyBy_#{status.index+1}">#{invoice_list_info.modifyBy}</td>
@@ -132,6 +137,10 @@
 											<button id="confirm_#{status.index+1}" type="button" class="btn btn-primary btn-sm" title="确认"
 											        onclick="confirmButton(this)">
 												<span class="oi oi-check" title="icon name" aria-hidden="true" />
+											</button>
+											<button id="modify_#{status.index+1}" type="button" class="btn btn-primary btn-sm" title="编辑"
+											        onclick="modifyButton(this)">
+												<span class="oi oi-pencil" title="icon name" aria-hidden="true" />
 											</button>
 									    </c:if>
 									    <c:if test="${invoice_list_info.invStatus == '已确认'}">
