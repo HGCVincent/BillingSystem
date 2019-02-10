@@ -292,9 +292,35 @@ function drawItemInfoTr(currentMonth){
 		},
 		async:false
 	});
-	
-	
-	
+}
+
+function historyButton(t){
+	$("#history_tbale").find("tr").not("thead tr").remove();
+	var index =getRowIndex(t);
+	var Invid = $("#invId_"+index).text();
+	var bank_tr="";
+	InvoiceListView.getInvoiceListHistory(Invid,{
+		callback:function(data){
+			var index = 0;
+			for(var key in data){
+				index++;
+				bank_tr += "<tr>";
+				bank_tr += "<td><input size='5' type='text' id='invId_" +index+ "' style='border:none' readonly='true' value='" + data[key].invId +  "'/></td>";
+				bank_tr += "<td><input size='5' type='text' id='invName_" +index+ "' style='border:none' readonly='true' value='" + data[key].custName +  "'/></td>";
+			    bank_tr += "<td><input size='5' type='text' id='invStatus_" +index+ "' style='border:none' readonly='true' value='" + data[key].invStatus + "'/></td>";
+			    bank_tr += "<td><input size='5' type='text' id='modifyBy_" +index+ "' style='border:none' readonly='true' value='" + data[key].modifyBy + "'/></td>";
+			    bank_tr += "<td><input size='5' type='text' id='modifyDt_" +index+ "' style='border:none' readonly='true' value='" + data[key].modifyDt + "'/></td>";
+			    bank_tr += "</tr>";
+			}
+			$("#history_tbale").append(bank_tr);
+		},
+		errorHandler: function (message) {
+            alert("Remote server error, please try again later ");
+            return false;
+        },
+        async: false
+	});	
+	$("#history_pop_up").modal('show');
 }
 
 $(document).ready(

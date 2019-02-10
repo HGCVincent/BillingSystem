@@ -4,12 +4,9 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/config"/>
         <wb-resource deploy-path="/WEB-INf" source-path="/config/jsf"/>
-        <wb-resource deploy-path="/WEB-INF/lib" source-path="/webapp/WEB-INF/lib/C3P0"/>
-        <wb-resource deploy-path="/WEB-INF/lib" source-path="/webapp/WEB-INF/lib/JSF"/>
-        <wb-resource deploy-path="/WEB-INF/lib" source-path="/webapp/WEB-INF/lib/MyBatis"/>
-        <wb-resource deploy-path="/WEB-INF/lib" source-path="/webapp/WEB-INF/lib/Spring"/>
-        <wb-resource deploy-path="/WEB-INF/lib" source-path="/webapp/WEB-INF/lib/ojdbc"/>
         <wb-resource deploy-path="/WEB-INf" source-path="/config/dwr"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/webapp/res/skin"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/webapp/res/template"/>
         <property name="context-root" value="BillingSystem"/>
         <property name="java-output-path" value="/BillingSystem/webapp/WEB-INF/classes"/>
     </wb-module>

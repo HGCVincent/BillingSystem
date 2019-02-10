@@ -25,4 +25,6 @@ public interface InvoiceListService {
 
 	void upDateInvoieItem(InvoiceItemDesc invoiceItemDesc);
 
+	List<SystemInvoice> getInvoiceListHistory(String id);
+
 }

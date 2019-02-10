@@ -55,5 +55,13 @@
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/json-lib-2.4-jdk15.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/commons-lang-2.5.jar"/>
 	<classpathentry kind="lib" path="webapp/WEB-INF/lib/ezmorph-1.0.6.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/xmlworker-5.5.11.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/flying-saucer-core-9.0.3.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/flying-saucer-pdf-9.0.3.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/flying-saucer-pdf-itext5-9.0.3.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/freemarker-2.3.19.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/itext-2.1.7.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/itextpdf-5.5.11.jar"/>
+	<classpathentry kind="lib" path="webapp/WEB-INF/lib/json-20160810.jar"/>
 	<classpathentry kind="output" path="webapp/WEB-INF/classes"/>
 </classpath>

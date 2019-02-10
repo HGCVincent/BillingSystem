@@ -5,7 +5,9 @@ import static org.hamcrest.CoreMatchers.nullValue;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.billing.common.Currency;
 import com.billing.common.JsonConvertor;
@@ -89,7 +91,6 @@ public class InvoiceListView extends BasicView<SystemInvoice> {
     
     public CustomerProfile getCustomerProfileById(String id){
     	CustomerProfile customerProfile = getCustomerProfileService().getCustomerProfileById(id);
-    	this.getInvoiceListService();
     	return customerProfile;
     }
     
@@ -129,6 +130,23 @@ public class InvoiceListView extends BasicView<SystemInvoice> {
     	return this.getInvoiceListService().findInvoiceItem(invId,custId,currentMonth);
     }
     
+    public Map<String,String> getInvoiceCustomerMessageById(String id){
+		CustomerProfile pro = this.getCustomerProfileById(id);
+		Map<String,String> CustomerMessage = new HashMap<String,String>();
+		CustomerMessage.put("Address1", pro.getAddr1());
+		CustomerMessage.put("Address2", pro.getAddr2());
+		CustomerMessage.put("Address3", pro.getAddr3());
+		CustomerMessage.put("ATTN_Name", pro.getAcctBdOwner());
+		CustomerMessage.put("ATTN_Tel", pro.getAcctBdOwnerTel());
+		CustomerMessage.put("ATTN_Email", pro.getAcctBdOwnerEmail());
+		CustomerMessage.put("Bill_RefNo1", "QUOTATION REF NUMBER:");
+		CustomerMessage.put("HTML_TEM", pro.getInvoiceTemplateCode());
+		return CustomerMessage;
+	}
+    
+    public List<SystemInvoice> getInvoiceListHistory(String id){
+    	return this.getInvoiceListService().getInvoiceListHistory(id);
+    }
 //--------------------------------------------------------------------------
 	public InvoiceListCriteria getInvoiceListCriteria() {
 		return invoiceListCriteria;

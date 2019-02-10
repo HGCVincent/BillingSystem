@@ -114,4 +114,12 @@ public class InvoiceListServiceImpl implements InvoiceListService {
 		invoiceItemDescMapper.updateByExampleSelective(invoiceItemDesc, invoiceItemDescExample);
 	}
 
+	@Override
+	public List<SystemInvoice> getInvoiceListHistory(String id) {
+		SystemInvoiceExample systemInvoiceExample = this.getSystemInvoiceExample();
+		Criteria criteria = systemInvoiceExample.createCriteria();
+		criteria.andInvIdEqualTo(id);
+		return systemInvoiceMapper.selectByExample(systemInvoiceExample);
+	}
+
 }

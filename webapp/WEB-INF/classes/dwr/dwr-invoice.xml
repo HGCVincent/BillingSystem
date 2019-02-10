@@ -15,8 +15,11 @@
             <include method="getCustomerProfileById"/>
             <include method="saveInvoiceList"/>
             <include method="findInvoiceItem"/>
+            <include method="getInvoiceCustomerMessageById"/>
+            <include method="getInvoiceListHistory"/>
         </create>
         <convert match="com.billing.invoice.po.InvoiceItemDesc" converter="bean"></convert>
+        <convert match="com.billing.invoice.po.SystemInvoice" converter="bean"></convert>
     </allow>
     <signatures>
         <![CDATA[

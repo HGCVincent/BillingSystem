@@ -99,10 +99,41 @@
 	        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
 	        <button type="button" class="btn btn-primary" onclick="createPopUpConfirm()">保存</button>
 	      </div>
-	    </div>
-	  </div>
+	   </div>
+    </div>
+</div>
+
+
+<div class="modal" id="history_pop_up" tabindex="-1" role="dialog">
+	  <div class="modal-dialog modal-lg" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="myModalLabel">历史记录</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	            <span aria-hidden="true">&#215;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body container-fluid">
+              <div class="row">
+                  <div class="col-md-12">
+                      <table id="history_tbale" class="table table-hover table-bordered table-condensed">
+                          <thead>
+                              <td>账单编号</td>
+                              <td>客户名称</td>
+                              <td>账单状态</td>
+                              <td>操作人</td>
+                              <td>操作历史</td>
+                          </thead>
+                      </table>
+                  </div>
+              </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	      </div>
+	   </div>
 	</div>
-	
+</div>	
 
 
 </ui:component>

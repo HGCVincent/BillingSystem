@@ -10,6 +10,7 @@
        <link rel="stylesheet" href="../css/open-iconic-bootstrap.css"/>
        <script type="text/javascript" src='../js/common.js'></script>
        <script type="text/javascript" src='../js/invoice/invoiceList.js'></script>
+       <script type="text/javascript" src='../js/invoice/pdf.js'></script>
        <script type='text/javascript' src='/BillingSystem/dwr/interface/InvoiceListView.js'></script>
 	   <script type='text/javascript' src='/BillingSystem/dwr/engine.js'></script>
 	   <script type="text/javascript" src="/BillingSystem/dwr/util.js"></script>
@@ -133,6 +134,10 @@
 									    </h:outputText>
 									</td>
 									<td align="center">
+									    <button id="confirm_#{status.index+1}" type="button" class="btn btn-primary btn-sm" title="历史"
+											        onclick="historyButton(this)">
+												<span class="oi oi-script" title="icon name" aria-hidden="true" />
+									    </button>
 									    <c:if test="${invoice_list_info.invStatus == '待确认'}">
 											<button id="confirm_#{status.index+1}" type="button" class="btn btn-primary btn-sm" title="确认"
 											        onclick="confirmButton(this)">
@@ -147,6 +152,10 @@
 									        <button id="confirm_#{status.index+1}" type="button" class="btn btn-primary btn-sm" title="取消"
 											        onclick="cancelButton(this)">
 												<span class="oi oi-action-undo" title="icon name" aria-hidden="true" />
+											</button>
+											<button id="preview_#{status.index+1}" type="button" class="btn btn-primary btn-sm" title="预览"
+											        onclick="previewPDFInvoice(this)">
+												<span class="oi oi-eye" title="icon name" aria-hidden="true" />
 											</button>
 									    </c:if>
 									</td>
