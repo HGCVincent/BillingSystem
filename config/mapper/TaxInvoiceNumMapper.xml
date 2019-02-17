@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.billing.invoice.dao.TaxInvoiceNumMapper">
+  <resultMap id="BaseResultMap" type="com.billing.invoice.po.TaxInvoiceNum">
+    <result column="INV_ID" jdbcType="DECIMAL" property="invId" />
+    <result column="TAX_INV_TYPE" jdbcType="VARCHAR" property="taxInvType" />
+    <result column="OFFICE" jdbcType="VARCHAR" property="office" />
+    <result column="CURRENCY" jdbcType="VARCHAR" property="currency" />
+    <result column="PAYMENT_CURRENCY" jdbcType="VARCHAR" property="paymentCurrency" />
+    <result column="CREATE_BY" jdbcType="VARCHAR" property="createBy" />
+    <result column="MODIFY_DATE" jdbcType="TIMESTAMP" property="modifyDate" />
+    <result column="ASSIGN_TO" jdbcType="VARCHAR" property="assignTo" />
+    <result column="INV_ID_STATUS" jdbcType="VARCHAR" property="invIdStatus" />
+    <result column="IS_USED" jdbcType="VARCHAR" property="isUsed" />
+    <result column="REMARKS" jdbcType="VARCHAR" property="remarks" />
+    <result column="SEQ_ID" jdbcType="DECIMAL" property="seqId" />
+    <result column="TAX_INV_BATCH" jdbcType="DECIMAL" property="taxInvBatch" />
+    <result column="TAX_DATE" jdbcType="TIMESTAMP" property="taxDate" />
+    <result column="TAX_FROM" jdbcType="DECIMAL" property="taxFrom" />
+    <result column="TAX_TO" jdbcType="DECIMAL" property="taxTo" />
+    <result column="IS_REPEAT" jdbcType="VARCHAR" property="isRepeat" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    INV_ID, TAX_INV_TYPE, OFFICE, CURRENCY, PAYMENT_CURRENCY, CREATE_BY, MODIFY_DATE, 
+    ASSIGN_TO, INV_ID_STATUS, IS_USED, REMARKS, SEQ_ID, TAX_INV_BATCH, TAX_DATE, TAX_FROM, 
+    TAX_TO, IS_REPEAT
+  </sql>
+  <select id="selectByExample" parameterType="com.billing.invoice.po.TaxInvoiceNumExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from TAX_INV_NUM
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.billing.invoice.po.TaxInvoiceNumExample">
+    delete from TAX_INV_NUM
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.billing.invoice.po.TaxInvoiceNum">
+    insert into TAX_INV_NUM (INV_ID, TAX_INV_TYPE, OFFICE, 
+      CURRENCY, PAYMENT_CURRENCY, CREATE_BY, 
+      MODIFY_DATE, ASSIGN_TO, INV_ID_STATUS, 
+      IS_USED, REMARKS, SEQ_ID, 
+      TAX_INV_BATCH, TAX_DATE, TAX_FROM, 
+      TAX_TO, IS_REPEAT)
+    values (#{invId,jdbcType=DECIMAL}, #{taxInvType,jdbcType=VARCHAR}, #{office,jdbcType=VARCHAR}, 
+      #{currency,jdbcType=VARCHAR}, #{paymentCurrency,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, 
+      #{modifyDate,jdbcType=TIMESTAMP}, #{assignTo,jdbcType=VARCHAR}, #{invIdStatus,jdbcType=VARCHAR}, 
+      #{isUsed,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, #{seqId,jdbcType=DECIMAL}, 
+      #{taxInvBatch,jdbcType=DECIMAL}, #{taxDate,jdbcType=TIMESTAMP}, #{taxFrom,jdbcType=DECIMAL}, 
+      #{taxTo,jdbcType=DECIMAL}, #{isRepeat,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.billing.invoice.po.TaxInvoiceNum">
+    insert into TAX_INV_NUM
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="invId != null">
+        INV_ID,
+      </if>
+      <if test="taxInvType != null">
+        TAX_INV_TYPE,
+      </if>
+      <if test="office != null">
+        OFFICE,
+      </if>
+      <if test="currency != null">
+        CURRENCY,
+      </if>
+      <if test="paymentCurrency != null">
+        PAYMENT_CURRENCY,
+      </if>
+      <if test="createBy != null">
+        CREATE_BY,
+      </if>
+      <if test="modifyDate != null">
+        MODIFY_DATE,
+      </if>
+      <if test="assignTo != null">
+        ASSIGN_TO,
+      </if>
+      <if test="invIdStatus != null">
+        INV_ID_STATUS,
+      </if>
+      <if test="isUsed != null">
+        IS_USED,
+      </if>
+      <if test="remarks != null">
+        REMARKS,
+      </if>
+      <if test="seqId != null">
+        SEQ_ID,
+      </if>
+      <if test="taxInvBatch != null">
+        TAX_INV_BATCH,
+      </if>
+      <if test="taxDate != null">
+        TAX_DATE,
+      </if>
+      <if test="taxFrom != null">
+        TAX_FROM,
+      </if>
+      <if test="taxTo != null">
+        TAX_TO,
+      </if>
+      <if test="isRepeat != null">
+        IS_REPEAT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="invId != null">
+        #{invId,jdbcType=DECIMAL},
+      </if>
+      <if test="taxInvType != null">
+        #{taxInvType,jdbcType=VARCHAR},
+      </if>
+      <if test="office != null">
+        #{office,jdbcType=VARCHAR},
+      </if>
+      <if test="currency != null">
+        #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="paymentCurrency != null">
+        #{paymentCurrency,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyDate != null">
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="assignTo != null">
+        #{assignTo,jdbcType=VARCHAR},
+      </if>
+      <if test="invIdStatus != null">
+        #{invIdStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="isUsed != null">
+        #{isUsed,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="seqId != null">
+        #{seqId,jdbcType=DECIMAL},
+      </if>
+      <if test="taxInvBatch != null">
+        #{taxInvBatch,jdbcType=DECIMAL},
+      </if>
+      <if test="taxDate != null">
+        #{taxDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="taxFrom != null">
+        #{taxFrom,jdbcType=DECIMAL},
+      </if>
+      <if test="taxTo != null">
+        #{taxTo,jdbcType=DECIMAL},
+      </if>
+      <if test="isRepeat != null">
+        #{isRepeat,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.billing.invoice.po.TaxInvoiceNumExample" resultType="java.lang.Long">
+    select count(*) from TAX_INV_NUM
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update TAX_INV_NUM
+    <set>
+      <if test="record.invId != null">
+        INV_ID = #{record.invId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.taxInvType != null">
+        TAX_INV_TYPE = #{record.taxInvType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.office != null">
+        OFFICE = #{record.office,jdbcType=VARCHAR},
+      </if>
+      <if test="record.currency != null">
+        CURRENCY = #{record.currency,jdbcType=VARCHAR},
+      </if>
+      <if test="record.paymentCurrency != null">
+        PAYMENT_CURRENCY = #{record.paymentCurrency,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createBy != null">
+        CREATE_BY = #{record.createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modifyDate != null">
+        MODIFY_DATE = #{record.modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.assignTo != null">
+        ASSIGN_TO = #{record.assignTo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.invIdStatus != null">
+        INV_ID_STATUS = #{record.invIdStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isUsed != null">
+        IS_USED = #{record.isUsed,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remarks != null">
+        REMARKS = #{record.remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.seqId != null">
+        SEQ_ID = #{record.seqId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.taxInvBatch != null">
+        TAX_INV_BATCH = #{record.taxInvBatch,jdbcType=DECIMAL},
+      </if>
+      <if test="record.taxDate != null">
+        TAX_DATE = #{record.taxDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.taxFrom != null">
+        TAX_FROM = #{record.taxFrom,jdbcType=DECIMAL},
+      </if>
+      <if test="record.taxTo != null">
+        TAX_TO = #{record.taxTo,jdbcType=DECIMAL},
+      </if>
+      <if test="record.isRepeat != null">
+        IS_REPEAT = #{record.isRepeat,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update TAX_INV_NUM
+    set INV_ID = #{record.invId,jdbcType=DECIMAL},
+      TAX_INV_TYPE = #{record.taxInvType,jdbcType=VARCHAR},
+      OFFICE = #{record.office,jdbcType=VARCHAR},
+      CURRENCY = #{record.currency,jdbcType=VARCHAR},
+      PAYMENT_CURRENCY = #{record.paymentCurrency,jdbcType=VARCHAR},
+      CREATE_BY = #{record.createBy,jdbcType=VARCHAR},
+      MODIFY_DATE = #{record.modifyDate,jdbcType=TIMESTAMP},
+      ASSIGN_TO = #{record.assignTo,jdbcType=VARCHAR},
+      INV_ID_STATUS = #{record.invIdStatus,jdbcType=VARCHAR},
+      IS_USED = #{record.isUsed,jdbcType=VARCHAR},
+      REMARKS = #{record.remarks,jdbcType=VARCHAR},
+      SEQ_ID = #{record.seqId,jdbcType=DECIMAL},
+      TAX_INV_BATCH = #{record.taxInvBatch,jdbcType=DECIMAL},
+      TAX_DATE = #{record.taxDate,jdbcType=TIMESTAMP},
+      TAX_FROM = #{record.taxFrom,jdbcType=DECIMAL},
+      TAX_TO = #{record.taxTo,jdbcType=DECIMAL},
+      IS_REPEAT = #{record.isRepeat,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

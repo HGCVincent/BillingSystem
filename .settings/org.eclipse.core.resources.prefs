@@ -14,5 +14,7 @@ encoding//webapp/res/jsp/invoiceList.jsp=UTF-8
 encoding//webapp/res/jsp/invoiceList_pop_up.jsp=UTF-8
 encoding//webapp/res/jsp/issuingParty.jsp=UTF-8
 encoding//webapp/res/jsp/issuingParty_pop_up.jsp=UTF-8
+encoding//webapp/res/jsp/taxInvoiceNum.jsp=UTF-8
+encoding//webapp/res/jsp/taxInvoiceNum_pop_up.jsp=UTF-8
 encoding//webapp/res/jsp/welcome.jsp=UTF-8
 encoding//webapp/res/skin/template/CN_INVOICE.ftl=UTF-8

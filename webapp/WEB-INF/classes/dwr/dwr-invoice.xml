@@ -18,6 +18,13 @@
             <include method="getInvoiceCustomerMessageById"/>
             <include method="getInvoiceListHistory"/>
         </create>
+        
+        <create javascript="TaxInvoiceNumView" creator="jsf" scope="request">
+            <param name="class" value="com.billing.invoice.view.TaxInvoiceNumView"></param>
+            <param name="managedBeanName" value="taxInvoiceNumView" />
+            <include method="createTaxInvNum"/>
+        </create>
+        
         <convert match="com.billing.invoice.po.InvoiceItemDesc" converter="bean"></convert>
         <convert match="com.billing.invoice.po.SystemInvoice" converter="bean"></convert>
     </allow>

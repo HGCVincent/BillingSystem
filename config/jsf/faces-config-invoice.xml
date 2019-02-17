@@ -21,4 +21,13 @@
 	    </managed-property>
 	</managed-bean> 
 	
+	<managed-bean> 
+	    <managed-bean-name>taxInvoiceNumView</managed-bean-name> 
+	    <managed-bean-class>com.billing.invoice.view.TaxInvoiceNumView</managed-bean-class> 
+	    <managed-bean-scope>request</managed-bean-scope>
+	    <managed-property>
+	      <property-name>taxInvoiceNumService</property-name>
+	      <value>#{taxInvoiceNumService}</value>
+	    </managed-property>
+	</managed-bean>
 </faces-config>

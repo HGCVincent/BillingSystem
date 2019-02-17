@@ -5,4 +5,6 @@
 
 
 <bean id="invoiceListService" class="com.billing.invoice.service.InvoiceListServiceImpl"></bean>
+
+<bean id="taxInvoiceNumService" class="com.billing.invoice.service.TaxInvoiceNumServiceImpl"></bean>
 </beans>
