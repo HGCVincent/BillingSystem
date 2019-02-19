@@ -66,4 +66,14 @@ public class CustomerProfileServiceImpl implements CustomerProfileService{
 		customerProfileMapper.insertSelective(convertToObject);
 		
 	}
+
+	@Override
+	public int getAccountIdByCustId(String custId) {
+		CustomerProfileExample example = this.getCustomerProfileExample();
+		Criteria criteria = example.createCriteria();
+		if (StringUtils.isNoneEmpty(custId)) {
+			criteria.andCustIdEqualTo(custId);
+		}
+		return customerProfileMapper.selectByExample(example).get(0).getAccountId();
+	}
 }

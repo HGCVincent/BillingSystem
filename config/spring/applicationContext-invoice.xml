@@ -7,4 +7,6 @@
 <bean id="invoiceListService" class="com.billing.invoice.service.InvoiceListServiceImpl"></bean>
 
 <bean id="taxInvoiceNumService" class="com.billing.invoice.service.TaxInvoiceNumServiceImpl"></bean>
+
+<bean id="invoicePaymentService" class="com.billing.invoice.service.InvoicePaymentServiceImpl"></bean>
 </beans>

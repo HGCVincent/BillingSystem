@@ -59,12 +59,18 @@
         <columnOverride column="INV_VERSION" javaType="java.lang.Integer"></columnOverride>
         <columnOverride column="PRICE" javaType="java.lang.Long"></columnOverride>
     </table> -->
-    <table tableName="TAX_INV_NUM" domainObjectName="TaxInvoiceNum">
+    <!-- <table tableName="TAX_INV_NUM" domainObjectName="TaxInvoiceNum">
         <columnOverride column="INV_ID" javaType="java.lang.Long"></columnOverride>
         <columnOverride column="SEQ_ID" javaType="java.lang.Integer"></columnOverride>
         <columnOverride column="TAX_INV_BATCH" javaType="java.lang.Integer"></columnOverride>
         <columnOverride column="TAX_FROM" javaType="java.lang.Integer"></columnOverride>
         <columnOverride column="TAX_TO" javaType="java.lang.Integer"></columnOverride>
+    </table> -->
+    <table tableName="INV_PAYMENT" domainObjectName="InvoicePayment">
+        <columnOverride column="PAYMENT_SEQ" javaType="java.lang.Integer"></columnOverride>
+        <columnOverride column="PAYMENT_AMT" javaType="java.lang.Float"></columnOverride>
+        <columnOverride column="VERSION" javaType="java.lang.Integer"></columnOverride>
+        <columnOverride column="PAYMENT_ID" javaType="java.lang.Integer"></columnOverride>
     </table>
   </context>
 </generatorConfiguration>

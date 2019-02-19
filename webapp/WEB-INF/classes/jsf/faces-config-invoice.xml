@@ -30,4 +30,26 @@
 	      <value>#{taxInvoiceNumService}</value>
 	    </managed-property>
 	</managed-bean>
+	
+	<managed-bean> 
+	    <managed-bean-name>invoicePaymentView</managed-bean-name> 
+	    <managed-bean-class>com.billing.invoice.view.InvoicePaymentView</managed-bean-class> 
+	    <managed-bean-scope>request</managed-bean-scope>
+	    <managed-property>
+	      <property-name>invoicePaymentService</property-name>
+	      <value>#{invoicePaymentService}</value>
+	    </managed-property>
+	    <managed-property>
+	      <property-name>invoiceListService</property-name>
+	      <value>#{invoiceListService}</value>
+	    </managed-property>
+	    <managed-property>
+	      <property-name>customerProfileService</property-name>
+	      <value>#{customerProfileService}</value>
+	    </managed-property>
+	    <managed-property>
+	      <property-name>accountInfoService</property-name>
+	      <value>#{accountInfoService}</value>
+	    </managed-property>
+	</managed-bean>
 </faces-config>

@@ -18,4 +18,8 @@ public interface AccountInfoService {
     public void addAccountInfo(AccountInfo accountInfo);
     
     public void updateIsDefaultByIdAndBankName(Long id,String bankName);
+
+	public List<AccountInfo> getAccountByAccountIdAndPayerName(int accountId, String payerName);
+
+	public List<AccountInfo> getPayerAccount(String payerName, int accountId);
 }

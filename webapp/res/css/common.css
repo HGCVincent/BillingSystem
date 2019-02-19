@@ -41,3 +41,7 @@ nav{
 .input-group > input{
     height:30px;
 }
+
+.modal-lg {
+      max-width: 70%;
+}

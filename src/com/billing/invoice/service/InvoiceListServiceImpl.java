@@ -122,4 +122,24 @@ public class InvoiceListServiceImpl implements InvoiceListService {
 		return systemInvoiceMapper.selectByExample(systemInvoiceExample);
 	}
 
+	@Override
+	public List<SystemInvoice> findInvoiceListByinvRefNo(String invoiceRefNumber, String customerId,
+			String currentMonth, String isLatestVersion) {
+		SystemInvoiceExample example = new SystemInvoiceExample();
+		Criteria criteria = example.createCriteria();
+		if (StringUtils.isNoneEmpty(invoiceRefNumber)) {
+           criteria.andInvRefNoEqualTo(invoiceRefNumber);
+        }
+        if (StringUtils.isNoneEmpty(customerId)) {
+           criteria.andCustIdEqualTo(customerId);
+        }
+        if (StringUtils.isNoneEmpty(currentMonth)) {
+           criteria.andCurrentMonthEqualTo(currentMonth);
+        }
+        if (StringUtils.isNoneEmpty(isLatestVersion)) {
+           criteria.andIsLatestVerEqualTo(isLatestVersion);
+        }
+        return systemInvoiceMapperCustom.selectByExamplePlus(example);
+	}
+
 }

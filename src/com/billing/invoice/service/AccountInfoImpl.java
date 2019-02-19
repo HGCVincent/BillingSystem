@@ -91,6 +91,32 @@ public class AccountInfoImpl implements AccountInfoService{
 		return (AccountInfo) accountInfoMapper.selectByExample(accountInfoExample);
 	}
 
+	@Override
+	public List<AccountInfo> getAccountByAccountIdAndPayerName(int accountId, String payerName) {
+		AccountInfoExample accountInfoExample = new AccountInfoExample();
+		Criteria criteria = accountInfoExample.createCriteria();
+		if (accountId != 0) {
+			criteria.andAccountIdEqualTo((long)accountId);
+		}
+		if (StringUtils.isNoneEmpty(payerName)) {
+			criteria.andTaxInvNameEqualTo(payerName);
+		}
+		return accountInfoMapper.selectByExample(accountInfoExample);
+	}
+
+	@Override
+	public List<AccountInfo> getPayerAccount(String payerName, int accountId) {
+		AccountInfoExample accountInfoExample = new AccountInfoExample();
+		Criteria criteria = accountInfoExample.createCriteria();
+		if (StringUtils.isNoneEmpty(payerName)) {
+			criteria.andTaxInvNameEqualTo(payerName);
+		}
+		if (accountId != 0) {
+			criteria.andAccountIdEqualTo((long)accountId);
+		}
+		return accountInfoMapper.selectByExample(accountInfoExample);
+	}
+
 	
 
 }

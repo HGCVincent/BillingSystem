@@ -27,4 +27,6 @@ public interface InvoiceListService {
 
 	List<SystemInvoice> getInvoiceListHistory(String id);
 
+	List<SystemInvoice> findInvoiceListByinvRefNo(String invoiceRefNumber, String customerId, String currentMonth, String isLatestVersion);
+
 }

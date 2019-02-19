@@ -16,4 +16,6 @@ public interface CustomerProfileService {
 
 	void insertCustomerProfile(CustomerProfile convertToObject);
 
+	int getAccountIdByCustId(String custId);
+
 }

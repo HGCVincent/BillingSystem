@@ -25,8 +25,18 @@
             <include method="createTaxInvNum"/>
         </create>
         
+        <create javascript="InvoicePaymentView" creator="jsf" scope="request">
+            <param name="class" value="com.billing.invoice.view.InvoicePaymentView"></param>
+            <param name="managedBeanName" value="invoicePaymentView" />
+            <include method="getInvoicePaymentHistory"/>
+            <include method="getAccountByCustomerId"/>
+            <include method="getPayerAccount"/>
+        </create>
+        
         <convert match="com.billing.invoice.po.InvoiceItemDesc" converter="bean"></convert>
         <convert match="com.billing.invoice.po.SystemInvoice" converter="bean"></convert>
+        <convert match="com.billing.invoice.po.InvoicePayment" converter="bean"></convert>
+        <convert match="com.billing.invoice.po.AccountInfo" converter="bean"></convert>
     </allow>
     <signatures>
         <![CDATA[
